@@ -10,63 +10,12 @@ import {
   Award,
   Clock,
   Shield,
-  Wrench,
-  Cable,
-  Cpu,
-  Camera,
-  CircuitBoard,
-  Gauge,
-  Settings,
-  BatteryCharging
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
 import logoElectrinova from "@/assets/logo-electrinova.png";
-
-// Servicios de ELECTRINOVA
-const services = [
-  {
-    icon: BatteryCharging,
-    title: "Media Tensión",
-    description: "Instalación y mantenimiento de sistemas eléctricos de media tensión para industrias y comercios.",
-  },
-  {
-    icon: CircuitBoard,
-    title: "Pozos a Tierra",
-    description: "Diseño, instalación y mantenimiento de sistemas de puesta a tierra certificados.",
-  },
-  {
-    icon: Gauge,
-    title: "Mantenimiento de Transformadores",
-    description: "Servicio especializado en transformadores para garantizar su óptimo funcionamiento.",
-  },
-  {
-    icon: Cpu,
-    title: "Tableros Eléctricos",
-    description: "Fabricación e instalación de tableros eléctricos de distribución y control.",
-  },
-  {
-    icon: Settings,
-    title: "Motores Eléctricos",
-    description: "Reparación, rebobinado y mantenimiento preventivo de motores eléctricos.",
-  },
-  {
-    icon: Wrench,
-    title: "Mantenimiento Industrial",
-    description: "Mantenimiento eléctrico preventivo y correctivo para plantas industriales.",
-  },
-  {
-    icon: Cable,
-    title: "Instalaciones Eléctricas",
-    description: "Instalaciones eléctricas completas para proyectos residenciales, comerciales e industriales.",
-  },
-  {
-    icon: Camera,
-    title: "CCTV",
-    description: "Instalación de sistemas de video vigilancia y circuito cerrado de televisión.",
-  },
-];
+import { services } from "@/data/services";
 
 // Sectores
 const sectors = [
@@ -98,25 +47,25 @@ const stats = [
   { number: "50+", label: "Profesionales", icon: Award },
 ];
 
-// Testimonios
+// Testimonios con clientes reales
 const testimonials = [
   {
-    name: "Carlos Rodríguez",
-    company: "Industrias del Sur S.A.",
-    text: "ELECTRINOVA realizó la instalación eléctrica completa de nuestra planta. Excelente profesionalismo y cumplimiento de plazos.",
+    name: "Aceros Arequipa",
+    company: "Sector Industrial",
+    text: "Excelente trabajo en automatización de sistemas de iluminación LED y fabricación de CCM. Profesionalismo y cumplimiento de plazos.",
     sector: "Industrial",
   },
   {
-    name: "María García",
-    company: "Centro Comercial Plaza Norte",
-    text: "Su equipo instaló todo el sistema de media tensión. Trabajo impecable y personal muy capacitado.",
-    sector: "Comercial",
+    name: "SUNEDU",
+    company: "Sector Institucional",
+    text: "Realizaron el cableado estructurado completo, pruebas de fibra óptica y montaje de grupo electrógeno. Trabajo impecable.",
+    sector: "Institucional",
   },
   {
-    name: "Roberto Sánchez",
-    company: "Residencial Los Jardines",
-    text: "Instalaron el sistema de pozos a tierra en todo el condominio. Muy satisfechos con el resultado.",
-    sector: "Residencial",
+    name: "Nestlé",
+    company: "Sector Industrial",
+    text: "Mantenimiento integral de nuestra sub estación eléctrica con todos los protocolos y certificaciones requeridas.",
+    sector: "Industrial",
   },
 ];
 
@@ -129,6 +78,9 @@ const whyUs = [
 ];
 
 const Index = () => {
+  // Mostrar solo 8 servicios en el home
+  const featuredServices = services.slice(0, 8);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -244,7 +196,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section with Real Images */}
       <section className="section-padding bg-secondary/50">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -261,18 +213,25 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
+            {featuredServices.map((service, index) => (
               <Card 
                 key={service.title} 
-                className="group border border-border/50 bg-card hover:border-accent/50 card-hover"
+                className="group border border-border/50 bg-card hover:border-accent/50 card-hover overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-6">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
-                    <service.icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground">{service.description}</p>
+                <div className="relative h-40 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -375,7 +334,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-lg px-8 py-6">
-                <a href="tel:+51999999999">
+                <a href="tel:+51930519248">
                   Llamar Ahora
                 </a>
               </Button>
