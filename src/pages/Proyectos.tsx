@@ -5,107 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-
-// Tipos de proyectos
-type Sector = "Todos" | "Industrial" | "Residencial" | "Comercial";
-type ServiceType = "Media Tensión" | "Pozos a Tierra" | "Transformadores" | "Tableros Eléctricos" | "Instalaciones Eléctricas" | "CCTV" | "Mantenimiento";
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  sector: Sector;
-  service: ServiceType;
-  location: string;
-  year: string;
-  image: string;
-}
-
-// Proyectos de ejemplo
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Planta Industrial Metalúrgica",
-    description: "Instalación completa de sistema de media tensión y tableros de distribución para planta metalúrgica de 5000m².",
-    sector: "Industrial",
-    service: "Media Tensión",
-    location: "Callao, Lima",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Condominio Los Jardines",
-    description: "Sistema de pozos a tierra certificado para 120 viviendas, garantizando la seguridad eléctrica de todo el complejo.",
-    sector: "Residencial",
-    service: "Pozos a Tierra",
-    location: "La Molina, Lima",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Centro Comercial Plaza Sur",
-    description: "Mantenimiento preventivo y correctivo de transformadores y tableros eléctricos del centro comercial.",
-    sector: "Comercial",
-    service: "Transformadores",
-    location: "San Juan de Miraflores",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Fábrica de Alimentos SAC",
-    description: "Instalación de tableros eléctricos de control y potencia para línea de producción automatizada.",
-    sector: "Industrial",
-    service: "Tableros Eléctricos",
-    location: "Ate, Lima",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=600&fit=crop",
-  },
-  {
-    id: 5,
-    title: "Edificio Corporativo Tower",
-    description: "Instalación eléctrica completa de 15 pisos, incluyendo sistemas de emergencia y respaldo.",
-    sector: "Comercial",
-    service: "Instalaciones Eléctricas",
-    location: "San Isidro, Lima",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Residencial Vista Hermosa",
-    description: "Sistema de videovigilancia CCTV con 48 cámaras HD y monitoreo centralizado 24/7.",
-    sector: "Residencial",
-    service: "CCTV",
-    location: "Surco, Lima",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=600&fit=crop",
-  },
-  {
-    id: 7,
-    title: "Planta Textil del Norte",
-    description: "Mantenimiento industrial integral de sistemas eléctricos y reparación de motores trifásicos.",
-    sector: "Industrial",
-    service: "Mantenimiento",
-    location: "Los Olivos, Lima",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
-  },
-  {
-    id: 8,
-    title: "Supermercados MegaPlaza",
-    description: "Sistema de media tensión y backup de energía para cadena de 5 supermercados.",
-    sector: "Comercial",
-    service: "Media Tensión",
-    location: "Lima Norte",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=600&fit=crop",
-  },
-];
-
-const sectors: Sector[] = ["Todos", "Industrial", "Residencial", "Comercial"];
+import { projects, sectors, type Sector } from "@/data/projects";
 
 const Proyectos = () => {
   const [activeFilter, setActiveFilter] = useState<Sector>("Todos");
@@ -128,8 +28,8 @@ const Proyectos = () => {
               Nuestros <span className="text-gradient-accent">Proyectos</span> Realizados
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Conoce algunos de los proyectos que hemos realizado para nuestros clientes 
-              en los sectores industrial, residencial y comercial.
+              Conoce algunos de los proyectos que hemos realizado para clientes como 
+              Aceros Arequipa, SUNEDU, Nestlé y Cruz del Sur.
             </p>
           </div>
         </div>
@@ -187,6 +87,16 @@ const Proyectos = () => {
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {project.description}
                   </p>
+                  {project.activities && (
+                    <ul className="text-xs text-muted-foreground mb-4 space-y-1">
+                      {project.activities.slice(0, 2).map((activity, i) => (
+                        <li key={i} className="flex items-start gap-1">
+                          <span className="text-accent">•</span>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <MapPin className="h-4 w-4" />
