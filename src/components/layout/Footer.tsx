@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Zap } from "lucide-react";
 import logoElectrinova from "@/assets/logo-electrinova.png";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 const services = [
-  "Media Tensión",
+  "Mantenimiento de Sub Estaciones",
   "Pozos a Tierra",
-  "Mantenimiento de Transformadores",
-  "Tableros Eléctricos",
-  "Motores Eléctricos",
-  "Mantenimiento Industrial",
+  "Tableros MT - BT",
+  "Automatización",
   "Instalaciones Eléctricas",
-  "CCTV",
+  "Cableado Estructurado",
 ];
 
 const quickLinks = [
@@ -23,6 +22,11 @@ const quickLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const phoneNumber = "51930519248";
+  const message = encodeURIComponent(
+    "Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ."
+  );
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -70,6 +74,15 @@ export function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </a>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-300"
+                aria-label="WhatsApp"
+              >
+                <WhatsAppIcon className="h-5 w-5 text-white" />
+              </a>
             </div>
           </div>
 
@@ -100,7 +113,7 @@ export function Footer() {
               Nuestros Servicios
             </h4>
             <ul className="space-y-3">
-              {services.slice(0, 6).map((service) => (
+              {services.map((service) => (
                 <li key={service}>
                   <span className="text-primary-foreground/80">{service}</span>
                 </li>
@@ -117,20 +130,31 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+51999999999"
+                  href="tel:+51930519248"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>+51 999 999 999</span>
+                  <span>930 519 248 / 992 324 121</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@electrinovaperu.com"
+                  href="mailto:ingenieria@factiminperu.com"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>info@electrinovaperu.com</span>
+                  <span>ingenieria@factiminperu.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-primary-foreground/80 hover:text-green-400 transition-colors duration-300"
+                >
+                  <WhatsAppIcon className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <span>WhatsApp: 930 519 248</span>
                 </a>
               </li>
               <li>

@@ -101,12 +101,12 @@ const Index = () => {
 
         <div className="container-custom relative z-10 text-center pt-20">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-            {/* Logo */}
+            {/* Logo - Sin animación flotante */}
             <div className="flex justify-center mb-6">
               <img 
                 src={logoElectrinova} 
                 alt="ELECTRINOVA PERÚ"
-                className="h-32 md:h-40 w-auto animate-float"
+                className="h-28 md:h-36 w-auto drop-shadow-2xl"
               />
             </div>
 
@@ -123,7 +123,7 @@ const Index = () => {
               Más de 15 años de experiencia garantizan la calidad de nuestro trabajo.
             </p>
 
-            {/* CTAs */}
+            {/* CTAs - Botones con texto visible */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric">
                 <Link to="/contacto">
@@ -131,7 +131,7 @@ const Index = () => {
                   Solicitar Cotización
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-lg px-8 py-6">
+              <Button asChild size="lg" className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6">
                 <Link to="/proyectos">
                   Ver Proyectos
                   <ArrowRight className="h-5 w-5 ml-2" />
@@ -333,7 +333,7 @@ const Index = () => {
                   Solicitar Cotización Gratis
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-lg px-8 py-6">
+              <Button asChild size="lg" className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6">
                 <a href="tel:+51930519248">
                   Llamar Ahora
                 </a>

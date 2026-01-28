@@ -1,7 +1,7 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export function WhatsAppButton() {
-  const phoneNumber = "51999999999"; // Número de WhatsApp sin símbolos
+  const phoneNumber = "51930519248"; // Número de WhatsApp del brochure
   const message = encodeURIComponent(
     "Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ."
   );
@@ -21,7 +21,7 @@ export function WhatsAppButton() {
         
         {/* Main button */}
         <div className="relative flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110">
-          <MessageCircle className="h-7 w-7 text-white" />
+          <WhatsAppIcon className="h-7 w-7 text-white" />
         </div>
 
         {/* Tooltip */}
