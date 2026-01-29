@@ -22,7 +22,7 @@ const quickLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const phoneNumber = "51930519248";
+  const phoneNumber = "51934014639";
   const message = encodeURIComponent(
     "Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ."
   );
@@ -130,20 +130,20 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+51930519248"
+                  href="tel:+51934014639"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>930 519 248 / 992 324 121</span>
+                  <span>934 014 639</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:ingenieria@factiminperu.com"
+                  href="mailto:ventas@electrinovaperu.com"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>ingenieria@factiminperu.com</span>
+                  <span>ventas@electrinovaperu.com</span>
                 </a>
               </li>
               <li>
@@ -154,7 +154,7 @@ export function Footer() {
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-green-400 transition-colors duration-300"
                 >
                   <WhatsAppIcon className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>WhatsApp: 930 519 248</span>
+                  <span>WhatsApp: 934 014 639</span>
                 </a>
               </li>
               <li>
