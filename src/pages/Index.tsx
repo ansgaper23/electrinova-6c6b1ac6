@@ -41,10 +41,10 @@ const sectors = [
 
 // Estadísticas
 const stats = [
-  { number: "15+", label: "Años de Experiencia", icon: Clock },
-  { number: "500+", label: "Proyectos Completados", icon: CheckCircle2 },
-  { number: "200+", label: "Clientes Satisfechos", icon: Users },
-  { number: "50+", label: "Profesionales", icon: Award },
+  { number: "5+", label: "Años de Experiencia", icon: Clock },
+  { number: "50+", label: "Proyectos Realizados", icon: CheckCircle2 },
+  { number: "30+", label: "Clientes Satisfechos", icon: Users },
+  { number: "15+", label: "Profesionales", icon: Award },
 ];
 
 // Testimonios con clientes reales
@@ -120,7 +120,7 @@ const Index = () => {
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
               Servicios eléctricos profesionales para el sector industrial, residencial y comercial.
-              Más de 15 años de experiencia garantizan la calidad de nuestro trabajo.
+              Más de 5 años de experiencia garantizan la calidad de nuestro trabajo.
             </p>
 
             {/* CTAs - Botones con texto visible */}
@@ -334,7 +334,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Button asChild size="lg" className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6">
-                <a href="tel:+51930519248">
+                <a href="tel:+51934014639">
                   Llamar Ahora
                 </a>
               </Button>
