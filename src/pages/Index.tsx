@@ -101,16 +101,12 @@ const Index = () => {
 
         <div className="container-custom relative z-10 text-center pt-20">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-            {/* Logo - Sin animación flotante */}
-            <div className="flex justify-center mb-6">
-              <img 
-                src={logoElectrinova} 
-                alt="ELECTRINOVA PERÚ"
-                className="h-28 md:h-36 w-auto drop-shadow-2xl"
-              />
-            </div>
-
             {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
+              Energía que <span className="text-gradient-accent">Innova</span>,
+              <br />
+              Soluciones que <span className="text-gradient-accent">Perduran</span>
+            </h1>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
               Energía que <span className="text-gradient-accent">Innova</span>,
               <br />

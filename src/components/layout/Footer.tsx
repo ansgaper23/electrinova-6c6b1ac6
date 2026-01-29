@@ -143,7 +143,7 @@ export function Footer() {
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>ventas@electrinovaperu.com</span>
+                  <span className="break-all">ventas@electrinovaperu.com</span>
                 </a>
               </li>
               <li>

@@ -38,23 +38,23 @@ export function Header() {
       }`}
     >
       <div className="container-custom">
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center group flex-shrink-0">
             <img
               src={logoElectrinova}
-              alt="ELECTRINOVA PERÚ - Servicios Eléctricos Profesionales"
-              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              alt="ELECTRINOVA PERÚ"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className={`relative font-medium transition-colors duration-300 hover:text-accent ${
+                className={`relative text-sm font-medium transition-colors duration-300 hover:text-accent ${
                   location.pathname === link.href
                     ? "text-accent"
                     : "text-primary-foreground"
@@ -69,15 +69,15 @@ export function Header() {
           </div>
 
           {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+51934014639" className="flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors">
+          <div className="hidden lg:flex items-center gap-3">
+            <a href="tel:+51934014639" className="flex items-center gap-1.5 text-primary-foreground hover:text-accent transition-colors text-sm">
               <Phone className="h-4 w-4" />
-              <span className="font-medium">+51 934 014 639</span>
+              <span className="font-medium">934 014 639</span>
             </a>
-            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold btn-electric">
+            <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
               <Link to="/contacto">
-                <Zap className="h-4 w-4 mr-2" />
-                Cotizar Ahora
+                <Zap className="h-4 w-4 mr-1" />
+                Cotizar
               </Link>
             </Button>
           </div>
