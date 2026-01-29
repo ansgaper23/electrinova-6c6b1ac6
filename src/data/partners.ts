@@ -1,22 +1,30 @@
 import { Award, CheckCircle2 } from "lucide-react";
+import acerosArequipaLogo from "@/assets/clients/aceros-arequipa.png";
+import suneduLogo from "@/assets/clients/sunedu.png";
+import nestleLogo from "@/assets/clients/nestle.png";
+import cruzDelSurLogo from "@/assets/clients/cruz-del-sur.png";
 
 // Clientes reales (basado en el brochure)
 export const clients = [
   {
     name: "Aceros Arequipa",
     category: "Sector Industrial",
+    logo: acerosArequipaLogo,
   },
   {
     name: "SUNEDU",
     category: "Sector Institucional",
+    logo: suneduLogo,
   },
   {
     name: "Nestlé",
     category: "Sector Industrial",
+    logo: nestleLogo,
   },
   {
     name: "Cruz del Sur",
     category: "Sector Transporte",
+    logo: cruzDelSurLogo,
   },
 ];
 
