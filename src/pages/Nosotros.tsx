@@ -30,7 +30,7 @@ const values = [
 
 // Por qué elegirnos
 const whyUs = [
-  "Más de 15 años de experiencia en el mercado",
+  "Más de 5 años de experiencia en el mercado",
   "Equipo de ingenieros y técnicos certificados",
   "Garantía en todos nuestros trabajos",
   "Atención personalizada 24/7 para emergencias",
@@ -96,17 +96,17 @@ const Nosotros = () => {
                 Nuestra Historia
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Más de 15 Años Iluminando el Perú
+                Más de 5 Años Iluminando el Perú
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  ELECTRINOVA PERÚ nació en 2009 con la visión de transformar el sector 
+                  ELECTRINOVA PERÚ nació con la visión de transformar el sector 
                   de servicios eléctricos en el país. Desde nuestros inicios, nos hemos 
                   dedicado a brindar soluciones eléctricas de alta calidad para los 
                   sectores industrial, residencial y comercial.
                 </p>
                 <p>
-                  A lo largo de estos años, hemos completado más de 500 proyectos 
+                  A lo largo de estos años, hemos completado más de 50 proyectos 
                   exitosos, desde pequeñas instalaciones residenciales hasta complejos 
                   sistemas de media tensión para grandes industrias.
                 </p>
@@ -126,7 +126,7 @@ const Nosotros = () => {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold">15+</div>
+                <div className="text-4xl font-bold">5+</div>
                 <div className="text-sm">Años de Experiencia</div>
               </div>
             </div>

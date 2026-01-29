@@ -51,10 +51,12 @@ const Socios = () => {
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="w-full h-20 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                    <div className="text-2xl font-bold text-primary group-hover:text-accent transition-colors">
-                      {client.name.split(' ').map(word => word[0]).join('')}
-                    </div>
+                  <div className="w-full h-24 rounded-lg mb-4 flex items-center justify-center overflow-hidden bg-white p-3">
+                    <img 
+                      src={client.logo} 
+                      alt={`Logo de ${client.name}`}
+                      className="max-w-full max-h-full object-contain"
+                    />
                   </div>
                   <h3 className="font-semibold text-foreground mb-1">{client.name}</h3>
                   <p className="text-sm text-muted-foreground">{client.category}</p>
