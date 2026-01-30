@@ -16,6 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
 import logoElectrinova from "@/assets/logo-electrinova.png";
 import { services } from "@/data/services";
+import { clients } from "@/data/partners";
 
 // Sectores
 const sectors = [
@@ -102,11 +103,6 @@ const Index = () => {
         <div className="container-custom relative z-10 text-center pt-20">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
-              Energía que <span className="text-gradient-accent">Innova</span>,
-              <br />
-              Soluciones que <span className="text-gradient-accent">Perduran</span>
-            </h1>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
               Energía que <span className="text-gradient-accent">Innova</span>,
               <br />
@@ -237,6 +233,49 @@ const Index = () => {
             <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Link to="/contacto">
                 Solicitar Información
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-16 bg-background">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 text-accent font-semibold mb-4">
+              <Zap className="h-5 w-5" />
+              Confían en Nosotros
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Nuestros Socios Comerciales
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Empresas líderes que confían en nuestros servicios eléctricos profesionales
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {clients.map((client, index) => (
+              <div
+                key={client.name}
+                className="bg-white rounded-xl p-6 shadow-sm border border-border/50 flex items-center justify-center h-28 hover:shadow-md transition-shadow"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <img
+                  src={client.logo}
+                  alt={`Logo de ${client.name}`}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Button asChild variant="outline" size="lg">
+              <Link to="/socios">
+                Ver Todos los Socios
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>
