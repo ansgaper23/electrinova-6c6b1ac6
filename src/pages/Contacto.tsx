@@ -41,19 +41,19 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Teléfono",
-    details: ["+51 999 999 999", "+51 (01) 555-1234"],
-    link: "tel:+51999999999",
+    details: ["934 014 639"],
+    link: "tel:+51934014639",
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@electrinovaperu.com", "ventas@electrinovaperu.com"],
-    link: "mailto:info@electrinovaperu.com",
+    details: ["ventas@electrinovaperu.com"],
+    link: "mailto:ventas@electrinovaperu.com",
   },
   {
     icon: MapPin,
     title: "Dirección",
-    details: ["Av. Industrial 1234", "Lima, Perú"],
+    details: ["Lima, Perú"],
     link: "https://maps.google.com",
   },
   {
@@ -218,7 +218,7 @@ const Contacto = () => {
                     Escríbenos directamente y te responderemos lo antes posible.
                   </p>
                   <a
-                    href={`https://wa.me/51999999999?text=${encodeURIComponent("Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ.")}`}
+                    href={`https://wa.me/51934014639?text=${encodeURIComponent("Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-white/90 transition-colors"
