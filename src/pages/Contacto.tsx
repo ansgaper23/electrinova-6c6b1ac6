@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Layout } from "@/components/layout/Layout";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
 // Esquema de validación
@@ -102,8 +103,19 @@ const Contacto = () => {
       // Validar datos
       const validatedData = contactSchema.parse(formData);
       
-      // Simular envío (aquí se integraría con un backend real)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Enviar a edge function
+      const { data, error } = await supabase.functions.invoke('send-quote-request', {
+        body: validatedData,
+      });
+
+      if (error) {
+        console.error('Error from edge function:', error);
+        throw new Error(error.message || 'Error al enviar el mensaje');
+      }
+
+      if (!data?.success) {
+        throw new Error(data?.error || 'Error al enviar el mensaje');
+      }
       
       setIsSuccess(true);
       toast({
@@ -132,9 +144,10 @@ const Contacto = () => {
         });
         setErrors(fieldErrors);
       } else {
+        console.error('Contact form error:', error);
         toast({
           title: "Error",
-          description: "Hubo un problema al enviar el mensaje. Intenta de nuevo.",
+          description: error instanceof Error ? error.message : "Hubo un problema al enviar el mensaje. Intenta de nuevo.",
           variant: "destructive",
         });
       }
