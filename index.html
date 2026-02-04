@@ -45,7 +45,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Schema.org Structured Data -->
+    <!-- Schema.org Structured Data - Organization -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -102,6 +102,60 @@
           "ratingValue": "4.9",
           "reviewCount": "127"
         }
+      }
+    </script>
+
+    <!-- Schema.org - Website with SearchAction -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ELECTRINOVA PERÚ",
+        "url": "https://electrinovaperu.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://electrinovaperu.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- Schema.org - SiteNavigationElement for Sitelinks -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SiteNavigationElement",
+            "name": "SERVICIOS",
+            "description": "Subestaciones eléctricas, pozos a tierra, tableros MT-BT, automatización industrial y más servicios eléctricos profesionales",
+            "url": "https://electrinovaperu.com/#servicios"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "CONTACTO",
+            "description": "Solicita cotización gratis. Teléfono: 934 014 639. Email: ventas@electrinovaperu.com",
+            "url": "https://electrinovaperu.com/contacto"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "NOSOTROS",
+            "description": "Empresa de servicios eléctricos con más de 15 años de experiencia en el sector industrial peruano",
+            "url": "https://electrinovaperu.com/nosotros"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "PROYECTOS",
+            "description": "Proyectos realizados para Aceros Arequipa, Nestlé, SUNEDU, Cruz del Sur y más empresas líderes",
+            "url": "https://electrinovaperu.com/proyectos"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "SOCIOS COMERCIALES",
+            "description": "Alianzas estratégicas con marcas líderes del sector eléctrico industrial",
+            "url": "https://electrinovaperu.com/socios"
+          }
+        ]
       }
     </script>
   </head>
