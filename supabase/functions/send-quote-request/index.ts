@@ -43,7 +43,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to ventas@electrinovaperu.com
     const emailResponse = await resend.emails.send({
-      from: "ELECTRINOVA PERÚ <noreply@electrinovaperu.com>",
+      // Importante: Resend exige que el dominio del remitente (parte después de @)
+      // coincida con un dominio verificado.
+      from: "ELECTRINOVA PERÚ <noreply@correo.electrinovaperu.com>",
       to: ["ventas@electrinovaperu.com"],
       reply_to: email,
       subject: `Nueva Cotización: ${projectType} - ${name}`,
