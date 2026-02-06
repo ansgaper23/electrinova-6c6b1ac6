@@ -151,10 +151,15 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-primary-foreground/80">
+                <a
+                  href="https://maps.google.com/?q=Pje+Laburre+158,+Cercado+de+Lima,+Peru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+                >
                   <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>Lima, Perú</span>
-                </div>
+                  <span>Pje Laburre 158, Cercado de Lima, Perú</span>
+                </a>
               </li>
             </ul>
             <div className="mt-6 p-4 bg-primary-foreground/10 rounded-lg">
@@ -176,10 +181,10 @@ export function Footer() {
               © {currentYear} ELECTRINOVA PERÚ. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-6 text-sm text-primary-foreground/70">
-              <Link to="/contacto" className="hover:text-accent transition-colors">
+              <Link to="/politica-privacidad" className="hover:text-accent transition-colors">
                 Política de Privacidad
               </Link>
-              <Link to="/contacto" className="hover:text-accent transition-colors">
+              <Link to="/terminos-servicio" className="hover:text-accent transition-colors">
                 Términos de Servicio
               </Link>
             </div>

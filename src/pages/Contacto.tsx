@@ -54,8 +54,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Dirección",
-    details: ["Lima, Perú"],
-    link: "https://maps.google.com",
+    details: ["Pje Laburre 158, Cercado de Lima, Perú"],
+    link: "https://maps.google.com/?q=Pje+Laburre+158,+Cercado+de+Lima,+Peru",
   },
   {
     icon: Clock,
@@ -377,16 +377,19 @@ const Contacto = () => {
         </div>
       </section>
 
-      {/* Map Section (placeholder) */}
+      {/* Map Section */}
       <section className="h-96 bg-muted relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">
-              Aquí se mostrará el mapa de ubicación
-            </p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9648538847575!2d-77.0350!3d-12.0520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b5d35662c7%3A0x15f0a25e7a2c67c4!2sPje%20Laburre%20158%2C%20Cercado%20de%20Lima%2C%20Per%C3%BA!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Ubicación de ELECTRINOVA PERÚ"
+          className="absolute inset-0"
+        />
       </section>
     </Layout>
   );
