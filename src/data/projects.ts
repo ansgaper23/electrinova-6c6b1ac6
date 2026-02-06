@@ -6,6 +6,8 @@ import cruzDelSurImg from "@/assets/projects/cruz-del-sur.jpg";
 import sunedu2Img from "@/assets/projects/sunedu-2.jpg";
 import nestle2Img from "@/assets/projects/nestle-2.jpg";
 import cruzDelSur2Img from "@/assets/projects/cruz-del-sur-2.jpg";
+import utpTransformadoresImg from "@/assets/projects/utp-transformadores.jpg";
+import abbSalasElectricasImg from "@/assets/projects/abb-salas-electricas.jpg";
 
 // Tipos de proyectos
 export type Sector = "Todos" | "Industrial" | "Comercial" | "Institucional";
@@ -139,6 +141,38 @@ export const projects: Project[] = [
       "Mantenimiento de sistema HVAC",
       "Sistemas industriales chiller R410, R22",
       "Mantenimiento preventivo de aires acondicionados"
+    ]
+  },
+  {
+    id: 8,
+    title: "Universidad Tecnológica del Perú (UTP)",
+    description: "Implementación integral del sistema eléctrico de distribución y fuerza para aire acondicionado, mantenimiento preventivo de transformadores y valorización de equipos eléctricos.",
+    sector: "Institucional",
+    service: "Instalaciones Eléctricas",
+    location: "Lima, Perú",
+    year: "2024",
+    image: utpTransformadoresImg,
+    activities: [
+      "Implementación del sistema eléctrico de distribución y fuerza",
+      "Sistema de aire acondicionado industrial",
+      "Mantenimiento preventivo de transformadores",
+      "Valorización de equipamiento eléctrico"
+    ]
+  },
+  {
+    id: 9,
+    title: "ABB - Implementación de Salas Eléctricas",
+    description: "Diseño e implementación de salas eléctricas industriales de alta tecnología, incluyendo montaje de tableros, cableado estructurado y sistemas de control automatizado.",
+    sector: "Industrial",
+    service: "Instalaciones Eléctricas",
+    location: "Lima, Perú",
+    year: "2024",
+    image: abbSalasElectricasImg,
+    activities: [
+      "Implementación de salas eléctricas industriales",
+      "Montaje de tableros de fuerza y control",
+      "Cableado estructurado de alta capacidad",
+      "Sistemas de automatización y control"
     ]
   },
 ];

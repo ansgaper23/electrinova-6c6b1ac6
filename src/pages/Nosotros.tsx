@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import equipoTrabajoImg from "@/assets/about/equipo-trabajo.png";
 
 // Valores de la empresa
 const values = [
@@ -120,8 +121,8 @@ const Nosotros = () => {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=800&fit=crop"
-                  alt="Equipo ELECTRINOVA trabajando"
+                  src={equipoTrabajoImg}
+                  alt="Equipo ELECTRINOVA trabajando en mantenimiento de subestación"
                   className="w-full h-full object-cover"
                 />
               </div>
