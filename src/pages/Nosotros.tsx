@@ -246,50 +246,6 @@ const Nosotros = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="section-padding bg-background">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 text-accent font-semibold mb-4">
-              <Users className="h-5 w-5" />
-              Nuestro Equipo
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Profesionales Comprometidos
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Contamos con un equipo de ingenieros y técnicos altamente capacitados 
-              y comprometidos con la excelencia
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card 
-                key={member.name}
-                className="border-0 shadow-md overflow-hidden card-hover bg-card"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img 
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-sm text-muted-foreground">{member.role}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <p className="text-center text-muted-foreground mt-8 text-sm">
-            * Las imágenes mostradas son representativas. Contáctanos para conocer a nuestro equipo.
-          </p>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="section-padding gradient-hero">
