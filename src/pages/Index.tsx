@@ -14,9 +14,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
-import logoElectrinova from "@/assets/logo-electrinova.png";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { services } from "@/data/services";
 import { clients } from "@/data/partners";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
+import { Certifications } from "@/components/home/Certifications";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { WorkProcess } from "@/components/home/WorkProcess";
 
 // Sectores
 const sectors = [
@@ -48,7 +52,7 @@ const stats = [
   { number: "15+", label: "Profesionales", icon: Award },
 ];
 
-// Testimonios con clientes reales
+// Testimonios
 const testimonials = [
   {
     name: "Aceros Arequipa",
@@ -70,7 +74,7 @@ const testimonials = [
   },
 ];
 
-// Por qué elegirnos
+// Por qué elegirnos (hero badges)
 const whyUs = [
   { icon: Shield, text: "Garantía en todos nuestros trabajos" },
   { icon: Clock, text: "Atención rápida y eficiente" },
@@ -79,21 +83,18 @@ const whyUs = [
 ];
 
 const Index = () => {
-  // Mostrar solo 8 servicios en el home
   const featuredServices = services.slice(0, 8);
 
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
 
-        {/* Electric lines animation */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-pulse" />
           <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent animate-pulse delay-100" />
@@ -102,20 +103,17 @@ const Index = () => {
 
         <div className="container-custom relative z-10 text-center pt-20">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-            {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
               Energía que <span className="text-gradient-accent">Innova</span>,
               <br />
               Soluciones que <span className="text-gradient-accent">Perduran</span>
             </h1>
 
-            {/* Subtitle */}
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
               Servicios eléctricos profesionales para el sector industrial, residencial y comercial.
               Más de 5 años de experiencia garantizan la calidad de nuestro trabajo.
             </p>
 
-            {/* CTAs - Botones con texto visible */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric">
                 <Link to="/contacto">
@@ -131,7 +129,6 @@ const Index = () => {
               </Button>
             </div>
 
-            {/* Quick badges */}
             <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
               {whyUs.map((item, index) => (
                 <div key={index} className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full">
@@ -143,7 +140,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
             <div className="w-1.5 h-3 bg-accent rounded-full mt-2 animate-pulse" />
@@ -151,7 +147,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Sectors Section */}
+      {/* Sectors */}
       <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -188,8 +184,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section with Real Images */}
-      <section className="section-padding bg-secondary/50">
+      {/* Why Choose Us */}
+      <WhyChooseUs />
+
+      {/* Services */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-accent font-semibold mb-4">
@@ -240,7 +239,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
+      {/* Featured Projects */}
+      <FeaturedProjects />
+
+      {/* Work Process */}
+      <WorkProcess />
+
+      {/* Partners */}
       <section className="py-16 bg-background">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -283,7 +288,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Certifications */}
+      <Certifications />
+
+      {/* Stats */}
       <section className="py-16 bg-primary">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -304,7 +312,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials */}
       <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -350,7 +358,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section with WhatsApp */}
       <section className="section-padding gradient-hero">
         <div className="container-custom text-center">
           <div className="max-w-3xl mx-auto space-y-6">
@@ -367,6 +375,12 @@ const Index = () => {
                   <Zap className="h-5 w-5 mr-2" />
                   Solicitar Cotización Gratis
                 </Link>
+              </Button>
+              <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold text-lg px-8 py-6">
+                <a href="https://wa.me/51934014639?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotización" target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon className="h-5 w-5 mr-2" />
+                  WhatsApp Directo
+                </a>
               </Button>
               <Button asChild size="lg" className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6">
                 <a href="tel:+51934014639">
