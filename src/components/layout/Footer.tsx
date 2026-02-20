@@ -81,10 +81,10 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
               <Zap className="h-5 w-5 text-accent" />
               Enlaces Rápidos
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -101,10 +101,10 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
               <Zap className="h-5 w-5 text-accent" />
               Nuestros Servicios
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
@@ -116,10 +116,10 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
               <Zap className="h-5 w-5 text-accent" />
               Contáctanos
-            </h4>
+            </h3>
             <ul className="space-y-4">
               <li>
                 <a
