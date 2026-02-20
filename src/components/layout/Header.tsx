@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoElectrinova from "@/assets/logo-electrinova.png";
+
+// Logo served from /public with a stable URL so it can be <link rel="preload"> in index.html
+const LOGO_URL = "/logo-electrinova.png";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -42,8 +44,11 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center group flex-shrink-0">
             <img
-              src={logoElectrinova}
+              src={LOGO_URL}
               alt="ELECTRINOVA PERÚ"
+              width={120}
+              height={40}
+              fetchPriority="high"
               className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>

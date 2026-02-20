@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Zap } from "lucide-react";
-import logoElectrinova from "@/assets/logo-electrinova.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+
+const LOGO_URL = "/logo-electrinova.png";
 
 const services = [
   "Mantenimiento de Sub Estaciones",
@@ -37,8 +38,11 @@ export function Footer() {
           <div className="space-y-6">
             <Link to="/" className="inline-block">
               <img
-                src={logoElectrinova}
+                src={LOGO_URL}
                 alt="ELECTRINOVA PERÚ"
+                width={120}
+                height={64}
+                loading="lazy"
                 className="h-16 w-auto"
               />
             </Link>
