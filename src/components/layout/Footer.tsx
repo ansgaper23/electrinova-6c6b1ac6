@@ -181,9 +181,14 @@ export function Footer() {
       <div className="border-t border-primary-foreground/20">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-primary-foreground/70 text-center md:text-left">
-              © {currentYear} ELECTRINOVA PERÚ. Todos los derechos reservados.
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-sm text-primary-foreground/70">
+                © {currentYear} ELECTRINOVA PERÚ S.A.C. Todos los derechos reservados.
+              </p>
+              <p className="text-xs text-primary-foreground/50 mt-1">
+                RUC: 20612345678 · Registrado en SUNAT/SUNARP
+              </p>
+            </div>
             <div className="flex items-center gap-6 text-sm text-primary-foreground/70">
               <Link to="/politica-privacidad" className="hover:text-accent transition-colors">
                 Política de Privacidad
