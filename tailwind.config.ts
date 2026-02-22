@@ -66,6 +66,11 @@ export default {
           "gold-dark": "hsl(45, 100%, 45%)",
           "gold-light": "hsl(50, 100%, 55%)",
         },
+        carbon: {
+          DEFAULT: "hsl(var(--carbon))",
+          foreground: "hsl(var(--carbon-foreground))",
+        },
+        "electric-blue": "hsl(var(--electric-blue))",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
