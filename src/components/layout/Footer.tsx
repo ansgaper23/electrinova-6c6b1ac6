@@ -23,7 +23,7 @@ const quickLinks = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const phoneNumber = "51934014639";
+  const phoneNumber = "51938852610";
   const message = encodeURIComponent(
     "Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ."
   );
@@ -127,11 +127,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+51934014639"
+                  href="tel:+51938852610"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>934 014 639</span>
+                  <span>938 852 610</span>
                 </a>
               </li>
               <li>
@@ -151,7 +151,7 @@ export function Footer() {
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-green-400 transition-colors duration-300"
                 >
                   <WhatsAppIcon className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <span>WhatsApp: 934 014 639</span>
+                  <span>WhatsApp: 938 852 610</span>
                 </a>
               </li>
               <li>
@@ -186,7 +186,7 @@ export function Footer() {
                 © {currentYear} ELECTRINOVA PERÚ S.A.C. Todos los derechos reservados.
               </p>
               <p className="text-xs text-primary-foreground/50 mt-1">
-                RUC: 20612345678 · Registrado en SUNAT/SUNARP
+                RUC: 20615527590 · Registrado en SUNAT/SUNARP
               </p>
             </div>
             <div className="flex items-center gap-6 text-sm text-primary-foreground/70">

@@ -78,9 +78,9 @@ export function Header() {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+51934014639" className="flex items-center gap-1.5 text-primary-foreground hover:text-accent transition-colors text-sm">
+            <a href="tel:+51938852610" className="flex items-center gap-1.5 text-primary-foreground hover:text-accent transition-colors text-sm">
               <Phone className="h-4 w-4" />
-              <span className="font-medium">934 014 639</span>
+              <span className="font-medium">938 852 610</span>
             </a>
             <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
               <Link to="/contacto">
@@ -121,9 +121,9 @@ export function Header() {
               </Link>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-primary-foreground/20">
-              <a href="tel:+51934014639" className="flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors">
+              <a href="tel:+51938852610" className="flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors">
                 <Phone className="h-4 w-4" />
-                <span className="font-medium">+51 934 014 639</span>
+                <span className="font-medium">+51 938 852 610</span>
               </a>
               <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold w-full">
                 <Link to="/contacto">

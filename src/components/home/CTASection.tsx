@@ -22,13 +22,13 @@ export const CTASection = () => (
             </Link>
           </Button>
           <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold text-lg px-8 py-6">
-            <a href="https://wa.me/51934014639?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotización" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/51938852610?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotización" target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon className="h-5 w-5 mr-2" />
               WhatsApp Directo
             </a>
           </Button>
           <Button asChild size="lg" className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 font-semibold text-lg px-8 py-6">
-            <a href="tel:+51934014639">
+            <a href="tel:+51938852610">
               <Phone className="h-5 w-5 mr-2" />
               Llamar Ahora
             </a>

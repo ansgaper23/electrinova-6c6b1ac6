@@ -146,7 +146,7 @@ const TerminosServicio = () => {
                 </p>
                 <ul className="list-none text-muted-foreground mt-4 space-y-2">
                   <li><strong>Email:</strong> ventas@electrinovaperu.com</li>
-                  <li><strong>Teléfono:</strong> 934 014 639</li>
+                  <li><strong>Teléfono:</strong> 938 852 610</li>
                   <li><strong>Dirección:</strong> Pje Laburre 158, Cercado de Lima, Perú</li>
                 </ul>
               </div>

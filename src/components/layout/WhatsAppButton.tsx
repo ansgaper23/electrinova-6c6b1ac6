@@ -1,7 +1,7 @@
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export function WhatsAppButton() {
-  const phoneNumber = "51934014639";
+  const phoneNumber = "51938852610";
   const message = encodeURIComponent(
     "Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ."
   );
