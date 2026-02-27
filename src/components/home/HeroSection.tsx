@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 // Use existing project images as hero slides
 import acerosImg from "@/assets/projects/aceros-arequipa.jpg";
-import abbImg from "@/assets/projects/abb-salas-electricas.jpg";
+import nestleImg from "@/assets/projects/nestle.jpg";
 import utpImg from "@/assets/projects/utp-transformadores.jpg";
 
 const slides = [
@@ -16,7 +16,7 @@ const slides = [
     description: "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
   },
   {
-    image: abbImg,
+    image: nestleImg,
     title: "Ingeniería de Alta Potencia",
     subtitle: "con Estándares Internacionales",
     description: "Salas eléctricas, sub estaciones y sistemas de automatización con certificaciones y protocolos de conformidad.",
