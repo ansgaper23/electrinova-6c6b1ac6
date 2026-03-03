@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/socios", label: "Socios Comerciales" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
-  { href: "#tools", label: "Electrinova Tools", highlight: true },
+  { href: "/tools", label: "Electrinova Tools", highlight: true },
 ];
 
 export function Header() {

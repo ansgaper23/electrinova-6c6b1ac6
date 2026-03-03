@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Zap, ArrowRight, Calculator, FileText, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -35,9 +36,11 @@ export const ElectrinovaTools = () => (
             Nuestra plataforma de herramientas digitales para la industria eléctrica. 
             Soluciones que optimizan el diseño, ejecución y documentación de proyectos.
           </p>
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
-            Próximamente
-            <ArrowRight className="h-5 w-5 ml-2" />
+          <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
+            <Link to="/tools">
+              Explorar Herramientas
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Link>
           </Button>
         </div>
 
