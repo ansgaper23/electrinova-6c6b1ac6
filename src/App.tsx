@@ -16,10 +16,6 @@ const Nosotros = lazy(() => import("./pages/Nosotros"));
 const Contacto = lazy(() => import("./pages/Contacto"));
 const PoliticaPrivacidad = lazy(() => import("./pages/PoliticaPrivacidad"));
 const TerminosServicio = lazy(() => import("./pages/TerminosServicio"));
-const Tools = lazy(() => import("./pages/Tools"));
-const CalculadoraElectrica = lazy(() => import("./components/tools/CalculadoraElectrica"));
-const GeneradorProtocolos = lazy(() => import("./components/tools/GeneradorProtocolos"));
-const DiagnosticoEnergetico = lazy(() => import("./components/tools/DiagnosticoEnergetico"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -40,10 +36,6 @@ const App = () => (
               <Route path="/contacto" element={<Contacto />} />
               <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
               <Route path="/terminos-servicio" element={<TerminosServicio />} />
-              <Route path="/tools" element={<Tools />} />
-              <Route path="/tools/calculadora-electrica" element={<CalculadoraElectrica />} />
-              <Route path="/tools/generador-protocolos" element={<GeneradorProtocolos />} />
-              <Route path="/tools/diagnostico-energetico" element={<DiagnosticoEnergetico />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

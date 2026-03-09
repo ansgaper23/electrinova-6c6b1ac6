@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/socios", label: "Socios Comerciales" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
-  { href: "/tools", label: "Electrinova Tools", highlight: true },
+  
 ];
 
 export function Header() {
@@ -61,15 +61,13 @@ export function Header() {
                 key={link.href}
                 to={link.href}
                 className={`relative text-sm font-medium transition-colors duration-300 hover:text-accent ${
-                  link.highlight
-                    ? "text-accent"
-                    : location.pathname === link.href
+                  location.pathname === link.href
                     ? "text-accent"
                     : "text-primary-foreground"
                 }`}
               >
                 {link.label}
-                {location.pathname === link.href && !link.highlight && (
+                {location.pathname === link.href && (
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
                 )}
               </Link>
