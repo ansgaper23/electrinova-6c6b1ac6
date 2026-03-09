@@ -5,20 +5,20 @@ import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/media/ResponsiveImage";
 
 // Responsive hero images
-import acerosUrl from "@/assets/projects/aceros-arequipa.jpg?url";
-import acerosMeta from "@/assets/projects/aceros-arequipa.jpg?as=meta";
-import acerosSrcSetWebp from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import acerosSrcSetAvif from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero1Url from "@/assets/hero/hero-slide-1.jpg?url";
+import hero1Meta from "@/assets/hero/hero-slide-1.jpg?as=meta";
+import hero1SrcSetWebp from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero1SrcSetAvif from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
-import nestleUrl from "@/assets/projects/nestle.jpg?url";
-import nestleMeta from "@/assets/projects/nestle.jpg?as=meta";
-import nestleSrcSetWebp from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import nestleSrcSetAvif from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero2Url from "@/assets/hero/hero-slide-2.jpg?url";
+import hero2Meta from "@/assets/hero/hero-slide-2.jpg?as=meta";
+import hero2SrcSetWebp from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero2SrcSetAvif from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
-import utpUrl from "@/assets/projects/utp-transformadores.jpg?url";
-import utpMeta from "@/assets/projects/utp-transformadores.jpg?as=meta";
-import utpSrcSetWebp from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import utpSrcSetAvif from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero3Url from "@/assets/hero/hero-slide-3.jpg?url";
+import hero3Meta from "@/assets/hero/hero-slide-3.jpg?as=meta";
+import hero3SrcSetWebp from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero3SrcSetAvif from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
 const slides = [
   {
