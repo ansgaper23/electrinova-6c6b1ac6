@@ -5,28 +5,17 @@ import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/media/ResponsiveImage";
 
 // Responsive hero images
-import hero1Url from "@/assets/hero/hero-slide-1.jpg?url";
-import hero1Meta from "@/assets/hero/hero-slide-1.jpg?as=meta";
-import hero1SrcSetWebp from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import hero1SrcSetAvif from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
-
-import hero2Url from "@/assets/hero/hero-slide-2.jpg?url";
-import hero2Meta from "@/assets/hero/hero-slide-2.jpg?as=meta";
-import hero2SrcSetWebp from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import hero2SrcSetAvif from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
-
-import hero3Url from "@/assets/hero/hero-slide-3.jpg?url";
-import hero3Meta from "@/assets/hero/hero-slide-3.jpg?as=meta";
-import hero3SrcSetWebp from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import hero3SrcSetAvif from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero1Url from "@/assets/hero/hero-slide-1.jpg";
+import hero2Url from "@/assets/hero/hero-slide-2.jpg";
+import hero3Url from "@/assets/hero/hero-slide-3.jpg";
 
 const slides = [
   {
     image: hero1Url,
-    imageWidth: hero1Meta.width,
-    imageHeight: hero1Meta.height,
-    imageSrcSetWebp: hero1SrcSetWebp,
-    imageSrcSetAvif: hero1SrcSetAvif,
+    imageWidth: 1920,
+    imageHeight: 1080,
+    imageSrcSetWebp: undefined,
+    imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
     title: "Soluciones Eléctricas Integrales",
     subtitle: "para la Industria y el Comercio",
@@ -35,10 +24,10 @@ const slides = [
   },
   {
     image: hero2Url,
-    imageWidth: hero2Meta.width,
-    imageHeight: hero2Meta.height,
-    imageSrcSetWebp: hero2SrcSetWebp,
-    imageSrcSetAvif: hero2SrcSetAvif,
+    imageWidth: 1920,
+    imageHeight: 1080,
+    imageSrcSetWebp: undefined,
+    imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Subestaciones eléctricas y automatización industrial",
     title: "Ingeniería de Alta Potencia",
     subtitle: "con Estándares Internacionales",
@@ -47,10 +36,10 @@ const slides = [
   },
   {
     image: hero3Url,
-    imageWidth: hero3Meta.width,
-    imageHeight: hero3Meta.height,
-    imageSrcSetWebp: hero3SrcSetWebp,
-    imageSrcSetAvif: hero3SrcSetAvif,
+    imageWidth: 1920,
+    imageHeight: 1080,
+    imageSrcSetWebp: undefined,
+    imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Mantenimiento eléctrico industrial y proyectos llave en mano",
     title: "Socios Estratégicos",
     subtitle: "de su Infraestructura Eléctrica",
