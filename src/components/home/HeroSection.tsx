@@ -88,6 +88,7 @@ export const HeroSection = () => {
             width={s.imageWidth}
             height={s.imageHeight}
             alt={s.alt}
+            pictureClassName="w-full h-full"
             className="w-full h-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
             decoding={i === 0 ? "sync" : "async"}
