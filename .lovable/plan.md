@@ -1,61 +1,82 @@
 
+# Plan de Desarrollo: ELECTRINOVA PERÚ 🔌⚡
 
-# Plan de Mejoras para la Web de Electrinova Peru
-
-Tras revisar toda la web, estas son las mejoras de mayor impacto organizadas por prioridad:
-
----
-
-## 1. Pagina individual por servicio (SEO + Conversion)
-
-Actualmente los servicios solo aparecen como tarjetas en el home. Crear una pagina `/servicios/:slug` para cada servicio (pozos a tierra, tableros electricos, subestaciones, etc.) con:
-- Descripcion detallada, caracteristicas tecnicas y galeria de imagenes
-- Schema.org `Service` con JSON-LD
-- CTA de cotizacion integrado
-- Breadcrumbs para navegacion
-
-Esto mejoraria drasticamente el SEO para busquedas como "pozos a tierra Lima" o "tableros electricos industriales Peru".
-
-## 2. Blog / Articulos tecnicos
-
-Crear seccion `/blog` con articulos sobre temas electricos industriales:
-- "Como saber si tu pozo a tierra necesita mantenimiento"
-- "Normativa electrica industrial en Peru 2026"
-- Esto atrae trafico organico de busqueda informacional y posiciona como autoridad
-
-## 3. Animaciones de entrada en scroll
-
-Agregar animaciones `fade-in` y `slide-up` con Intersection Observer a las secciones del home (servicios, stats, testimonios, proyectos). Actualmente las secciones aparecen estaticas al hacer scroll.
-
-## 4. Contador animado en estadisticas
-
-La seccion de StatsSection muestra numeros estaticos ("5+", "50+", "30+"). Implementar un contador animado que incremente los numeros cuando la seccion entra en viewport.
-
-## 5. Galeria de fotos en proyectos
-
-La pagina de proyectos muestra tarjetas pero no tiene un lightbox para ver las imagenes en detalle. Agregar un modal/lightbox al hacer clic en las imagenes.
-
-## 6. FAQ con Schema.org
-
-Agregar seccion de Preguntas Frecuentes en el home o como pagina independiente con datos estructurados `FAQPage` para aparecer en los snippets de Google.
-
-## 7. Google Maps embed mejorado en Contacto
-
-El mapa actual usa coordenadas genericas. Verificar que apunte exactamente a la direccion real y agregar un pin personalizado con el nombre de la empresa.
+## Descripción General
+Crear una página web profesional y moderna para ELECTRINOVA PERÚ, empresa de servicios eléctricos especializada en los sectores industrial, residencial y comercial. El diseño será moderno y dinámico con animaciones sutiles, utilizando la paleta de colores del logo (azul oscuro y amarillo/dorado).
 
 ---
 
-## Implementacion tecnica
+## Estructura de Páginas
 
-| Mejora | Archivos nuevos/modificados | Complejidad |
-|--------|---------------------------|-------------|
-| Paginas de servicio | Nueva ruta, nuevo componente `ServicioDetalle.tsx`, datos en `services.ts` | Media |
-| Blog | Nuevas paginas, tabla en BD para articulos, componentes de listado/detalle | Alta |
-| Animaciones scroll | Hook `useInView`, clases CSS en `index.css`, aplicar en secciones home | Baja |
-| Contador animado | Hook `useCountUp` en `StatsSection.tsx` | Baja |
-| Lightbox proyectos | Componente modal en `Proyectos.tsx` | Baja |
-| FAQ + Schema | Nuevo componente `FAQ.tsx`, JSON-LD en `Index.tsx` | Baja |
-| Mapa mejorado | Actualizar iframe en `Contacto.tsx` | Baja |
+### 1. **Home (Página Principal)**
+- **Hero impactante** con el logo de ELECTRINOVA, slogan "Energía que Innova, Soluciones que Perduran" y llamada a la acción
+- **Sección de sectores** que atienden: Industrial, Residencial y Comercial con íconos animados
+- **Servicios destacados** en tarjetas visuales:
+  - Media Tensión
+  - Pozos a Tierra
+  - Mantenimiento de Transformadores
+  - Tableros Eléctricos
+  - Motores Eléctricos
+  - Mantenimiento Industrial
+  - Instalaciones Eléctricas
+  - CCTV
+- **Estadísticas** de la empresa (años de experiencia, proyectos completados, clientes satisfechos)
+- **Testimonios** de clientes (con placeholder)
+- **Call to action** para solicitar cotización
 
-Las mejoras 3, 4, 5 y 6 son rapidas y de alto impacto visual/SEO. Las mejoras 1 y 2 requieren mas trabajo pero tienen el mayor impacto en posicionamiento.
+### 2. **Proyectos**
+- Galería visual de proyectos organizados por categoría (Industrial, Residencial, Comercial)
+- Cada proyecto con imagen, descripción breve, tipo de servicio y sector
+- Filtros por tipo de proyecto
+- Contenido de ejemplo que podrás reemplazar con tus proyectos reales
 
+### 3. **Socios Comerciales**
+- Sección de marcas y proveedores con los que trabajan
+- Grid de logos de socios (con placeholders)
+- Beneficios de trabajar con marcas reconocidas
+- Posibilidad de agregar certificaciones y acreditaciones
+
+### 4. **Nosotros**
+- Historia de ELECTRINOVA PERÚ
+- Misión, Visión y Valores de la empresa
+- Equipo de trabajo (con placeholders)
+- ¿Por qué elegirnos? - Diferenciadores clave
+- Certificaciones y reconocimientos
+
+### 5. **Contacto**
+- Formulario de contacto completo (nombre, email, teléfono, tipo de proyecto, mensaje)
+- Información de contacto directa (dirección, teléfono, email)
+- **Botón flotante de WhatsApp** visible en toda la web para contacto inmediato
+- Horarios de atención
+
+---
+
+## Optimización SEO
+- **Sitemap XML** estructurado para Google
+- Meta tags optimizados en cada página
+- Títulos y descripciones SEO para cada sección
+- Estructura de encabezados H1, H2, H3 correcta
+- Imágenes con alt text descriptivo
+- URLs amigables y legibles
+- Datos estructurados (Schema.org) para empresa local
+
+---
+
+## Características Técnicas
+- **Diseño responsive** adaptado a móviles, tablets y desktop
+- **Animaciones sutiles** en scroll y hover para dinamismo
+- **Navegación fija** con menú profesional
+- **Footer completo** con enlaces rápidos, redes sociales y datos de contacto
+- **Carga rápida** optimizada para mejor posicionamiento
+- Paleta de colores consistente: azul oscuro (#1B2B4D) y amarillo dorado (#FFD700)
+
+---
+
+## Entregables
+1. ✅ Página web completa con 5 secciones
+2. ✅ Diseño profesional alineado con la marca
+3. ✅ Sitemap.xml para indexación de Google
+4. ✅ SEO optimizado en todas las páginas
+5. ✅ Botón flotante de WhatsApp
+6. ✅ Formulario de contacto funcional
+7. ✅ Contenido de ejemplo editable
