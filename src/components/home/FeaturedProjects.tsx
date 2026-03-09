@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ResponsiveImage } from "@/components/media/ResponsiveImage";
 import { projects } from "@/data/projects";
 
 export const FeaturedProjects = () => {
@@ -31,11 +32,14 @@ export const FeaturedProjects = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <ResponsiveImage
                   src={project.image}
+                  srcSetWebp={project.imageSrcSetWebp}
+                  srcSetAvif={project.imageSrcSetAvif}
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  width={project.imageWidth}
+                  height={project.imageHeight}
                   alt={project.title}
-                  width={400}
-                  height={192}
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -67,3 +71,4 @@ export const FeaturedProjects = () => {
     </section>
   );
 };
+

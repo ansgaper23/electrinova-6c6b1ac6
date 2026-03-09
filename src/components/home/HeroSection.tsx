@@ -2,15 +2,31 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ResponsiveImage } from "@/components/media/ResponsiveImage";
 
-// Use existing project images as hero slides
-import acerosImg from "@/assets/projects/aceros-arequipa.jpg";
-import nestleImg from "@/assets/projects/nestle.jpg";
-import utpImg from "@/assets/projects/utp-transformadores.jpg";
+// Responsive hero images
+import acerosUrl from "@/assets/projects/aceros-arequipa.jpg?url";
+import acerosMeta from "@/assets/projects/aceros-arequipa.jpg?as=meta";
+import acerosSrcSetWebp from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import acerosSrcSetAvif from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+
+import nestleUrl from "@/assets/projects/nestle.jpg?url";
+import nestleMeta from "@/assets/projects/nestle.jpg?as=meta";
+import nestleSrcSetWebp from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import nestleSrcSetAvif from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+
+import utpUrl from "@/assets/projects/utp-transformadores.jpg?url";
+import utpMeta from "@/assets/projects/utp-transformadores.jpg?as=meta";
+import utpSrcSetWebp from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import utpSrcSetAvif from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
 const slides = [
   {
-    image: acerosImg,
+    image: acerosUrl,
+    imageWidth: acerosMeta.width,
+    imageHeight: acerosMeta.height,
+    imageSrcSetWebp: acerosSrcSetWebp,
+    imageSrcSetAvif: acerosSrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
     title: "Soluciones Eléctricas Integrales",
     subtitle: "para la Industria y el Comercio",
@@ -18,7 +34,11 @@ const slides = [
       "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
   },
   {
-    image: nestleImg,
+    image: nestleUrl,
+    imageWidth: nestleMeta.width,
+    imageHeight: nestleMeta.height,
+    imageSrcSetWebp: nestleSrcSetWebp,
+    imageSrcSetAvif: nestleSrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Subestaciones eléctricas y automatización industrial",
     title: "Ingeniería de Alta Potencia",
     subtitle: "con Estándares Internacionales",
@@ -26,7 +46,11 @@ const slides = [
       "Salas eléctricas, sub estaciones y sistemas de automatización con certificaciones y protocolos de conformidad.",
   },
   {
-    image: utpImg,
+    image: utpUrl,
+    imageWidth: utpMeta.width,
+    imageHeight: utpMeta.height,
+    imageSrcSetWebp: utpSrcSetWebp,
+    imageSrcSetAvif: utpSrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Mantenimiento eléctrico industrial y proyectos llave en mano",
     title: "Socios Estratégicos",
     subtitle: "de su Infraestructura Eléctrica",
@@ -56,12 +80,18 @@ export const HeroSection = () => {
           className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
           style={{ opacity: i === current ? 1 : 0 }}
         >
-          <img
+          <ResponsiveImage
             src={s.image}
+            srcSetWebp={s.imageSrcSetWebp}
+            srcSetAvif={s.imageSrcSetAvif}
+            sizes="100vw"
+            width={s.imageWidth}
+            height={s.imageHeight}
             alt={s.alt}
             className="w-full h-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
             decoding={i === 0 ? "sync" : "async"}
+            fetchPriority={i === 0 ? "high" : "low"}
           />
         </div>
       ))}
@@ -88,13 +118,21 @@ export const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric">
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric"
+            >
               <Link to="/contacto">
                 <Zap className="h-5 w-5 mr-2" />
                 Solicitar Cotización
               </Link>
             </Button>
-            <Button asChild size="lg" className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 font-semibold text-lg px-8 py-6">
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 font-semibold text-lg px-8 py-6"
+            >
               <Link to="/proyectos">
                 Ver Proyectos
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -123,3 +161,4 @@ export const HeroSection = () => {
     </section>
   );
 };
+
