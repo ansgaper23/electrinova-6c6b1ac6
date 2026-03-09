@@ -58,7 +58,7 @@ export const HeroSection = () => {
         >
           <img
             src={s.image}
-            alt=""
+            alt={s.alt}
             className="w-full h-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
             decoding={i === 0 ? "sync" : "async"}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +19,7 @@ export default function DiagnosticoEnergetico() {
     bancosCapacitores: false,
     horasOperacion: 12,
     consumoMensualKwh: 5000,
-    tarifahkwh: 0.60,
+    tarifahkwh: 0.6,
   });
   const [result, setResult] = useState<DiagnosticResult | null>(null);
 
@@ -34,10 +34,22 @@ export default function DiagnosticoEnergetico() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Diagnóstico Energético | Ahorro de Energía Industrial – Electrinova Tools</title>
-        <meta name="description" content="Analiza tu consumo eléctrico industrial y descubre oportunidades de ahorro energético. Estimación basada en normas MINEM y OSINERGMIN. Electrinova Perú." />
-      </Helmet>
+      <SEO
+        title="Diagnóstico energético industrial | Electrinova Tools"
+        description="Analiza tu consumo eléctrico industrial y estima oportunidades de ahorro en kWh y S/. Herramienta referencial de eficiencia energética."
+        path="/tools/diagnostico-energetico"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Diagnóstico Energético Industrial",
+          applicationCategory: "EngineeringApplication",
+          operatingSystem: "Web",
+          url: "https://electrinovaperu.com/tools/diagnostico-energetico",
+          description:
+            "Herramienta para estimar consumo y recomendaciones de eficiencia energética en instalaciones industriales.",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "PEN" },
+        }}
+      />
 
       <section className="pt-24 pb-16 section-padding bg-secondary/30">
         <div className="container-custom max-w-4xl">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,10 +27,22 @@ export default function CalculadoraElectrica() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Calculadora Eléctrica | Dimensionamiento de Conductores CNE Perú – Electrinova Tools</title>
-        <meta name="description" content="Calcula el calibre de conductor, caída de tensión y disyuntor según el Código Nacional de Electricidad del Perú. Herramienta gratuita de Electrinova Perú S.A.C." />
-      </Helmet>
+      <SEO
+        title="Calculadora eléctrica CNE Perú | Electrinova Tools"
+        description="Calcula calibre de conductor, caída de tensión y disyuntor según el Código Nacional de Electricidad del Perú (CNE). Herramienta gratuita."
+        path="/tools/calculadora-electrica"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Calculadora Eléctrica (CNE Perú)",
+          applicationCategory: "EngineeringApplication",
+          operatingSystem: "Web",
+          url: "https://electrinovaperu.com/tools/calculadora-electrica",
+          description:
+            "Calculadora para dimensionamiento de conductores, caída de tensión y protecciones según CNE Perú.",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "PEN" },
+        }}
+      />
 
       <section className="pt-24 pb-16 section-padding bg-secondary/30">
         <div className="container-custom max-w-4xl">

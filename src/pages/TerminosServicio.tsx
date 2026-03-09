@@ -5,6 +5,12 @@ import { FileText } from "lucide-react";
 const TerminosServicio = () => {
   return (
     <Layout>
+      <SEO
+        title="Términos de servicio | Electrinova Perú"
+        description="Términos y condiciones de los servicios eléctricos de Electrinova Perú S.A.C. para instalaciones, mantenimiento y proyectos."
+        path="/terminos-servicio"
+        noindex
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">
