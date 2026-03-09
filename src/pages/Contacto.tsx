@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
@@ -158,6 +159,31 @@ const Contacto = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Contacto y cotización eléctrica en Lima | Electrinova"
+        description="Solicita cotización para instalaciones eléctricas industriales, pozos a tierra y subestaciones en Lima. Respuesta rápida por teléfono o WhatsApp."
+        path="/contacto"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contacto Electrinova Perú",
+          url: "https://electrinovaperu.com/contacto",
+          inLanguage: "es-PE",
+          about: {
+            "@type": "ElectricalContractor",
+            name: "ELECTRINOVA PERÚ S.A.C.",
+            telephone: "+51938852610",
+            email: "ventas@electrinovaperu.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Pje Laburre 158",
+              addressLocality: "Cercado de Lima",
+              addressRegion: "Lima",
+              addressCountry: "PE",
+            },
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">
@@ -170,7 +196,7 @@ const Contacto = () => {
               <span className="text-gradient-accent">Contáctanos</span>
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              ¿Tienes un proyecto en mente? Cuéntanos sobre tus necesidades eléctricas 
+              ¿Tienes un proyecto en mente? Cuéntanos sobre tus necesidades eléctricas
               y te brindaremos una cotización personalizada sin compromiso.
             </p>
           </div>

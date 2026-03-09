@@ -2,6 +2,7 @@ import { Zap, Target, Eye, Heart, Users, Award, Shield, Clock, CheckCircle2, Arr
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Link } from "react-router-dom";
 import equipoTrabajoImg from "@/assets/about/equipo-trabajo.png";
 
@@ -68,6 +69,34 @@ const team = [
 const Nosotros = () => {
   return (
     <Layout>
+      <SEO
+        title="Empresa de servicios eléctricos en Lima | Electrinova Perú"
+        description="Empresa peruana de ingeniería eléctrica, mantenimiento y automatización para industria y comercio en Lima. Equipo de ingenieros colegiados y proyectos llave en mano."
+        path="/nosotros"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ELECTRINOVA PERÚ S.A.C.",
+          url: "https://electrinovaperu.com/nosotros",
+          logo: "https://electrinovaperu.com/logo.png",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Pje Laburre 158",
+            addressLocality: "Cercado de Lima",
+            addressRegion: "Lima",
+            addressCountry: "PE",
+          },
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              telephone: "+51938852610",
+              contactType: "customer service",
+              areaServed: "PE",
+              availableLanguage: ["es-PE"],
+            },
+          ],
+        }}
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">
@@ -80,7 +109,7 @@ const Nosotros = () => {
               Sobre <span className="text-gradient-accent">ELECTRINOVA</span> PERÚ
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Somos una empresa peruana especializada en servicios eléctricos, 
+              Somos una empresa peruana especializada en servicios eléctricos,
               comprometidos con la excelencia y la satisfacción de nuestros clientes.
             </p>
           </div>
@@ -101,26 +130,26 @@ const Nosotros = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  ELECTRINOVA PERÚ nació con la visión de transformar el sector 
-                  de servicios eléctricos en el país. Desde nuestros inicios, nos hemos 
-                  dedicado a brindar soluciones eléctricas de alta calidad para los 
+                  ELECTRINOVA PERÚ nació con la visión de transformar el sector
+                  de servicios eléctricos en el país. Desde nuestros inicios, nos hemos
+                  dedicado a brindar soluciones eléctricas de alta calidad para los
                   sectores industrial, residencial y comercial.
                 </p>
                 <p>
-                  A lo largo de estos años, hemos completado más de 50 proyectos 
-                  exitosos, desde pequeñas instalaciones residenciales hasta complejos 
+                  A lo largo de estos años, hemos completado más de 50 proyectos
+                  exitosos, desde pequeñas instalaciones residenciales hasta complejos
                   sistemas de media tensión para grandes industrias.
                 </p>
                 <p>
-                  Nuestro equipo está conformado por ingenieros electricistas colegiados 
-                  y técnicos altamente capacitados, comprometidos con la excelencia y 
+                  Nuestro equipo está conformado por ingenieros electricistas colegiados
+                  y técnicos altamente capacitados, comprometidos con la excelencia y
                   la innovación constante.
                 </p>
               </div>
             </div>
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden">
-                <img 
+                <img
                   src={equipoTrabajoImg}
                   alt="Equipo ELECTRINOVA trabajando en mantenimiento de subestación"
                   className="w-full h-full object-cover"
@@ -150,9 +179,9 @@ const Nosotros = () => {
                   <h3 className="text-2xl font-bold text-foreground">Misión</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Brindar servicios eléctricos de alta calidad que superen las expectativas 
-                  de nuestros clientes, garantizando seguridad, eficiencia y durabilidad 
-                  en cada proyecto. Nos comprometemos a utilizar las mejores prácticas 
+                  Brindar servicios eléctricos de alta calidad que superen las expectativas
+                  de nuestros clientes, garantizando seguridad, eficiencia y durabilidad
+                  en cada proyecto. Nos comprometemos a utilizar las mejores prácticas
                   y tecnologías disponibles para contribuir al desarrollo del país.
                 </p>
               </CardContent>
@@ -169,9 +198,9 @@ const Nosotros = () => {
                   <h3 className="text-2xl font-bold text-foreground">Visión</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Ser reconocidos como la empresa líder en servicios eléctricos del Perú, 
-                  destacando por nuestra excelencia técnica, innovación constante y 
-                  compromiso con la satisfacción del cliente. Aspiramos a expandir 
+                  Ser reconocidos como la empresa líder en servicios eléctricos del Perú,
+                  destacando por nuestra excelencia técnica, innovación constante y
+                  compromiso con la satisfacción del cliente. Aspiramos a expandir
                   nuestras operaciones a nivel nacional e internacional.
                 </p>
               </CardContent>
@@ -195,7 +224,7 @@ const Nosotros = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <Card 
+              <Card
                 key={value.title}
                 className="border border-border/50 bg-card text-center card-hover"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -226,15 +255,15 @@ const Nosotros = () => {
                 ¿Por Qué Elegirnos?
               </h2>
               <p className="text-primary-foreground/80 mb-8">
-                En ELECTRINOVA PERÚ nos distinguimos por nuestro compromiso con la 
-                excelencia y la satisfacción del cliente. Estos son algunos de los 
+                En ELECTRINOVA PERÚ nos distinguimos por nuestro compromiso con la
+                excelencia y la satisfacción del cliente. Estos son algunos de los
                 beneficios de trabajar con nosotros:
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {whyUs.map((item, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-start gap-3 bg-primary-foreground/10 rounded-lg p-4"
                 >
                   <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
@@ -246,7 +275,6 @@ const Nosotros = () => {
         </div>
       </section>
 
-
       {/* CTA Section */}
       <section className="section-padding gradient-hero">
         <div className="container-custom text-center">
@@ -255,10 +283,14 @@ const Nosotros = () => {
               ¿Quieres Formar Parte de Nuestro Equipo?
             </h2>
             <p className="text-lg text-primary-foreground/80">
-              Si eres un profesional del sector eléctrico y buscas crecer profesionalmente, 
+              Si eres un profesional del sector eléctrico y buscas crecer profesionalmente,
               nos encantaría conocerte.
             </p>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent">
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent"
+            >
               <Link to="/contacto">
                 Contáctanos
                 <ArrowRight className="h-5 w-5 ml-2" />

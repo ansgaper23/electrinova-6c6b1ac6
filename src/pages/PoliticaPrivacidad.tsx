@@ -1,9 +1,16 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Shield } from "lucide-react";
 
 const PoliticaPrivacidad = () => {
   return (
     <Layout>
+      <SEO
+        title="Política de privacidad | Electrinova Perú"
+        description="Política de privacidad de Electrinova Perú S.A.C. sobre recopilación, uso y protección de datos personales."
+        path="/politica-privacidad"
+        noindex
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">

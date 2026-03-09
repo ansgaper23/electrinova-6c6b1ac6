@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Zap, Calculator, FileText, BarChart3, ArrowRight, MessageSquare } from "lucide-react";
 
@@ -8,21 +8,24 @@ const tools = [
   {
     icon: Calculator,
     title: "Calculadora Eléctrica",
-    description: "Dimensionamiento de conductores, caída de tensión y protecciones basado en el Código Nacional de Electricidad (CNE) del Perú.",
+    description:
+      "Dimensionamiento de conductores, caída de tensión y protecciones basado en el Código Nacional de Electricidad (CNE) del Perú.",
     href: "/tools/calculadora-electrica",
     cta: "Calcular ahora",
   },
   {
     icon: FileText,
     title: "Generador de Protocolos",
-    description: "Documentación técnica estandarizada para entrega de proyectos: aislamiento, pozo a tierra y continuidad eléctrica. Exporta en PDF profesional.",
+    description:
+      "Documentación técnica estandarizada para entrega de proyectos: aislamiento, pozo a tierra y continuidad eléctrica. Exporta en PDF profesional.",
     href: "/tools/generador-protocolos",
     cta: "Generar protocolo",
   },
   {
     icon: BarChart3,
     title: "Diagnóstico Energético",
-    description: "Análisis de consumo y recomendaciones de eficiencia energética para instalaciones industriales. Gráficos comparativos y ahorro estimado.",
+    description:
+      "Análisis de consumo y recomendaciones de eficiencia energética para instalaciones industriales. Gráficos comparativos y ahorro estimado.",
     href: "/tools/diagnostico-energetico",
     cta: "Diagnosticar",
   },
@@ -31,11 +34,29 @@ const tools = [
 export default function Tools() {
   return (
     <Layout>
-      <Helmet>
-        <title>Herramientas de Ingeniería Eléctrica | Electrinova Tools Perú</title>
-        <meta name="description" content="Herramientas digitales gratuitas para ingeniería eléctrica: calculadora de conductores CNE, generador de protocolos PDF y diagnóstico energético industrial. Electrinova Perú S.A.C." />
-        <link rel="canonical" href="https://electrinovaperu.com/tools" />
-      </Helmet>
+      <SEO
+        title="Herramientas de ingeniería eléctrica | Electrinova Tools"
+        description="Herramientas digitales gratuitas: calculadora de conductores CNE, generador de protocolos en PDF y diagnóstico energético industrial."
+        path="/tools"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Electrinova Tools",
+          url: "https://electrinovaperu.com/tools",
+          inLanguage: "es-PE",
+          description:
+            "Herramientas gratuitas de ingeniería eléctrica: calculadora CNE, generador de protocolos y diagnóstico energético.",
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: tools.map((t, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: t.title,
+              url: `https://electrinovaperu.com${t.href}`,
+            })),
+          },
+        }}
+      />
 
       <section className="pt-24 pb-16 section-padding bg-secondary/30">
         <div className="container-custom">

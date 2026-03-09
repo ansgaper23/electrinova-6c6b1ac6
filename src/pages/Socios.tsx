@@ -2,12 +2,28 @@ import { Zap, Award, Handshake, CheckCircle2, ArrowRight, Building2 } from "luci
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Link } from "react-router-dom";
 import { clients, partners, certifications, benefits } from "@/data/partners";
 
 const Socios = () => {
   return (
     <Layout>
+      <SEO
+        title="Clientes y socios comerciales | Electrinova Perú"
+        description="Empresas que confían en Electrinova: alianzas, marcas y certificaciones para proyectos eléctricos industriales en Lima y todo el Perú."
+        path="/socios"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Clientes y socios comerciales",
+          url: "https://electrinovaperu.com/socios",
+          inLanguage: "es-PE",
+          description:
+            "Clientes destacados, proveedores y certificaciones de Electrinova Perú para servicios eléctricos industriales.",
+        }}
+      />
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">
@@ -20,7 +36,7 @@ const Socios = () => {
               Nuestros <span className="text-gradient-accent">Clientes</span> y Socios
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Trabajamos con empresas líderes y utilizamos equipos de las mejores marcas 
+              Trabajamos con empresas líderes y utilizamos equipos de las mejores marcas
               para garantizar la calidad de nuestros servicios.
             </p>
           </div>
@@ -45,17 +61,19 @@ const Socios = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {clients.map((client, index) => (
-              <Card 
+              <Card
                 key={client.name}
                 className="group border border-border/50 hover:border-accent/50 card-hover bg-card"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-full h-24 rounded-lg mb-4 flex items-center justify-center overflow-hidden bg-white p-3">
-                    <img 
-                      src={client.logo} 
+                    <img
+                      src={client.logo}
                       alt={`Logo de ${client.name}`}
                       className="max-w-full max-h-full object-contain"
+                      loading={index < 4 ? "eager" : "lazy"}
+                      decoding="async"
                     />
                   </div>
                   <h3 className="font-semibold text-foreground mb-1">{client.name}</h3>
@@ -85,7 +103,7 @@ const Socios = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {partners.map((partner, index) => (
-              <Card 
+              <Card
                 key={partner.name}
                 className="group border border-border/50 hover:border-accent/50 card-hover bg-card"
                 style={{ animationDelay: `${index * 0.05}s` }}
@@ -119,7 +137,7 @@ const Socios = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {benefits.map((benefit, index) => (
-              <Card 
+              <Card
                 key={benefit.title}
                 className="border border-border/50 bg-card card-hover"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -159,7 +177,7 @@ const Socios = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {certifications.map((cert, index) => (
-              <Card 
+              <Card
                 key={cert.name}
                 className="border border-border/50 bg-card text-center card-hover"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -185,10 +203,14 @@ const Socios = () => {
               ¿Listo para Trabajar con Nosotros?
             </h2>
             <p className="text-lg text-primary-foreground/80">
-              Únete a empresas como Aceros Arequipa, SUNEDU, Nestlé y Cruz del Sur 
+              Únete a empresas como Aceros Arequipa, SUNEDU, Nestlé y Cruz del Sur
               que ya confían en nuestros servicios eléctricos.
             </p>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent">
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent"
+            >
               <Link to="/contacto">
                 Contactar
                 <ArrowRight className="h-5 w-5 ml-2" />

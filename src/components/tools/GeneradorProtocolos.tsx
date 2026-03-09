@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -111,10 +111,22 @@ export default function GeneradorProtocolos() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Generador de Protocolos Eléctricos | Documentación Técnica – Electrinova Tools</title>
-        <meta name="description" content="Genera protocolos de ensayo eléctrico estandarizados: aislamiento, pozo a tierra y continuidad. Documentación profesional con logo corporativo en PDF." />
-      </Helmet>
+      <SEO
+        title="Generador de protocolos eléctricos en PDF | Electrinova Tools"
+        description="Genera protocolos estandarizados: aislamiento, pozo a tierra y continuidad eléctrica. Exporta documentación técnica profesional en PDF."
+        path="/tools/generador-protocolos"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Generador de Protocolos Eléctricos",
+          applicationCategory: "EngineeringApplication",
+          operatingSystem: "Web",
+          url: "https://electrinovaperu.com/tools/generador-protocolos",
+          description:
+            "Generador de protocolos de ensayo eléctrico estandarizados con exportación a PDF.",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "PEN" },
+        }}
+      />
 
       <section className="pt-24 pb-16 section-padding bg-secondary/30">
         <div className="container-custom max-w-3xl">

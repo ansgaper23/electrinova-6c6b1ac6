@@ -11,21 +11,27 @@ import utpImg from "@/assets/projects/utp-transformadores.jpg";
 const slides = [
   {
     image: acerosImg,
+    alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
     title: "Soluciones Eléctricas Integrales",
     subtitle: "para la Industria y el Comercio",
-    description: "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
+    description:
+      "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
   },
   {
     image: nestleImg,
+    alt: "ELECTRINOVA PERÚ – Subestaciones eléctricas y automatización industrial",
     title: "Ingeniería de Alta Potencia",
     subtitle: "con Estándares Internacionales",
-    description: "Salas eléctricas, sub estaciones y sistemas de automatización con certificaciones y protocolos de conformidad.",
+    description:
+      "Salas eléctricas, sub estaciones y sistemas de automatización con certificaciones y protocolos de conformidad.",
   },
   {
     image: utpImg,
+    alt: "ELECTRINOVA PERÚ – Mantenimiento eléctrico industrial y proyectos llave en mano",
     title: "Socios Estratégicos",
     subtitle: "de su Infraestructura Eléctrica",
-    description: "Más de 50 proyectos ejecutados para Nestlé, Aceros Arequipa, ABB, UTP y consorcios industriales.",
+    description:
+      "Más de 50 proyectos ejecutados para Nestlé, Aceros Arequipa, ABB, UTP y consorcios industriales.",
   },
 ];
 
@@ -52,7 +58,7 @@ export const HeroSection = () => {
         >
           <img
             src={s.image}
-            alt=""
+            alt={s.alt}
             className="w-full h-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
             decoding={i === 0 ? "sync" : "async"}
