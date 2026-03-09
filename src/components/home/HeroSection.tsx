@@ -5,28 +5,28 @@ import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/media/ResponsiveImage";
 
 // Responsive hero images
-import acerosUrl from "@/assets/projects/aceros-arequipa.jpg?url";
-import acerosMeta from "@/assets/projects/aceros-arequipa.jpg?as=meta";
-import acerosSrcSetWebp from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import acerosSrcSetAvif from "@/assets/projects/aceros-arequipa.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero1Url from "@/assets/hero/hero-slide-1.jpg?url";
+import hero1Meta from "@/assets/hero/hero-slide-1.jpg?as=meta";
+import hero1SrcSetWebp from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero1SrcSetAvif from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
-import nestleUrl from "@/assets/projects/nestle.jpg?url";
-import nestleMeta from "@/assets/projects/nestle.jpg?as=meta";
-import nestleSrcSetWebp from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import nestleSrcSetAvif from "@/assets/projects/nestle.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero2Url from "@/assets/hero/hero-slide-2.jpg?url";
+import hero2Meta from "@/assets/hero/hero-slide-2.jpg?as=meta";
+import hero2SrcSetWebp from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero2SrcSetAvif from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
-import utpUrl from "@/assets/projects/utp-transformadores.jpg?url";
-import utpMeta from "@/assets/projects/utp-transformadores.jpg?as=meta";
-import utpSrcSetWebp from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
-import utpSrcSetAvif from "@/assets/projects/utp-transformadores.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
+import hero3Url from "@/assets/hero/hero-slide-3.jpg?url";
+import hero3Meta from "@/assets/hero/hero-slide-3.jpg?as=meta";
+import hero3SrcSetWebp from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=webp&as=srcset";
+import hero3SrcSetAvif from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1536;1920&format=avif&as=srcset";
 
 const slides = [
   {
-    image: acerosUrl,
-    imageWidth: acerosMeta.width,
-    imageHeight: acerosMeta.height,
-    imageSrcSetWebp: acerosSrcSetWebp,
-    imageSrcSetAvif: acerosSrcSetAvif,
+    image: hero1Url,
+    imageWidth: hero1Meta.width,
+    imageHeight: hero1Meta.height,
+    imageSrcSetWebp: hero1SrcSetWebp,
+    imageSrcSetAvif: hero1SrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
     title: "Soluciones Eléctricas Integrales",
     subtitle: "para la Industria y el Comercio",
@@ -34,11 +34,11 @@ const slides = [
       "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
   },
   {
-    image: nestleUrl,
-    imageWidth: nestleMeta.width,
-    imageHeight: nestleMeta.height,
-    imageSrcSetWebp: nestleSrcSetWebp,
-    imageSrcSetAvif: nestleSrcSetAvif,
+    image: hero2Url,
+    imageWidth: hero2Meta.width,
+    imageHeight: hero2Meta.height,
+    imageSrcSetWebp: hero2SrcSetWebp,
+    imageSrcSetAvif: hero2SrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Subestaciones eléctricas y automatización industrial",
     title: "Ingeniería de Alta Potencia",
     subtitle: "con Estándares Internacionales",
@@ -46,11 +46,11 @@ const slides = [
       "Salas eléctricas, sub estaciones y sistemas de automatización con certificaciones y protocolos de conformidad.",
   },
   {
-    image: utpUrl,
-    imageWidth: utpMeta.width,
-    imageHeight: utpMeta.height,
-    imageSrcSetWebp: utpSrcSetWebp,
-    imageSrcSetAvif: utpSrcSetAvif,
+    image: hero3Url,
+    imageWidth: hero3Meta.width,
+    imageHeight: hero3Meta.height,
+    imageSrcSetWebp: hero3SrcSetWebp,
+    imageSrcSetAvif: hero3SrcSetAvif,
     alt: "ELECTRINOVA PERÚ – Mantenimiento eléctrico industrial y proyectos llave en mano",
     title: "Socios Estratégicos",
     subtitle: "de su Infraestructura Eléctrica",
