@@ -16,10 +16,6 @@ const Nosotros = lazy(() => import("./pages/Nosotros"));
 const Contacto = lazy(() => import("./pages/Contacto"));
 const PoliticaPrivacidad = lazy(() => import("./pages/PoliticaPrivacidad"));
 const TerminosServicio = lazy(() => import("./pages/TerminosServicio"));
-const Tools = lazy(() => import("./pages/Tools"));
-const CalculadoraElectrica = lazy(() => import("./components/tools/CalculadoraElectrica"));
-const GeneradorProtocolos = lazy(() => import("./components/tools/GeneradorProtocolos"));
-const DiagnosticoEnergetico = lazy(() => import("./components/tools/DiagnosticoEnergetico"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
