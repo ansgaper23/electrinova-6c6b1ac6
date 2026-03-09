@@ -35,7 +35,7 @@ const Index = () => {
       <WhyChooseUs />
       <FeaturedProjects />
       <WorkProcess />
-      <ElectrinovaTools />
+      
       <Certifications />
       <StatsSection />
       <TestimonialsSection />
