@@ -1,21 +1,56 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Zap, Filter, ArrowRight, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Link } from "react-router-dom";
 import { projects, sectors, type Sector } from "@/data/projects";
 
 const Proyectos = () => {
   const [activeFilter, setActiveFilter] = useState<Sector>("Todos");
 
-  const filteredProjects = activeFilter === "Todos" 
-    ? projects 
-    : projects.filter(project => project.sector === activeFilter);
+  const filteredProjects = useMemo(
+    () =>
+      activeFilter === "Todos"
+        ? projects
+        : projects.filter((project) => project.sector === activeFilter),
+    [activeFilter]
+  );
+
+  const jsonLd = useMemo(() => {
+    const items = filteredProjects.slice(0, 12).map((p, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: p.title,
+      url: "https://electrinovaperu.com/proyectos",
+    }));
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Proyectos eléctricos industriales en Lima",
+      url: "https://electrinovaperu.com/proyectos",
+      inLanguage: "es-PE",
+      description:
+        "Portafolio de proyectos de instalaciones eléctricas industriales, subestaciones, tableros MT/BT y automatización ejecutados por Electrinova Perú.",
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: items,
+      },
+    };
+  }, [filteredProjects]);
 
   return (
     <Layout>
+      <SEO
+        title="Proyectos eléctricos industriales en Lima | Electrinova"
+        description="Portafolio de proyectos: subestaciones, pozos a tierra, tableros MT/BT, automatización y mantenimiento para industria en Lima y Perú."
+        path="/proyectos"
+        jsonLd={jsonLd}
+      />
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">
         <div className="container-custom">
@@ -28,7 +63,7 @@ const Proyectos = () => {
               Nuestros <span className="text-gradient-accent">Proyectos</span> Realizados
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Conoce algunos de los proyectos que hemos realizado para clientes como 
+              Conoce algunos de los proyectos que hemos realizado para clientes como
               Aceros Arequipa, SUNEDU, Nestlé y Cruz del Sur.
             </p>
           </div>
@@ -61,15 +96,15 @@ const Proyectos = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
+              <Card
+                key={project.id}
                 className="group overflow-hidden border-0 shadow-md card-hover bg-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative overflow-hidden aspect-video">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
+                  <img
+                    src={project.image}
+                    alt={`${project.title} – ${project.service} en ${project.location}`}
                     width={600}
                     height={338}
                     loading={index < 3 ? "eager" : "lazy"}
@@ -134,10 +169,14 @@ const Proyectos = () => {
               ¿Tienes un Proyecto en Mente?
             </h2>
             <p className="text-lg text-primary-foreground/80">
-              Cuéntanos sobre tu proyecto y te ayudaremos a hacerlo realidad. 
+              Cuéntanos sobre tu proyecto y te ayudaremos a hacerlo realidad.
               Solicita una cotización sin compromiso.
             </p>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent">
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent"
+            >
               <Link to="/contacto">
                 Solicitar Cotización
                 <ArrowRight className="h-5 w-5 ml-2" />
