@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { FileText } from "lucide-react";
 
 const TerminosServicio = () => {

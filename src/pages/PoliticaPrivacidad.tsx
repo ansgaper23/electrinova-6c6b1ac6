@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/seo/SEO";
 import { Shield } from "lucide-react";
 
 const PoliticaPrivacidad = () => {
