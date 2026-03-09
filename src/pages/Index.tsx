@@ -1,16 +1,24 @@
+import { lazy, Suspense } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { HeroSection } from "@/components/home/HeroSection";
 import { AlliancesBar } from "@/components/home/AlliancesBar";
-import { ServiceCategories } from "@/components/home/ServiceCategories";
-import { WhyChooseUs } from "@/components/home/WhyChooseUs";
-import { FeaturedProjects } from "@/components/home/FeaturedProjects";
-import { WorkProcess } from "@/components/home/WorkProcess";
-import { Certifications } from "@/components/home/Certifications";
-import { StatsSection } from "@/components/home/StatsSection";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
-import { FAQSection, faqJsonLd } from "@/components/home/FAQSection";
-import { CTASection } from "@/components/home/CTASection";
+
+// Lazy-load below-fold sections to reduce initial JS
+const ServiceCategories = lazy(() => import("@/components/home/ServiceCategories").then(m => ({ default: m.ServiceCategories })));
+const WhyChooseUs = lazy(() => import("@/components/home/WhyChooseUs").then(m => ({ default: m.WhyChooseUs })));
+const FeaturedProjects = lazy(() => import("@/components/home/FeaturedProjects").then(m => ({ default: m.FeaturedProjects })));
+const WorkProcess = lazy(() => import("@/components/home/WorkProcess").then(m => ({ default: m.WorkProcess })));
+const Certifications = lazy(() => import("@/components/home/Certifications").then(m => ({ default: m.Certifications })));
+const StatsSection = lazy(() => import("@/components/home/StatsSection").then(m => ({ default: m.StatsSection })));
+const TestimonialsSection = lazy(() => import("@/components/home/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })));
+const FAQSection = lazy(() => import("@/components/home/FAQSection").then(m => ({ default: m.FAQSection })));
+const CTASection = lazy(() => import("@/components/home/CTASection").then(m => ({ default: m.CTASection })));
+
+// Import FAQ JSON-LD statically (tiny data, needed for SEO)
+import { faqJsonLd } from "@/components/home/FAQSection";
+
+const SectionFallback = () => <div className="min-h-[200px]" />;
 
 const Index = () => {
   const jsonLd = [
@@ -36,15 +44,17 @@ const Index = () => {
       />
       <HeroSection />
       <AlliancesBar />
-      <ServiceCategories />
-      <WhyChooseUs />
-      <FeaturedProjects />
-      <WorkProcess />
-      <Certifications />
-      <StatsSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <CTASection />
+      <Suspense fallback={<SectionFallback />}>
+        <ServiceCategories />
+        <WhyChooseUs />
+        <FeaturedProjects />
+        <WorkProcess />
+        <Certifications />
+        <StatsSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <CTASection />
+      </Suspense>
     </Layout>
   );
 };
