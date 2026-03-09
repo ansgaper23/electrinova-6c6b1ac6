@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Zap, Filter, ArrowRight, MapPin, Calendar } from "lucide-react";
+import { Zap, Filter, ArrowRight, MapPin, Calendar, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,9 +7,11 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { Link } from "react-router-dom";
 import { projects, sectors, type Sector } from "@/data/projects";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const Proyectos = () => {
   const [activeFilter, setActiveFilter] = useState<Sector>("Todos");
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   const filteredProjects = useMemo(
     () =>
@@ -99,9 +101,11 @@ const Proyectos = () => {
               <Card
                 key={project.id}
                 className="group overflow-hidden border-0 shadow-md card-hover bg-card"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative overflow-hidden aspect-video">
+                <div
+                  className="relative overflow-hidden aspect-video cursor-pointer"
+                  onClick={() => setLightboxImage({ src: project.image, alt: project.title })}
+                >
                   <img
                     src={project.image}
                     alt={`${project.title} – ${project.service} en ${project.location}`}
@@ -112,6 +116,11 @@ const Proyectos = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-sm font-medium bg-black/50 px-4 py-2 rounded-full">
+                      Ver imagen
+                    </span>
+                  </div>
                   <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground">
                     {project.sector}
                   </Badge>
@@ -160,6 +169,20 @@ const Proyectos = () => {
           )}
         </div>
       </section>
+
+      {/* Lightbox */}
+      <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
+        <DialogContent className="max-w-4xl p-2 bg-black/95 border-0">
+          <DialogTitle className="sr-only">{lightboxImage?.alt}</DialogTitle>
+          {lightboxImage && (
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
+              className="w-full h-auto rounded-lg max-h-[85vh] object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* CTA Section */}
       <section className="section-padding bg-primary">
