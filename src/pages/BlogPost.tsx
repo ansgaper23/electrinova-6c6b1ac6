@@ -9,32 +9,57 @@ import { Calendar, Clock, ArrowLeft, User } from "lucide-react";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
 import { formatDate } from "@/lib/blog";
 
-function Block({ b }: { b: BlogBlock }) {
+function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boolean }) {
   switch (b.type) {
     case "heading":
-      return <h2 className="text-2xl md:text-3xl font-display font-bold mt-10 mb-4">{b.text}</h2>;
+      return (
+        <h2 className="text-2xl md:text-3xl font-display font-bold mt-12 mb-4 text-foreground scroll-mt-24">
+          {b.text}
+        </h2>
+      );
     case "subheading":
-      return <h3 className="text-xl md:text-2xl font-semibold mt-6 mb-3">{b.text}</h3>;
+      return (
+        <h3 className="text-xl md:text-2xl font-display font-semibold mt-8 mb-3 text-foreground">
+          {b.text}
+        </h3>
+      );
     case "paragraph":
-      return <p className="text-base leading-relaxed mb-4 whitespace-pre-wrap">{b.text}</p>;
+      return (
+        <p
+          className={`text-[1.075rem] md:text-lg leading-[1.8] mb-5 whitespace-pre-wrap text-foreground/90 ${
+            isFirstParagraph ? "first-letter:text-5xl first-letter:font-display first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:leading-[0.9] first-letter:text-primary" : ""
+          }`}
+        >
+          {b.text}
+        </p>
+      );
     case "list":
       return (
-        <ul className="list-disc pl-6 space-y-2 mb-4">
+        <ul className="list-disc pl-6 space-y-2 mb-6 text-[1.05rem] leading-relaxed text-foreground/90 marker:text-primary">
           {b.items.filter(Boolean).map((it, i) => <li key={i}>{it}</li>)}
         </ul>
       );
     case "quote":
       return (
-        <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-lg">
-          {b.text}
+        <blockquote className="border-l-4 border-primary bg-primary/5 pl-5 pr-4 py-4 my-8 rounded-r-lg">
+          <p className="italic text-lg md:text-xl text-foreground/90">{b.text}</p>
           {b.cite && <footer className="text-sm not-italic text-muted-foreground mt-2">— {b.cite}</footer>}
         </blockquote>
       );
     case "image":
       return b.url ? (
-        <figure className="my-8">
-          <img src={b.url} alt={b.alt || ""} loading="lazy" className="w-full rounded-lg" />
-          {b.caption && <figcaption className="text-sm text-muted-foreground text-center mt-2">{b.caption}</figcaption>}
+        <figure className="my-10">
+          <img
+            src={b.url}
+            alt={b.alt || ""}
+            loading="lazy"
+            className="w-full rounded-xl shadow-md aspect-video object-cover"
+          />
+          {b.caption && (
+            <figcaption className="text-sm text-muted-foreground text-center mt-3 italic">
+              {b.caption}
+            </figcaption>
+          )}
         </figure>
       ) : null;
     default:

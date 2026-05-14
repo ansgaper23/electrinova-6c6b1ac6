@@ -7,6 +7,37 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
+function buildContextPrompt(input: {
+  title?: string;
+  subtitle?: string;
+  excerpt?: string;
+  category?: string;
+  contentText?: string;
+  prompt?: string;
+  hint?: string;
+}) {
+  const parts: string[] = [];
+  if (input.prompt && input.prompt.trim()) parts.push(input.prompt.trim());
+  if (input.hint && input.hint.trim()) parts.push(`Enfoque visual: ${input.hint.trim()}`);
+  if (input.title) parts.push(`Título del artículo: ${input.title}`);
+  if (input.subtitle) parts.push(`Subtítulo: ${input.subtitle}`);
+  if (input.category) parts.push(`Categoría: ${input.category}`);
+  if (input.excerpt) parts.push(`Resumen: ${input.excerpt}`);
+  if (input.contentText) {
+    const trimmed = input.contentText.replace(/\s+/g, " ").slice(0, 1200);
+    parts.push(`Contenido relevante: ${trimmed}`);
+  }
+
+  return [
+    "Genera UNA fotografía editorial profesional, fotorrealista, alta calidad, iluminación natural, composición horizontal 16:9, lista para portada de blog técnico industrial eléctrico en Perú.",
+    "Estilo: reportaje corporativo B2B, colores naturales, ambiente real de obra o planta industrial peruana.",
+    "OBLIGATORIO de seguridad: si aparecen personas, deben usar EPP completo (casco, lentes, guantes, ropa ignífuga, calzado dieléctrico). Nunca mostrar prácticas inseguras, cables expuestos manipulados sin protección, ni manos descubiertas en tableros energizados.",
+    "Prohibido: texto, letras, logos, marcas de agua, collages, ilustraciones tipo cartoon, manos deformes.",
+    "Contexto del artículo a representar visualmente:",
+    parts.join(" \n"),
+  ].join("\n");
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -32,7 +63,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Verify user is admin
     const userClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
       global: { headers: { Authorization: authHeader } },
     });
@@ -59,15 +89,29 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { prompt } = await req.json();
-    if (!prompt || typeof prompt !== "string" || prompt.length > 1000) {
-      return new Response(JSON.stringify({ error: "Invalid prompt" }), {
+    const body = await req.json();
+    const { prompt, title, subtitle, excerpt, category, contentText, hint } = body || {};
+
+    if (
+      !prompt && !title && !subtitle && !excerpt && !contentText
+    ) {
+      return new Response(JSON.stringify({ error: "Falta contexto o prompt" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Generate via Lovable AI Gateway (Nano Banana)
+    const finalPrompt = buildContextPrompt({
+      prompt, title, subtitle, excerpt, category, contentText, hint,
+    });
+
+    if (finalPrompt.length > 8000) {
+      return new Response(JSON.stringify({ error: "Contexto demasiado largo" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const aiRes = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
       {
@@ -78,12 +122,7 @@ Deno.serve(async (req) => {
         },
         body: JSON.stringify({
           model: "google/gemini-2.5-flash-image",
-          messages: [
-            {
-              role: "user",
-              content: `Imagen profesional, fotorrealista, estilo editorial para blog técnico industrial eléctrico en Perú. Iluminación natural, alta calidad, sin texto ni marcas de agua. Tema: ${prompt}`,
-            },
-          ],
+          messages: [{ role: "user", content: finalPrompt }],
           modalities: ["image", "text"],
         }),
       }
@@ -95,19 +134,13 @@ Deno.serve(async (req) => {
       if (aiRes.status === 429) {
         return new Response(
           JSON.stringify({ error: "Límite de uso alcanzado, intenta luego." }),
-          {
-            status: 429,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
       if (aiRes.status === 402) {
         return new Response(
           JSON.stringify({ error: "Créditos IA agotados." }),
-          {
-            status: 402,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
       return new Response(JSON.stringify({ error: "AI error" }), {
@@ -126,7 +159,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Decode base64 -> bytes
     const [meta, base64] = imageUrl.split(",");
     const mime = meta.match(/data:(.*?);base64/)?.[1] ?? "image/png";
     const ext = mime.split("/")[1] || "png";
