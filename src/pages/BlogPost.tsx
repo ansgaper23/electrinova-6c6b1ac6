@@ -9,32 +9,57 @@ import { Calendar, Clock, ArrowLeft, User } from "lucide-react";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
 import { formatDate } from "@/lib/blog";
 
-function Block({ b }: { b: BlogBlock }) {
+function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boolean }) {
   switch (b.type) {
     case "heading":
-      return <h2 className="text-2xl md:text-3xl font-display font-bold mt-10 mb-4">{b.text}</h2>;
+      return (
+        <h2 className="text-2xl md:text-3xl font-display font-bold mt-12 mb-4 text-foreground scroll-mt-24">
+          {b.text}
+        </h2>
+      );
     case "subheading":
-      return <h3 className="text-xl md:text-2xl font-semibold mt-6 mb-3">{b.text}</h3>;
+      return (
+        <h3 className="text-xl md:text-2xl font-display font-semibold mt-8 mb-3 text-foreground">
+          {b.text}
+        </h3>
+      );
     case "paragraph":
-      return <p className="text-base leading-relaxed mb-4 whitespace-pre-wrap">{b.text}</p>;
+      return (
+        <p
+          className={`text-[1.075rem] md:text-lg leading-[1.8] mb-5 whitespace-pre-wrap text-foreground/90 ${
+            isFirstParagraph ? "first-letter:text-5xl first-letter:font-display first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:leading-[0.9] first-letter:text-primary" : ""
+          }`}
+        >
+          {b.text}
+        </p>
+      );
     case "list":
       return (
-        <ul className="list-disc pl-6 space-y-2 mb-4">
+        <ul className="list-disc pl-6 space-y-2 mb-6 text-[1.05rem] leading-relaxed text-foreground/90 marker:text-primary">
           {b.items.filter(Boolean).map((it, i) => <li key={i}>{it}</li>)}
         </ul>
       );
     case "quote":
       return (
-        <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-lg">
-          {b.text}
+        <blockquote className="border-l-4 border-primary bg-primary/5 pl-5 pr-4 py-4 my-8 rounded-r-lg">
+          <p className="italic text-lg md:text-xl text-foreground/90">{b.text}</p>
           {b.cite && <footer className="text-sm not-italic text-muted-foreground mt-2">— {b.cite}</footer>}
         </blockquote>
       );
     case "image":
       return b.url ? (
-        <figure className="my-8">
-          <img src={b.url} alt={b.alt || ""} loading="lazy" className="w-full rounded-lg" />
-          {b.caption && <figcaption className="text-sm text-muted-foreground text-center mt-2">{b.caption}</figcaption>}
+        <figure className="my-10">
+          <img
+            src={b.url}
+            alt={b.alt || ""}
+            loading="lazy"
+            className="w-full rounded-xl shadow-md aspect-video object-cover"
+          />
+          {b.caption && (
+            <figcaption className="text-sm text-muted-foreground text-center mt-3 italic">
+              {b.caption}
+            </figcaption>
+          )}
         </figure>
       ) : null;
     default:
@@ -135,14 +160,31 @@ export default function BlogPostPage() {
 
         <div className="container-custom max-w-3xl py-12">
           {post.excerpt && (
-            <p className="text-lg text-muted-foreground border-l-4 border-primary pl-4 mb-8">{post.excerpt}</p>
+            <p className="text-xl leading-relaxed text-muted-foreground border-l-4 border-primary pl-5 mb-10 font-light">
+              {post.excerpt}
+            </p>
           )}
-          {post.content.map((b, i) => <Block key={i} b={b} />)}
+          {(() => {
+            let firstParagraphSeen = false;
+            return post.content.map((b, i) => {
+              const isFirst = b.type === "paragraph" && !firstParagraphSeen;
+              if (isFirst) firstParagraphSeen = true;
+              return <Block key={i} b={b} isFirstParagraph={isFirst} />;
+            });
+          })()}
 
-          <div className="mt-12 p-6 bg-muted rounded-lg text-center">
-            <h3 className="text-xl font-bold mb-2">¿Necesitas asesoría eléctrica profesional?</h3>
-            <p className="text-muted-foreground mb-4">Cotiza tu proyecto con Electrinova Perú sin compromiso.</p>
-            <Link to="/contacto"><Button size="lg">Solicitar cotización</Button></Link>
+          {post.keywords && post.keywords.length > 0 && (
+            <div className="mt-12 pt-6 border-t flex flex-wrap gap-2">
+              {post.keywords.map((k) => (
+                <Badge key={k} variant="outline" className="text-xs">#{k}</Badge>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-12 p-8 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-center text-primary-foreground shadow-lg">
+            <h3 className="text-2xl font-display font-bold mb-2">¿Necesitas asesoría eléctrica profesional?</h3>
+            <p className="text-primary-foreground/90 mb-5">Cotiza tu proyecto con Electrinova Perú sin compromiso.</p>
+            <Link to="/contacto"><Button size="lg" variant="secondary">Solicitar cotización</Button></Link>
           </div>
         </div>
 
