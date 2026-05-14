@@ -160,14 +160,31 @@ export default function BlogPostPage() {
 
         <div className="container-custom max-w-3xl py-12">
           {post.excerpt && (
-            <p className="text-lg text-muted-foreground border-l-4 border-primary pl-4 mb-8">{post.excerpt}</p>
+            <p className="text-xl leading-relaxed text-muted-foreground border-l-4 border-primary pl-5 mb-10 font-light">
+              {post.excerpt}
+            </p>
           )}
-          {post.content.map((b, i) => <Block key={i} b={b} />)}
+          {(() => {
+            let firstParagraphSeen = false;
+            return post.content.map((b, i) => {
+              const isFirst = b.type === "paragraph" && !firstParagraphSeen;
+              if (isFirst) firstParagraphSeen = true;
+              return <Block key={i} b={b} isFirstParagraph={isFirst} />;
+            });
+          })()}
 
-          <div className="mt-12 p-6 bg-muted rounded-lg text-center">
-            <h3 className="text-xl font-bold mb-2">¿Necesitas asesoría eléctrica profesional?</h3>
-            <p className="text-muted-foreground mb-4">Cotiza tu proyecto con Electrinova Perú sin compromiso.</p>
-            <Link to="/contacto"><Button size="lg">Solicitar cotización</Button></Link>
+          {post.keywords && post.keywords.length > 0 && (
+            <div className="mt-12 pt-6 border-t flex flex-wrap gap-2">
+              {post.keywords.map((k) => (
+                <Badge key={k} variant="outline" className="text-xs">#{k}</Badge>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-12 p-8 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-center text-primary-foreground shadow-lg">
+            <h3 className="text-2xl font-display font-bold mb-2">¿Necesitas asesoría eléctrica profesional?</h3>
+            <p className="text-primary-foreground/90 mb-5">Cotiza tu proyecto con Electrinova Perú sin compromiso.</p>
+            <Link to="/contacto"><Button size="lg" variant="secondary">Solicitar cotización</Button></Link>
           </div>
         </div>
 
