@@ -40,14 +40,13 @@ export default function AdminPostEditor() {
   const [metaDescription, setMetaDescription] = useState("");
   const [keywordsStr, setKeywordsStr] = useState("");
   const [cover, setCover] = useState({ type: "image" as const, url: "", alt: "", caption: "" });
-  const [content, setContent] = useState<BlogBlock[]>([]);
+  const [contentHtml, setContentHtml] = useState<string>("");
   const [published, setPublished] = useState(false);
   const [showSeo, setShowSeo] = useState(false);
 
   useEffect(() => {
     if (isNew) {
-      // Start with one paragraph block to make it obvious where to write
-      setContent([{ type: "paragraph", text: "" }]);
+      setContentHtml("<p></p>");
       return;
     }
     (async () => {
@@ -71,7 +70,12 @@ export default function AdminPostEditor() {
       setMetaDescription(data.meta_description || "");
       setKeywordsStr((data.keywords || []).join(", "));
       setCover({ type: "image", url: data.cover_image || "", alt: data.cover_image_alt || "", caption: "" });
-      setContent((data.content as BlogBlock[]) || []);
+      const blocks = (data.content as BlogBlock[]) || [];
+      // If single html block use it directly; otherwise convert legacy blocks to html
+      const html = blocks.length === 1 && blocks[0].type === "html"
+        ? blocks[0].html
+        : blocksToHtml(blocks);
+      setContentHtml(html || "<p></p>");
       setPublished(!!data.published);
       setLoading(false);
     })();
@@ -81,7 +85,7 @@ export default function AdminPostEditor() {
   const effectiveSlug = slug || slugify(title);
   const effectiveMetaTitle = metaTitle || (title ? `${title} | Electrinova Perú`.slice(0, 65) : "");
   const effectiveMetaDescription =
-    metaDescription || excerpt || blocksToPlainText(content).slice(0, 158);
+    metaDescription || excerpt || htmlToPlainText(contentHtml).slice(0, 158);
 
   const onTitleChange = (v: string) => {
     setTitle(v);
@@ -89,8 +93,8 @@ export default function AdminPostEditor() {
   };
 
   const postContext = useMemo(
-    () => ({ title, subtitle, excerpt, category, blocks: content }),
-    [title, subtitle, excerpt, category, content]
+    () => ({ title, subtitle, excerpt, category }),
+    [title, subtitle, excerpt, category]
   );
 
   const save = async (publish?: boolean) => {
