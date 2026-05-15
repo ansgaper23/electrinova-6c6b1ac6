@@ -114,8 +114,8 @@ export default function AdminPostEditor() {
       keywords: keywordsStr.split(",").map((k) => k.trim()).filter(Boolean),
       cover_image: cover.url || null,
       cover_image_alt: cover.alt || title || null,
-      content,
-      reading_time: estimateReadingTime(content),
+      content: [{ type: "html", html: contentHtml } as BlogBlock],
+      reading_time: estimateReadingTime([{ type: "html", html: contentHtml } as BlogBlock]),
       published: willPublish,
       published_at: willPublish ? (new Date()).toISOString() : null,
     };
