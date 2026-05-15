@@ -25,7 +25,7 @@ interface Props {
   context?: PostContext;
 }
 
-const blockTemplates: Record<BlogBlock["type"], BlogBlock> = {
+const blockTemplates: Partial<Record<BlogBlock["type"], BlogBlock>> = {
   heading: { type: "heading", text: "" },
   subheading: { type: "subheading", text: "" },
   paragraph: { type: "paragraph", text: "" },
@@ -34,7 +34,7 @@ const blockTemplates: Record<BlogBlock["type"], BlogBlock> = {
   image: { type: "image", url: "", alt: "", caption: "" },
 };
 
-const blockMeta: Record<BlogBlock["type"], { label: string; icon: any }> = {
+const blockMeta: Partial<Record<BlogBlock["type"], { label: string; icon: any }>> = {
   heading: { label: "Título H2", icon: Heading1 },
   subheading: { label: "Subtítulo H3", icon: Heading2 },
   paragraph: { label: "Párrafo", icon: Pilcrow },

@@ -4,7 +4,8 @@ export type BlogBlock =
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "image"; url: string; alt?: string; caption?: string };
+  | { type: "image"; url: string; alt?: string; caption?: string }
+  | { type: "html"; html: string };
 
 export interface BlogPost {
   id: string;
@@ -37,9 +38,47 @@ export function slugify(s: string) {
     .slice(0, 80);
 }
 
+export function htmlToPlainText(html: string): string {
+  if (typeof document === "undefined") return html.replace(/<[^>]+>/g, " ");
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+}
+
+function escapeHtml(s: string) {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c] as string));
+}
+
+export function blocksToHtml(blocks: BlogBlock[] = []): string {
+  return blocks
+    .map((b) => {
+      switch (b.type) {
+        case "html": return b.html;
+        case "heading": return `<h2>${escapeHtml(b.text)}</h2>`;
+        case "subheading": return `<h3>${escapeHtml(b.text)}</h3>`;
+        case "paragraph":
+          return b.text
+            .split(/\n{2,}/)
+            .map((p) => `<p>${escapeHtml(p).replace(/\n/g, "<br/>")}</p>`)
+            .join("");
+        case "list":
+          return `<ul>${b.items.filter(Boolean).map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+        case "quote":
+          return `<blockquote><p>${escapeHtml(b.text)}</p>${b.cite ? `<footer>— ${escapeHtml(b.cite)}</footer>` : ""}</blockquote>`;
+        case "image":
+          return b.url ? `<figure><img src="${b.url}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
+        default: return "";
+      }
+    })
+    .join("\n");
+}
+
 export function estimateReadingTime(blocks: BlogBlock[]): number {
   const text = blocks
     .map((b) => {
+      if (b.type === "html") return htmlToPlainText(b.html);
       if ("text" in b) return b.text;
       if (b.type === "list") return b.items.join(" ");
       return "";
