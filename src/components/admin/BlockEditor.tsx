@@ -25,7 +25,7 @@ interface Props {
   context?: PostContext;
 }
 
-const blockTemplates: Record<BlogBlock["type"], BlogBlock> = {
+const blockTemplates: Partial<Record<BlogBlock["type"], BlogBlock>> = {
   heading: { type: "heading", text: "" },
   subheading: { type: "subheading", text: "" },
   paragraph: { type: "paragraph", text: "" },
