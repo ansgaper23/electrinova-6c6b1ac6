@@ -218,7 +218,12 @@ export default function AdminPostEditor() {
         {/* Content */}
         <div>
           <Label className="text-sm font-semibold mb-3 block">Contenido</Label>
-          <BlockEditor blocks={content} onChange={setContent} context={postContext} />
+          <RichEditor
+            value={contentHtml}
+            onChange={setContentHtml}
+            context={postContext}
+            placeholder="Empieza a escribir tu artículo… usa la barra para añadir títulos, listas, citas e imágenes."
+          />
         </div>
 
         {/* SEO collapsible */}
