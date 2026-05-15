@@ -45,6 +45,36 @@ export function htmlToPlainText(html: string): string {
   return div.textContent || div.innerText || "";
 }
 
+function escapeHtml(s: string) {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c] as string));
+}
+
+export function blocksToHtml(blocks: BlogBlock[] = []): string {
+  return blocks
+    .map((b) => {
+      switch (b.type) {
+        case "html": return b.html;
+        case "heading": return `<h2>${escapeHtml(b.text)}</h2>`;
+        case "subheading": return `<h3>${escapeHtml(b.text)}</h3>`;
+        case "paragraph":
+          return b.text
+            .split(/\n{2,}/)
+            .map((p) => `<p>${escapeHtml(p).replace(/\n/g, "<br/>")}</p>`)
+            .join("");
+        case "list":
+          return `<ul>${b.items.filter(Boolean).map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+        case "quote":
+          return `<blockquote><p>${escapeHtml(b.text)}</p>${b.cite ? `<footer>— ${escapeHtml(b.cite)}</footer>` : ""}</blockquote>`;
+        case "image":
+          return b.url ? `<figure><img src="${b.url}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
+        default: return "";
+      }
+    })
+    .join("\n");
+}
+
 export function estimateReadingTime(blocks: BlogBlock[]): number {
   const text = blocks
     .map((b) => {
