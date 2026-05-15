@@ -63,6 +63,24 @@ function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boole
           )}
         </figure>
       ) : null;
+    case "html":
+      return (
+        <div
+          className="prose prose-lg max-w-none
+            prose-headings:font-display prose-headings:text-foreground
+            prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
+            prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
+            prose-p:text-[1.075rem] md:prose-p:text-lg prose-p:leading-[1.8] prose-p:text-foreground/90 prose-p:mb-5
+            prose-a:text-primary hover:prose-a:underline
+            prose-strong:text-foreground
+            prose-ul:my-5 prose-ol:my-5 prose-li:my-1 prose-li:text-foreground/90 marker:text-primary
+            prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5
+            prose-blockquote:not-italic prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:rounded-r-lg
+            prose-img:rounded-xl prose-img:shadow-md prose-img:my-8
+            prose-figure:my-10 prose-figcaption:text-center prose-figcaption:italic"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(b.html) }}
+        />
+      );
     default:
       return null;
   }
