@@ -4,7 +4,8 @@ export type BlogBlock =
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "image"; url: string; alt?: string; caption?: string };
+  | { type: "image"; url: string; alt?: string; caption?: string }
+  | { type: "html"; html: string };
 
 export interface BlogPost {
   id: string;
@@ -37,9 +38,17 @@ export function slugify(s: string) {
     .slice(0, 80);
 }
 
+export function htmlToPlainText(html: string): string {
+  if (typeof document === "undefined") return html.replace(/<[^>]+>/g, " ");
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+}
+
 export function estimateReadingTime(blocks: BlogBlock[]): number {
   const text = blocks
     .map((b) => {
+      if (b.type === "html") return htmlToPlainText(b.html);
       if ("text" in b) return b.text;
       if (b.type === "list") return b.items.join(" ");
       return "";
