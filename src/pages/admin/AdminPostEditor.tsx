@@ -15,6 +15,7 @@ import { useAuth } from "@/hooks/useAuth";
 import {
   type BlogBlock,
   estimateReadingTime,
+  htmlToPlainText,
   slugify,
 } from "@/lib/blog";
 import { Save, ArrowLeft, ChevronDown, Eye } from "lucide-react";
