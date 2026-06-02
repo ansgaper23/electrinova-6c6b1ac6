@@ -171,7 +171,7 @@ export default function BlogPostPage() {
         description={post.meta_description || post.excerpt || post.title}
         path={`/blog/${post.slug}`}
         ogImage={post.cover_image || undefined}
-        ogType=\"article\"
+        ogType="article"
         jsonLd={jsonLd}
       />
       <article>
