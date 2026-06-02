@@ -155,25 +155,56 @@ export default function BlogPostPage() {
         jsonLd={jsonLd}
       />
       <article>
-        <header className="pt-32 pb-8 gradient-hero">
-          <div className="container-custom max-w-4xl">
-            <Link to="/blog" className="text-primary-foreground/80 hover:text-primary-foreground inline-flex items-center gap-2 mb-4 text-sm">
-              <ArrowLeft className="h-4 w-4" />Volver al blog
+        <header className="pt-40 pb-20 gradient-hero relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+          </div>
+          <div className="container-custom max-w-4xl relative z-10">
+            <Link to="/blog" className="text-primary-foreground/80 hover:text-accent inline-flex items-center gap-2 mb-8 text-sm font-medium transition-colors group">
+              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />Volver al listado de artículos
             </Link>
-            {post.category && <Badge variant="secondary" className="mb-3">{post.category}</Badge>}
-            <h1 className="text-3xl md:text-5xl font-display font-bold text-primary-foreground leading-tight">{post.title}</h1>
-            {post.subtitle && <p className="mt-3 text-lg md:text-xl text-primary-foreground/80">{post.subtitle}</p>}
-            <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-primary-foreground/80">
-              <span className="flex items-center gap-1"><User className="h-4 w-4" />{post.author}</span>
-              <span className="flex items-center gap-1"><Calendar className="h-4 w-4" />{formatDate(post.published_at)}</span>
-              {post.reading_time && <span className="flex items-center gap-1"><Clock className="h-4 w-4" />{post.reading_time} min de lectura</span>}
+            <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">
+              {post.category && <Badge className="bg-accent text-accent-foreground hover:bg-accent/90 px-3 py-1 border-none font-bold uppercase tracking-wider text-[10px]">{post.category}</Badge>}
+              <span className="text-primary-foreground/60 text-xs font-medium uppercase tracking-widest flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" /> {post.reading_time || 5} min de lectura
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight animate-fade-in-up [animation-delay:100ms] mb-8">
+              {post.title}
+            </h1>
+            {post.subtitle && <p className="text-xl md:text-2xl text-primary-foreground/80 font-light leading-relaxed animate-fade-in-up [animation-delay:200ms] mb-10 max-w-3xl border-l-2 border-accent/30 pl-6">{post.subtitle}</p>}
+            <div className="flex flex-wrap items-center gap-8 text-sm text-primary-foreground/70 animate-fade-in-up [animation-delay:300ms] py-6 border-t border-white/10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
+                  <User className="h-5 w-5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-xs text-primary-foreground/50 uppercase tracking-widest font-bold">Escrito por</p>
+                  <p className="text-primary-foreground font-semibold">{post.author || "Electrinova Perú"}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                  <Calendar className="h-5 w-5 text-primary-foreground/60" />
+                </div>
+                <div>
+                  <p className="text-xs text-primary-foreground/50 uppercase tracking-widest font-bold">Publicado el</p>
+                  <p className="text-primary-foreground font-semibold">{formatDate(post.published_at)}</p>
+                </div>
+              </div>
             </div>
           </div>
         </header>
 
         {post.cover_image && (
-          <div className="container-custom max-w-4xl -mt-6">
-            <img src={post.cover_image} alt={post.cover_image_alt || post.title} className="w-full rounded-lg shadow-lg aspect-video object-cover" />
+          <div className="container-custom max-w-5xl -mt-16 relative z-20 px-4 sm:px-6 lg:px-8 animate-fade-in-up [animation-delay:400ms]">
+            <div className="rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden border-8 border-background bg-background">
+              <img 
+                src={post.cover_image} 
+                alt={post.cover_image_alt || post.title} 
+                className="w-full aspect-[21/9] object-cover hover:scale-[1.02] transition-transform duration-1000" 
+              />
+            </div>
           </div>
         )}
 
