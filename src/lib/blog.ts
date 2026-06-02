@@ -68,7 +68,7 @@ export function blocksToHtml(blocks: BlogBlock[] = []): string {
         case "quote":
           return `<blockquote><p>${escapeHtml(b.text)}</p>${b.cite ? `<footer>— ${escapeHtml(b.cite)}</footer>` : ""}</blockquote>`;
         case "image":
-          return b.url ? `<figure><img src="${b.url}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
+          return b.url ? `<figure><img src="${getOptimizedImageUrl(b.url, { width: 1000 })}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
         default: return "";
       }
     })
