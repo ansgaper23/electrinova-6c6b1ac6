@@ -16,13 +16,19 @@ export type SEOProps = {
   jsonLd?: JsonLd;
 };
 
-function toAbsoluteUrl(pathOrUrl: string) {
-  if (!pathOrUrl) return SITE_URL;
-  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
-  return `${SITE_URL}${pathOrUrl.startsWith("/") ? "" : "/"}${pathOrUrl}`;
+function useAbsoluteUrl() {
+  const origin = typeof window !== \"undefined\" ? window.location.origin : \"https://electrinovaperu.com\";
+  
+  return (pathOrUrl: string) => {
+    if (!pathOrUrl) return origin;
+    if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+    const cleanPath = pathOrUrl.startsWith(\"/\") ? pathOrUrl : `/${pathOrUrl}`;
+    return `${origin}${cleanPath}`;
+  };
 }
 
 export function SEO({ title, description, path, ogImage, noindex, jsonLd }: SEOProps) {
+  const toAbsoluteUrl = useAbsoluteUrl();
   const canonical = toAbsoluteUrl(path);
   const image = toAbsoluteUrl(ogImage || DEFAULT_OG_IMAGE);
 
