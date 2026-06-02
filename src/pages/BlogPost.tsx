@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, ArrowRight, User, Tag } from "lucide-react";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
-import { formatDate } from "@/lib/blog";
+import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
 
 function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boolean }) {
   switch (b.type) {
@@ -52,7 +52,7 @@ function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boole
       return b.url ? (
         <figure className="my-10">
           <img
-            src={b.url}
+            src={getOptimizedImageUrl(b.url, { width: 1000 })}
             alt={b.alt || ""}
             loading="lazy"
             className="w-full rounded-xl shadow-md aspect-video object-cover"
@@ -209,7 +209,7 @@ export default function BlogPostPage() {
           <div className="container-custom max-w-5xl -mt-16 relative z-20 px-4 sm:px-6 lg:px-8 animate-fade-in-up [animation-delay:400ms]">
             <div className="rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden border-8 border-background bg-background">
               <img 
-                src={post.cover_image} 
+                src={getOptimizedImageUrl(post.cover_image, { width: 1400 })} 
                 alt={post.cover_image_alt || post.title} 
                 className="w-full aspect-[21/9] object-cover hover:scale-[1.02] transition-transform duration-1000" 
               />
@@ -295,7 +295,8 @@ export default function BlogPostPage() {
                       <div className="aspect-[16/10] overflow-hidden">
                         {r.cover_image && (
                           <img 
-                            src={r.cover_image} 
+                            src={getOptimizedImageUrl(r.cover_image, { width: 600 })} 
+
                             alt={r.cover_image_alt || r.title} 
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                             loading="lazy" 
