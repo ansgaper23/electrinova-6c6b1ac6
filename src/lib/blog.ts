@@ -96,3 +96,20 @@ export function formatDate(iso: string | null) {
     year: "numeric",
   });
 }
+
+/**
+ * Appends Supabase image transformation parameters to optimize loading.
+ * Requires the project to have image transformations enabled.
+ */
+export function getOptimizedImageUrl(url: string | null, options: { width?: number; quality?: number } = {}) {
+  if (!url) return "";
+  // Check if it's a Supabase storage URL
+  if (url.includes("storage.googleapis.com") || url.includes("supabase.co")) {
+    const { width = 1200, quality = 80 } = options;
+    const separator = url.includes("?") ? "&" : "?";
+    // We use a common format that many CDNs (including Supabase if enabled) might pick up
+    // but primarily we optimize for standard web performance.
+    return `${url}${separator}width=${width}&quality=${quality}&format=webp`;
+  }
+  return url;
+}
