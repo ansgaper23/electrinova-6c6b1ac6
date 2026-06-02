@@ -68,7 +68,7 @@ export function blocksToHtml(blocks: BlogBlock[] = []): string {
         case "quote":
           return `<blockquote><p>${escapeHtml(b.text)}</p>${b.cite ? `<footer>— ${escapeHtml(b.cite)}</footer>` : ""}</blockquote>`;
         case "image":
-          return b.url ? `<figure><img src="${b.url}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
+          return b.url ? `<figure><img src="${getOptimizedImageUrl(b.url, { width: 1000 })}" alt="${escapeHtml(b.alt || "")}"/>${b.caption ? `<figcaption>${escapeHtml(b.caption)}</figcaption>` : ""}</figure>` : "";
         default: return "";
       }
     })
@@ -95,4 +95,21 @@ export function formatDate(iso: string | null) {
     month: "long",
     year: "numeric",
   });
+}
+
+/**
+ * Appends Supabase image transformation parameters to optimize loading.
+ * Requires the project to have image transformations enabled.
+ */
+export function getOptimizedImageUrl(url: string | null, options: { width?: number; quality?: number } = {}) {
+  if (!url) return "";
+  // Check if it's a Supabase storage URL
+  if (url.includes("storage.googleapis.com") || url.includes("supabase.co")) {
+    const { width = 1200, quality = 80 } = options;
+    const separator = url.includes("?") ? "&" : "?";
+    // We use a common format that many CDNs (including Supabase if enabled) might pick up
+    // but primarily we optimize for standard web performance.
+    return `${url}${separator}width=${width}&quality=${quality}&format=webp`;
+  }
+  return url;
 }

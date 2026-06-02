@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { Image } from "https://deno.land/x/imagescript@1.2.15/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -164,10 +165,29 @@ Deno.serve(async (req) => {
     const ext = mime.split("/")[1] || "png";
     const binary = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
 
-    const filename = `${userData.user.id}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
+    // Compression and optimization
+    let finalBinary = binary;
+    let finalMime = mime;
+    let finalExt = ext;
+
+    try {
+      const img = await Image.decode(binary);
+      // Resize to a maximum width of 1280px while maintaining aspect ratio
+      if (img.width > 1280) {
+        img.resize(1280, Image.RESIZE_AUTO);
+      }
+      // Encode to WebP for best compression
+      finalBinary = await img.encodeWebP(80);
+      finalMime = "image/webp";
+      finalExt = "webp";
+    } catch (err) {
+      console.warn("Optimization failed, using original", err);
+    }
+
+    const filename = `${userData.user.id}/${Date.now()}-${crypto.randomUUID()}.${finalExt}`;
     const { error: upErr } = await adminClient.storage
       .from("blog-images")
-      .upload(filename, binary, { contentType: mime, upsert: false });
+      .upload(filename, finalBinary, { contentType: finalMime, upsert: false });
 
     if (upErr) {
       console.error("upload error", upErr);
