@@ -134,19 +134,20 @@ export default function Blog() {
           {loading ? (
             <>
               <SEO 
-                title=\"Cargando blog... | Electrinova Perú\" 
-                description=\"Explora nuestros artículos técnicos sobre ingeniería eléctrica e industrial.\" 
-                path=\"/blog\" 
+                title="Cargando blog... | Electrinova Perú" 
+                description="Explora nuestros artículos técnicos sobre ingeniería eléctrica e industrial." 
+                path="/blog" 
               />
-              <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">
-              {[1, 2, 3, 4, 5, 6].map(i => (
-                <div key={i} className="space-y-4">
-                  <Skeleton className="aspect-video w-full rounded-xl" />
-                  <Skeleton className="h-6 w-3/4" />
-                  <Skeleton className="h-4 w-full" />
-                </div>
-              ))}
-            </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[1, 2, 3, 4, 5, 6].map(i => (
+                  <div key={i} className="space-y-4">
+                    <Skeleton className="aspect-video w-full rounded-xl" />
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-4 w-full" />
+                  </div>
+                ))}
+              </div>
+            </>
           ) : filteredPosts.length === 0 ? (
             <div className="text-center py-20">
               <div className="bg-muted w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
