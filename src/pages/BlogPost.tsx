@@ -6,7 +6,8 @@ import { SEO } from "@/components/seo/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft, User } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Calendar, Clock, ArrowLeft, ArrowRight, User, Tag } from "lucide-react";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
 import { formatDate } from "@/lib/blog";
 
