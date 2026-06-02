@@ -208,45 +208,99 @@ export default function BlogPostPage() {
           </div>
         )}
 
-        <div className="container-custom max-w-3xl py-12">
+        <div className="container-custom max-w-3xl py-16 md:py-24">
           {post.excerpt && (
-            <p className="text-xl leading-relaxed text-muted-foreground border-l-4 border-primary pl-5 mb-10 font-light">
-              {post.excerpt}
-            </p>
+            <div className="mb-16">
+              <p className="text-2xl md:text-3xl leading-relaxed text-foreground/70 font-display italic">
+                "{post.excerpt}"
+              </p>
+            </div>
           )}
-          {(() => {
-            let firstParagraphSeen = false;
-            return post.content.map((b, i) => {
-              const isFirst = b.type === "paragraph" && !firstParagraphSeen;
-              if (isFirst) firstParagraphSeen = true;
-              return <Block key={i} b={b} isFirstParagraph={isFirst} />;
-            });
-          })()}
+          
+          <div className="article-content">
+            {(() => {
+              let firstParagraphSeen = false;
+              return post.content.map((b, i) => {
+                const isFirst = b.type === "paragraph" && !firstParagraphSeen;
+                if (isFirst) firstParagraphSeen = true;
+                return <Block key={i} b={b} isFirstParagraph={isFirst} />;
+              });
+            })()}
+          </div>
 
           {post.keywords && post.keywords.length > 0 && (
-            <div className="mt-12 pt-6 border-t flex flex-wrap gap-2">
+            <div className="mt-20 pt-10 border-t flex flex-wrap gap-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground w-full mb-2 flex items-center gap-2">
+                <Tag className="h-3 w-3" /> Etiquetas del artículo
+              </span>
               {post.keywords.map((k) => (
-                <Badge key={k} variant="outline" className="text-xs">#{k}</Badge>
+                <Badge key={k} variant="secondary" className="px-4 py-1.5 text-xs font-medium bg-muted/50 hover:bg-primary hover:text-white transition-colors cursor-default border-none rounded-full">
+                  {k}
+                </Badge>
               ))}
             </div>
           )}
 
-          <div className="mt-12 p-8 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-center text-primary-foreground shadow-lg">
-            <h3 className="text-2xl font-display font-bold mb-2">¿Necesitas asesoría eléctrica profesional?</h3>
-            <p className="text-primary-foreground/90 mb-5">Cotiza tu proyecto con Electrinova Perú sin compromiso.</p>
-            <Link to="/contacto"><Button size="lg" variant="secondary">Solicitar cotización</Button></Link>
+          <div className="mt-20 p-10 md:p-16 bg-gradient-to-br from-primary via-primary/95 to-primary/90 rounded-[2.5rem] text-center text-primary-foreground shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] -mr-32 -mt-32 transition-transform duration-700 group-hover:scale-110" />
+            <div className="relative z-10">
+              <Badge className="bg-accent text-accent-foreground mb-6">ASESORÍA ESPECIALIZADA</Badge>
+              <h3 className="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">¿Tienes un proyecto <span className="text-accent italic">eléctrico</span> en mente?</h3>
+              <p className="text-primary-foreground/80 mb-10 text-lg md:text-xl max-w-xl mx-auto font-light leading-relaxed">
+                Nuestro equipo de ingenieros está listo para brindarte la mejor solución técnica bajo los más altos estándares de seguridad.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link to="/contacto">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-7 text-lg rounded-full shadow-lg hover:shadow-accent/20 transition-all">
+                    Solicitar cotización gratis
+                  </Button>
+                </Link>
+                <a href="https://wa.me/519XXXXXXXX" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-lg rounded-full">
+                    Consultar por WhatsApp
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
         {related.length > 0 && (
-          <section className="bg-muted/30 py-12">
-            <div className="container-custom max-w-5xl">
-              <h2 className="text-2xl font-bold mb-6">Artículos relacionados</h2>
-              <div className="grid md:grid-cols-3 gap-4">
+          <section className="bg-muted/30 py-24 border-t">
+            <div className="container-custom max-w-6xl">
+              <div className="flex items-end justify-between mb-12">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Sigue <span className="text-primary">leyendo</span></h2>
+                  <p className="text-muted-foreground text-lg">Artículos que podrían interesarte según tus intereses.</p>
+                </div>
+                <Link to="/blog">
+                  <Button variant="ghost" className="hidden sm:flex items-center gap-2 group font-bold">
+                    Ver todo el blog <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8">
                 {related.map((r) => (
-                  <Link key={r.id} to={`/blog/${r.slug}`} className="group">
-                    {r.cover_image && <img src={r.cover_image} alt={r.cover_image_alt || r.title} className="w-full aspect-video object-cover rounded-lg mb-3" loading="lazy" />}
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">{r.title}</h3>
+                  <Link key={r.id} to={`/blog/${r.slug}`} className="group flex flex-col h-full">
+                    <Card className="border-none shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden flex-grow flex flex-col bg-card">
+                      <div className="aspect-[16/10] overflow-hidden">
+                        {r.cover_image && (
+                          <img 
+                            src={r.cover_image} 
+                            alt={r.cover_image_alt || r.title} 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            loading="lazy" 
+                          />
+                        )}
+                      </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-3">{formatDate(r.published_at)}</span>
+                        <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-snug line-clamp-2">{r.title}</h3>
+                        <div className="mt-auto pt-6 flex items-center text-primary text-xs font-bold gap-2">
+                          LEER MÁS <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </Card>
                   </Link>
                 ))}
               </div>
