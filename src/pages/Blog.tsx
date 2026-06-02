@@ -104,7 +104,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <div className="sticky top-[72px] z-40 bg-background/80 backdrop-blur-md border-b">
+      <div className="bg-background/80 backdrop-blur-md border-b">
         <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar">
           <Tag className="h-4 w-4 text-muted-foreground mr-2 shrink-0" />
           <Button 
