@@ -11,6 +11,7 @@ export type SEOProps = {
   /** Path starting with / (e.g. /proyectos). Use / for home. */
   path: string;
   ogImage?: string;
+  ogType?: "website" | "article";
   noindex?: boolean;
   jsonLd?: JsonLd;
 };
@@ -26,7 +27,7 @@ function useAbsoluteUrl() {
   };
 }
 
-export function SEO({ title, description, path, ogImage, noindex, jsonLd }: SEOProps) {
+export function SEO({ title, description, path, ogImage, ogType = "website", noindex, jsonLd }: SEOProps) {
   const toAbsoluteUrl = useAbsoluteUrl();
   const canonical = toAbsoluteUrl(path);
   const image = toAbsoluteUrl(ogImage || DEFAULT_OG_IMAGE);
@@ -40,7 +41,7 @@ export function SEO({ title, description, path, ogImage, noindex, jsonLd }: SEOP
       {noindex && <meta name="robots" content="noindex, follow" />}
 
       {/* Open Graph */}
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="es_PE" />
       <meta property="og:url" content={canonical} />
