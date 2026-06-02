@@ -117,9 +117,27 @@ export default function BlogPostPage() {
     })();
   }, [slug]);
 
-  if (loading) return <Layout><div className="min-h-[60vh]" /></Layout>;
+  if (loading) return (
+    <Layout>
+      <SEO 
+        title="Cargando artículo... | Electrinova Perú" 
+        description="Estamos preparando el mejor contenido técnico para ti." 
+        path={`/blog/${slug}`} 
+      />
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="animate-pulse text-primary font-display font-bold text-xl">Electrinova</div>
+      </div>
+    </Layout>
+  );
+
   if (notFound || !post) return (
     <Layout>
+      <SEO 
+        title="Artículo no encontrado | Electrinova Perú" 
+        description="Lo sentimos, no pudimos encontrar el artículo que buscas." 
+        path="/blog" 
+        noindex 
+      />
       <section className="section-padding pt-32 text-center">
         <h1 className="text-3xl font-bold mb-4">Artículo no encontrado</h1>
         <Link to="/blog"><Button variant="outline">Volver al blog</Button></Link>
@@ -127,7 +145,7 @@ export default function BlogPostPage() {
     </Layout>
   );
 
-  const url = `https://electrinovaperu.com/blog/${post.slug}`;
+  const url = `/blog/${post.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -140,7 +158,7 @@ export default function BlogPostPage() {
     publisher: {
       "@type": "Organization",
       name: "Electrinova Perú",
-      logo: { "@type": "ImageObject", url: "https://electrinovaperu.com/logo-electrinova.png" },
+      logo: { "@type": "ImageObject", url: "/logo-electrinova.png" },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: post.keywords?.join(", "),
@@ -153,6 +171,7 @@ export default function BlogPostPage() {
         description={post.meta_description || post.excerpt || post.title}
         path={`/blog/${post.slug}`}
         ogImage={post.cover_image || undefined}
+        ogType="article"
         jsonLd={jsonLd}
       />
       <article>

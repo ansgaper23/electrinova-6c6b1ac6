@@ -1,8 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://electrinovaperu.com";
 const SITE_NAME = "ELECTRINOVA PERÚ";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-electrinova.png`;
+const DEFAULT_OG_IMAGE = "/og-electrinova.png";
 
 type JsonLd = Record<string, unknown> | Array<Record<string, unknown>>;
 
@@ -12,17 +11,24 @@ export type SEOProps = {
   /** Path starting with / (e.g. /proyectos). Use / for home. */
   path: string;
   ogImage?: string;
+  ogType?: "website" | "article";
   noindex?: boolean;
   jsonLd?: JsonLd;
 };
 
-function toAbsoluteUrl(pathOrUrl: string) {
-  if (!pathOrUrl) return SITE_URL;
-  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
-  return `${SITE_URL}${pathOrUrl.startsWith("/") ? "" : "/"}${pathOrUrl}`;
+function useAbsoluteUrl() {
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://electrinovaperu.com";
+  
+  return (pathOrUrl: string) => {
+    if (!pathOrUrl) return origin;
+    if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+    const cleanPath = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
+    return `${origin}${cleanPath}`;
+  };
 }
 
-export function SEO({ title, description, path, ogImage, noindex, jsonLd }: SEOProps) {
+export function SEO({ title, description, path, ogImage, ogType = "website", noindex, jsonLd }: SEOProps) {
+  const toAbsoluteUrl = useAbsoluteUrl();
   const canonical = toAbsoluteUrl(path);
   const image = toAbsoluteUrl(ogImage || DEFAULT_OG_IMAGE);
 
@@ -35,15 +41,15 @@ export function SEO({ title, description, path, ogImage, noindex, jsonLd }: SEOP
       {noindex && <meta name="robots" content="noindex, follow" />}
 
       {/* Open Graph */}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="es_PE" />
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1216" />
-      <meta property="og:image:height" content="640" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
