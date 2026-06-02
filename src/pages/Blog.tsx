@@ -132,7 +132,13 @@ export default function Blog() {
       <section className="section-padding bg-background">
         <div className="container-custom">
           {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <>
+              <SEO 
+                title=\"Cargando blog... | Electrinova Perú\" 
+                description=\"Explora nuestros artículos técnicos sobre ingeniería eléctrica e industrial.\" 
+                path=\"/blog\" 
+              />
+              <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">
               {[1, 2, 3, 4, 5, 6].map(i => (
                 <div key={i} className="space-y-4">
                   <Skeleton className="aspect-video w-full rounded-xl" />
