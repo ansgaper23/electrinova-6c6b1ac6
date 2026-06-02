@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { formatDate } from "@/lib/blog";
+import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
 import { Calendar, Clock, ArrowRight, Search, Tag } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -166,7 +166,7 @@ export default function Blog() {
                         <div className="aspect-[16/10] lg:aspect-square overflow-hidden relative">
                           {featuredPost.cover_image ? (
                             <img
-                              src={featuredPost.cover_image}
+                              src={getOptimizedImageUrl(featuredPost.cover_image, { width: 1200 })}
                               alt={featuredPost.cover_image_alt || featuredPost.title}
                               loading="eager"
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -221,7 +221,7 @@ export default function Blog() {
                       <div className="aspect-video overflow-hidden relative">
                         {p.cover_image ? (
                           <img
-                            src={p.cover_image}
+                            src={getOptimizedImageUrl(p.cover_image, { width: 600 })}
                             alt={p.cover_image_alt || p.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
