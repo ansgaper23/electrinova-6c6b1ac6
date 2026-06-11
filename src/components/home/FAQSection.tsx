@@ -24,8 +24,12 @@ const faqs = [
     answer: "Puede solicitar una cotización sin compromiso llamando al 938 852 610, escribiendo a ventas@electrinovaperu.com, por WhatsApp o completando el formulario en nuestra página de contacto. Respondemos en menos de 24 horas.",
   },
   {
-    question: "¿Trabajan con marcas específicas de equipos eléctricos?",
-    answer: "Trabajamos con las marcas líderes del mercado: ABB, Schneider Electric, Siemens, Allen Bradley (Rockwell), FLUKE, entre otras. Somos socios estratégicos de ABB y Schneider Electric.",
+    question: "¿Qué es el ITSE y por qué es importante para mi empresa?",
+    answer: "La Inspección Técnica de Seguridad en Edificaciones (ITSE), antes conocida como INDECI/Defensa Civil, es obligatoria para obtener la licencia de funcionamiento. Garantiza que su local cumple con las normas de seguridad estructural, eléctrica y contra incendios para proteger la vida de sus trabajadores y clientes.",
+  },
+  {
+    question: "¿En qué consiste el servicio de levantamiento de observaciones ITSE?",
+    answer: "Nuestro servicio incluye el diagnóstico preventivo, la elaboración del expediente técnico (planos eléctricos, certificación de pozos a tierra, diagramas unifilares) y la ejecución de las mejoras físicas necesarias para subsanar cualquier deficiencia detectada en la inspección municipal.",
   },
 ];
 

@@ -137,7 +137,24 @@ const ServicioDetalle = () => {
                   )}
                 </div>
 
+                <div className="mt-8 p-6 bg-accent/10 rounded-xl border border-accent/20">
+                  <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-accent" />
+                    Recurso Útil
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    ¿Sabes cómo prepararte para una inspección? Lee nuestra guía detallada.
+                  </p>
+                  <Button asChild variant="link" className="p-0 h-auto text-accent font-bold hover:no-underline hover:text-accent/80 group">
+                    <Link to="/blog/guia-levantamiento-observaciones-itse-indeci" className="flex items-center gap-2">
+                      Guía ITSE 2024
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                </div>
+
                 <div className="bg-secondary/50 rounded-xl p-6 space-y-4">
+
                   <h3 className="text-lg font-bold text-foreground">¿Necesitas este servicio?</h3>
                   <p className="text-sm text-muted-foreground">
                     Solicita una cotización sin compromiso. Respondemos en menos de 24 horas.
