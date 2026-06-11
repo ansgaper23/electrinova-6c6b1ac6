@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import { Zap, ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { Zap, ArrowRight, CheckCircle2, Phone, FileText } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { services } from "@/data/services";
 import { AnimatedSection } from "@/components/home/AnimatedSection";
@@ -62,7 +62,7 @@ const ServicioDetalle = () => {
   return (
     <Layout>
       <SEO
-        title={`${service.title} en Lima | Electrinova Perú`}
+        title={`${service.title} | Electrinova Perú`}
         description={`${service.description} Servicio profesional con certificación en Lima. Cotiza gratis: 938 852 610.`}
         path={`/servicios/${slug}`}
         jsonLd={jsonLd}
@@ -154,7 +154,6 @@ const ServicioDetalle = () => {
                 </div>
 
                 <div className="bg-secondary/50 rounded-xl p-6 space-y-4">
-
                   <h3 className="text-lg font-bold text-foreground">¿Necesitas este servicio?</h3>
                   <p className="text-sm text-muted-foreground">
                     Solicita una cotización sin compromiso. Respondemos en menos de 24 horas.
