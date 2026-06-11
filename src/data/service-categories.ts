@@ -35,7 +35,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Mantenimiento Preventivo y Correctivo",
     description: "Programas de mantenimiento integral para sub estaciones, tableros MT/BT y equipos eléctricos críticos.",
     icon: "Shield",
-    serviceIndices: [1, 2], // Sub Estaciones, Tableros MT-BT
+    serviceIndices: [1, 2, 10], // Sub Estaciones, Tableros MT-BT, ITSE/INDECI
   },
 ];
 
