@@ -26,25 +26,37 @@ const ServicioDetalle = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title,
-    description: service.description,
-    provider: {
+    "name": service.title,
+    "description": service.description,
+    "provider": {
       "@type": "ElectricalContractor",
-      name: "ELECTRINOVA PERÚ S.A.C.",
-      telephone: "+51938852610",
-      url: "https://electrinovaperu.com",
-      address: {
+      "name": "ELECTRINOVA PERÚ S.A.C.",
+      "telephone": "+51938852610",
+      "url": "https://electrinovaperu.com",
+      "logo": "https://electrinovaperu.com/logo.png",
+      "address": {
         "@type": "PostalAddress",
-        streetAddress: "Pje Laburre 158",
-        addressLocality: "Cercado de Lima",
-        addressRegion: "Lima",
-        addressCountry: "PE",
-      },
+        "streetAddress": "Pje Laburre 158",
+        "addressLocality": "Cercado de Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      }
     },
-    areaServed: {
+    "areaServed": {
       "@type": "City",
-      name: "Lima",
+      "name": "Lima"
     },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios Eléctricos Industriales",
+      "itemListElement": service.features?.map((f, i) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": f
+        }
+      }))
+    }
   };
 
   return (
