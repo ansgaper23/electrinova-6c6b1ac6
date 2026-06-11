@@ -7,10 +7,10 @@ const LOGO_URL = "/logo-electrinova.png";
 const services = [
   "Mantenimiento de Sub Estaciones",
   "Pozos a Tierra",
+  "Levantamiento ITSE / INDECI",
   "Tableros MT - BT",
   "Automatización",
   "Instalaciones Eléctricas",
-  "Cableado Estructurado",
 ];
 
 const quickLinks = [
@@ -110,11 +110,16 @@ export function Footer() {
               Nuestros Servicios
             </h3>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-primary-foreground/80">{service}</span>
-                </li>
-              ))}
+              {services.map((service) => {
+                const slug = service.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                return (
+                  <li key={service}>
+                    <Link to={`/servicios/${slug}`} className="text-primary-foreground/80 hover:text-accent transition-colors duration-300">
+                      {service}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
