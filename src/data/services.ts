@@ -9,6 +9,7 @@ import automatizacionImg from "@/assets/services/automatizacion.jpg";
 import instalacionesElectricasImg from "@/assets/services/instalaciones-electricas.jpg";
 import tablerosElectricosImg from "@/assets/services/tableros-electricos.jpg";
 import tuberiasConduitImg from "@/assets/services/tuberias-conduit.jpg";
+import indeciImg from "@/assets/services/indeci-itse.jpg";
 
 export interface Service {
   title: string;
@@ -83,7 +84,7 @@ export const services: Service[] = [
     description: "Programación de PLC Allen Bradley, Siemens y desarrollo de proyectos de automatización.",
     image: automatizacionImg,
     features: [
-      "CompactLogix y ControlLogix",
+      "CompactLogix and ControlLogix",
       "SLC, Micrologix, PLC 5",
       "Panel View Plus, redes Ethernet/ControlNet"
     ]
@@ -116,6 +117,18 @@ export const services: Service[] = [
       "Tubos galvanizados metálicos",
       "Accesorios a prueba de explosión",
       "Instalación según normativas vigentes"
+    ]
+  },
+  {
+    title: "Levantamiento de Observaciones ITSE / INDECI",
+    description: "Asesoría técnica y ejecución de mejoras para subsanar observaciones de seguridad y obtener el certificado ITSE.",
+    image: indeciImg,
+    features: [
+      "Levantamiento de observaciones eléctricas y de seguridad",
+      "Mantenimiento de sistemas de protección y pozos a tierra",
+      "Implementación de luces de emergencia y señalización",
+      "Expediente técnico para riesgo alto y muy alto",
+      "Certificación por ingeniero electricista habilitado"
     ]
   },
 ];
