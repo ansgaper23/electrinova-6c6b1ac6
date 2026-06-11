@@ -23,6 +23,7 @@ const Auth = lazy(() => import("./pages/Auth"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
 const AdminPosts = lazy(() => import("./pages/admin/AdminPosts"));
 const AdminPostEditor = lazy(() => import("./pages/admin/AdminPostEditor"));
+const GuiaITSE = lazy(() => import("./pages/blog/GuiaITSE"));
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/blog/guia-levantamiento-observaciones-itse-indeci" element={<GuiaITSE />} />
                 <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
                 <Route path="/terminos-servicio" element={<TerminosServicio />} />
                 <Route path="/servicios/:slug" element={<ServicioDetalle />} />

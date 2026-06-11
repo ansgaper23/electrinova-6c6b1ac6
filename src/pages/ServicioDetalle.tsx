@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import { Zap, ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { Zap, ArrowRight, CheckCircle2, Phone, FileText } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { services } from "@/data/services";
 import { AnimatedSection } from "@/components/home/AnimatedSection";
@@ -26,31 +26,43 @@ const ServicioDetalle = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title,
-    description: service.description,
-    provider: {
+    "name": service.title,
+    "description": service.description,
+    "provider": {
       "@type": "ElectricalContractor",
-      name: "ELECTRINOVA PERÚ S.A.C.",
-      telephone: "+51938852610",
-      url: "https://electrinovaperu.com",
-      address: {
+      "name": "ELECTRINOVA PERÚ S.A.C.",
+      "telephone": "+51938852610",
+      "url": "https://electrinovaperu.com",
+      "logo": "https://electrinovaperu.com/logo.png",
+      "address": {
         "@type": "PostalAddress",
-        streetAddress: "Pje Laburre 158",
-        addressLocality: "Cercado de Lima",
-        addressRegion: "Lima",
-        addressCountry: "PE",
-      },
+        "streetAddress": "Pje Laburre 158",
+        "addressLocality": "Cercado de Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      }
     },
-    areaServed: {
+    "areaServed": {
       "@type": "City",
-      name: "Lima",
+      "name": "Lima"
     },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios Eléctricos Industriales",
+      "itemListElement": service.features?.map((f, i) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": f
+        }
+      }))
+    }
   };
 
   return (
     <Layout>
       <SEO
-        title={`${service.title} en Lima | Electrinova Perú`}
+        title={`${service.title} | Electrinova Perú`}
         description={`${service.description} Servicio profesional con certificación en Lima. Cotiza gratis: 938 852 610.`}
         path={`/servicios/${slug}`}
         jsonLd={jsonLd}
@@ -123,6 +135,22 @@ const ServicioDetalle = () => {
                       ))}
                     </ul>
                   )}
+                </div>
+
+                <div className="mt-8 p-6 bg-accent/10 rounded-xl border border-accent/20">
+                  <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-accent" />
+                    Recurso Útil
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    ¿Sabes cómo prepararte para una inspección? Lee nuestra guía detallada.
+                  </p>
+                  <Button asChild variant="link" className="p-0 h-auto text-accent font-bold hover:no-underline hover:text-accent/80 group">
+                    <Link to="/blog/guia-levantamiento-observaciones-itse-indeci" className="flex items-center gap-2">
+                      Guía ITSE 2024
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
                 </div>
 
                 <div className="bg-secondary/50 rounded-xl p-6 space-y-4">

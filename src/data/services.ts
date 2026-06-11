@@ -120,8 +120,9 @@ export const services: Service[] = [
     ]
   },
   {
-    title: "Levantamiento de Observaciones ITSE / INDECI",
-    description: "Asesoría técnica y ejecución de mejoras para subsanar observaciones de seguridad y obtener el certificado ITSE.",
+    title: "Levantamiento de Observaciones ITSE / INDECI en Lima",
+    description: "Servicio especializado en levantamiento de observaciones ITSE e INDECI para industrias y comercios en Lima. Aseguramos su certificado de seguridad con peritajes eléctricos certificados.",
+
     image: indeciImg,
     features: [
       "Levantamiento de observaciones eléctricas y de seguridad",
