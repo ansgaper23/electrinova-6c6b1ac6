@@ -160,6 +160,8 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-green-400 transition-colors duration-300"
+                  onClick={() => trackEvent('whatsapp_click', { location: 'footer_text' })}
+
                 >
                   <WhatsAppIcon className="h-5 w-5 mt-0.5 flex-shrink-0" />
                   <span>WhatsApp: 938 852 610</span>
