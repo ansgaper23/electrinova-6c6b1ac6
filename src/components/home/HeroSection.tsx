@@ -115,7 +115,7 @@ export const HeroSection = () => {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric"
             >
-              <Link to="/contacto">
+              <Link to="/contacto" onClick={() => trackEvent('cta_click', { location: 'hero', button_text: 'Solicitar Cotización' })}>
                 <Zap className="h-5 w-5 mr-2" />
                 Solicitar Cotización
               </Link>
