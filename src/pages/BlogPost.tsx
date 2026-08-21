@@ -277,11 +277,17 @@ export default function BlogPostPage() {
                     Solicitar cotización gratis
                   </Button>
                 </Link>
-                <a href="https://wa.me/519XXXXXXXX" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://wa.me/51938852610" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('whatsapp_click', { location: 'blog_post_cta', post_slug: post.slug })}
+                >
                   <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-lg rounded-full">
                     Consultar por WhatsApp
                   </Button>
                 </a>
+
               </div>
             </div>
           </div>
