@@ -31,7 +31,19 @@ export const CookieBanner: React.FC = () => {
       });
     }
   };
-
+  const handleDecline = () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    setShowBanner(false);
+    
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'consent_denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        timestamp: new Date().toISOString()
+      });
+    }
+  };
 
   return (
     <AnimatePresence>
