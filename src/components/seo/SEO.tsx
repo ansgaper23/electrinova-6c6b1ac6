@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { companyInfo } from "@/data/company-info";
 
 const SITE_NAME = "ELECTRINOVA PERÚ";
-const DEFAULT_OG_IMAGE = "/og-electrinova.png";
+const DEFAULT_OG_IMAGE = "https://electrinovaperu.com/og-electrinova.png";
 
 type JsonLd = Record<string, unknown> | Array<Record<string, unknown>>;
 
