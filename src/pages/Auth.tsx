@@ -27,6 +27,9 @@ export default function Auth() {
     if (!loading && user && mode !== "reset") navigate("/admin", { replace: true });
   }, [user, loading, navigate, mode]);
 
+  const [newPassword, setNewPassword] = useState("");
+  const isRecovery = new URLSearchParams(window.location.search).get("type") === "recovery";
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     
