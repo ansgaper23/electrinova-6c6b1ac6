@@ -114,8 +114,8 @@ export default function Blog() {
         </div>
       </section>
 
-      <div className="bg-white/80 dark:bg-primary/80 backdrop-blur-xl border-b sticky top-20 z-40 transition-all duration-300">
-        <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar justify-center">
+      <div className="bg-white/80 dark:bg-primary/80 backdrop-blur-xl border-b transition-all duration-300">
+        <div className="container-custom py-4 flex flex-wrap items-center gap-3 justify-center">
           <Button 
             variant={selectedCategory === null ? "default" : "ghost"} 
             size="sm" 
