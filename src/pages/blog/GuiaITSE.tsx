@@ -13,14 +13,14 @@ const BlogPostITSE = () => {
     "description": "Aprenda cómo pasar la inspección de Defensa Civil (ITSE/INDECI) sin observaciones. Consejos de ingenieros expertos en seguridad eléctrica.",
     "author": {
       "@type": "Organization",
-      "name": "Electrinova Perú"
+      "name": "ELECTRINOVA PERÚ"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Electrinova Perú",
+      "name": "ELECTRINOVA PERÚ E.I.R.L.",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://electrinovaperu.com/logo.png"
+        "url": "https://electrinovaperu.com/logo-electrinova.png"
       }
     },
     "datePublished": "2024-06-11"
