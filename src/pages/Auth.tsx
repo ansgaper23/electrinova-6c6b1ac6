@@ -115,48 +115,71 @@ export default function Auth() {
       <section className="section-padding pt-32">
         <div className="container-custom max-w-md">
           <h1 className="text-3xl font-display font-bold mb-2">
-            {mode === "login" ? "Iniciar sesión" : mode === "signup" ? "Crear cuenta" : "Recuperar contraseña"}
+            {isRecovery 
+              ? "Nueva contraseña" 
+              : mode === "login" ? "Iniciar sesión" : mode === "signup" ? "Crear cuenta" : "Recuperar contraseña"}
           </h1>
           <p className="text-muted-foreground mb-6">
-            {mode === "reset" 
-              ? "Ingresa tu correo para recibir un enlace de recuperación."
-              : "Acceso restringido al equipo de Electrinova Perú."}
+            {isRecovery
+              ? "Ingresa tu nueva contraseña para acceder al panel."
+              : mode === "reset" 
+                ? "Ingresa tu correo para recibir un enlace de recuperación."
+                : "Acceso restringido al equipo de Electrinova Perú."}
           </p>
           <form onSubmit={submit} className="space-y-4">
-            <div>
-              <Label htmlFor="email">Correo</Label>
-              <Input id="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            {mode !== "reset" && (
+            {isRecovery ? (
               <div>
-                <Label htmlFor="password">Contraseña</Label>
-                <Input id="password" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} required value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Label htmlFor="new-password">Nueva contraseña</Label>
+                <Input 
+                  id="new-password" 
+                  type="password" 
+                  autoComplete="new-password" 
+                  required 
+                  value={newPassword} 
+                  onChange={(e) => setNewPassword(e.target.value)} 
+                  placeholder="Mínimo 8 caracteres"
+                />
               </div>
+            ) : (
+              <>
+                <div>
+                  <Label htmlFor="email">Correo</Label>
+                  <Input id="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                {mode !== "reset" && (
+                  <div>
+                    <Label htmlFor="password">Contraseña</Label>
+                    <Input id="password" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} required value={password} onChange={(e) => setPassword(e.target.value)} />
+                  </div>
+                )}
+              </>
             )}
             <Button type="submit" className="w-full" disabled={busy}>
-              {busy ? "Procesando..." : mode === "login" ? "Entrar" : mode === "signup" ? "Crear cuenta" : "Enviar enlace"}
+              {busy ? "Procesando..." : isRecovery ? "Actualizar contraseña" : mode === "login" ? "Entrar" : mode === "signup" ? "Crear cuenta" : "Enviar enlace"}
             </Button>
           </form>
           
-          <div className="mt-6 flex flex-col gap-2">
-            {mode === "login" && (
+          {!isRecovery && (
+            <div className="mt-6 flex flex-col gap-2">
+              {mode === "login" && (
+                <button 
+                  type="button" 
+                  onClick={() => setMode("reset")} 
+                  className="text-sm text-primary hover:underline w-fit"
+                >
+                  ¿Olvidaste tu contraseña?
+                </button>
+              )}
+              
               <button 
                 type="button" 
-                onClick={() => setMode("reset")} 
+                onClick={() => setMode(mode === "login" ? "signup" : "login")} 
                 className="text-sm text-primary hover:underline w-fit"
               >
-                ¿Olvidaste tu contraseña?
+                {mode === "login" ? "¿No tienes cuenta? Regístrate" : "Regresar al inicio de sesión"}
               </button>
-            )}
-            
-            <button 
-              type="button" 
-              onClick={() => setMode(mode === "login" ? "signup" : "login")} 
-              className="text-sm text-primary hover:underline w-fit"
-            >
-              {mode === "login" ? "¿No tienes cuenta? Regístrate" : "Regresar al inicio de sesión"}
-            </button>
-          </div>
+            </div>
+          )}
         </div>
       </section>
     </Layout>
