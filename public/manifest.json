@@ -1,0 +1,15 @@
+{
+  "name": "Electrinova Perú",
+  "short_name": "Electrinova",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B2B4D",
+  "theme_color": "#FFD700",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
