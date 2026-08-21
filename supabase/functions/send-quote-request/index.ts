@@ -198,6 +198,8 @@ const handler = async (req: Request): Promise<Response> => {
               <p style="margin: 0; white-space: pre-wrap;">${safeMessage}</p>
             </div>
             
+            ${utmHtml}
+            
             <div style="margin-top: 30px; padding: 15px; background: #1e3a5f; border-radius: 8px; text-align: center;">
               <p style="color: white; margin: 0;">
                 <a href="https://wa.me/51${phoneDigits}" style="color: #25D366; text-decoration: none; font-weight: bold;">
@@ -205,6 +207,7 @@ const handler = async (req: Request): Promise<Response> => {
                 </a>
               </p>
             </div>
+
           </div>
           
           <p style="text-align: center; color: #888; font-size: 12px; margin-top: 20px;">
