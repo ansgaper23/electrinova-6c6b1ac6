@@ -96,7 +96,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const resend = new Resend(RESEND_API_KEY);
-    const { name, email, phone, projectType, message }: QuoteRequest = await req.json();
+    const { name, email, phone, projectType, message, utm_data }: QuoteRequest = await req.json();
 
     // Validate required fields
     if (!name || !email || !phone || !projectType || !message) {
