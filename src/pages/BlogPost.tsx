@@ -285,7 +285,7 @@ export default function BlogPostPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link to="/contacto">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-7 text-lg rounded-full shadow-lg hover:shadow-accent/20 transition-all">
+                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 hover:text-accent-foreground font-bold px-10 py-7 text-lg rounded-full shadow-lg hover:shadow-accent/20 transition-all">
                     Solicitar cotización gratis
                   </Button>
                 </Link>
@@ -295,7 +295,7 @@ export default function BlogPostPage() {
                   rel="noopener noreferrer"
                   onClick={() => trackEvent('whatsapp_click', { location: 'blog_post_cta', post_slug: post.slug })}
                 >
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-lg rounded-full">
+                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:text-white px-10 py-7 text-lg rounded-full">
                     Consultar por WhatsApp
                   </Button>
                 </a>
