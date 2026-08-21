@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,8 @@ import { Zap, ArrowRight, CheckCircle2, Phone, FileText } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { services } from "@/data/services";
 import { AnimatedSection } from "@/components/home/AnimatedSection";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 function slugify(text: string) {
   return text
