@@ -1,10 +1,10 @@
 export const companyInfo = {
-  name: "Electrinova Perú",
-  legalName: "Electrinova Perú S.A.C.",
+  name: "ELECTRINOVA PERÚ",
+  legalName: "ELECTRINOVA PERÚ E.I.R.L.",
   url: "https://electrinovaperu.com",
   logo: "https://electrinovaperu.com/logo-electrinova.png",
   image: "https://electrinovaperu.com/og-electrinova.png",
-  description: "Servicios eléctricos industriales, residenciales y comerciales en Lima. Expertos en tableros, pozos a tierra y mantenimiento eléctrico.",
+  description: "Servicios eléctricos profesionales para el sector industrial, residencial y comercial en Lima, Perú. Especialistas en media tensión, pozos a tierra y automatización.",
   address: {
     streetAddress: "Pje Laburre 158",
     addressLocality: "Cercado de Lima",
@@ -17,14 +17,13 @@ export const companyInfo = {
     longitude: -77.042793
   },
   contact: {
-    phone: "+51 938 852 610",
+    phone: "+51938852610",
     email: "ventas@electrinovaperu.com",
     whatsapp: "51938852610"
   },
   socialLinks: [
-    "https://facebook.com/electrinovaperu",
-    "https://www.tiktok.com/@electrinova",
-    "https://linkedin.com/company/electrinovaperu"
+    "https://fb.com/electrinovaperu",
+    "https://www.tiktok.com/@electrinova"
   ],
   openingHours: "Mo-Fr 08:00-18:00, Sa 09:00-13:00",
   priceRange: "$$"
