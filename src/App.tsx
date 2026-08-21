@@ -34,9 +34,12 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <Analytics />
         <Toaster />
         <Sonner />
+        <CookieBanner />
         <BrowserRouter>
+
           <AuthProvider>
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
               <Routes>
