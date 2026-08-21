@@ -231,22 +231,22 @@ export default function BlogPostPage() {
         </header>
 
         {post.cover_image && (
-          <div className="container-custom max-w-5xl -mt-16 relative z-20 px-4 sm:px-6 lg:px-8 animate-fade-in-up [animation-delay:400ms]">
-            <div className="rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden border-8 border-background bg-background">
+          <div className="container-custom max-w-5xl -mt-20 relative z-20 px-4 animate-fade-in-up [animation-delay:400ms]">
+            <div className="rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] overflow-hidden border-[12px] border-background bg-background">
               <img 
                 src={getOptimizedImageUrl(post.cover_image, { width: 1400 })} 
                 alt={post.cover_image_alt || post.title} 
-                className="w-full aspect-[21/9] object-cover hover:scale-[1.02] transition-transform duration-1000" 
+                className="w-full aspect-[21/9] object-cover hover:scale-105 transition-transform duration-1000" 
               />
             </div>
           </div>
         )}
 
-        <div className="container-custom max-w-3xl py-16 md:py-24">
+        <div className="container-custom max-w-3xl py-20 md:py-32">
           {post.excerpt && (
-            <div className="mb-16">
-              <p className="text-2xl md:text-3xl leading-relaxed text-foreground/70 font-display italic">
-                "{post.excerpt}"
+            <div className="mb-20">
+              <p className="text-2xl md:text-4xl leading-relaxed text-primary/80 font-display font-light italic border-l-4 border-accent pl-10">
+                {post.excerpt}
               </p>
             </div>
           )}
