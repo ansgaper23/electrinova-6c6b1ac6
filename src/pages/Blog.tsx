@@ -34,8 +34,10 @@ export default function Blog() {
 
   useEffect(() => {
     // Track blog view
+    trackEvent('page_view', { page_title: 'Blog', page_location: window.location.href });
     trackEvent('view_item_list', { item_list_name: 'Blog' });
   }, []);
+
 
 
   const categories = useMemo(() => {
