@@ -284,7 +284,14 @@ export default function Blog() {
           </p>
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
             <Input placeholder="Tu correo electrónico" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12" />
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8">Suscribirse</Button>
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8"
+              onClick={() => trackEvent('newsletter_signup_click', { location: 'blog_footer' })}
+            >
+              Suscribirse
+            </Button>
+
           </div>
         </div>
       </section>
