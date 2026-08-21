@@ -8,8 +8,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
-import { Calendar, Clock, ArrowRight, Search, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Search, Tag } from "lucide-center";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 export default function Blog() {
   const [posts, setPosts] = useState<any[]>([]);
