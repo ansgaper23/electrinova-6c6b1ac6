@@ -322,23 +322,25 @@ export default function BlogPostPage() {
               <div className="grid md:grid-cols-3 gap-8">
                 {related.map((r) => (
                   <Link key={r.id} to={`/blog/${r.slug}`} className="group flex flex-col h-full">
-                    <Card className="border-none shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden flex-grow flex flex-col bg-card">
-                      <div className="aspect-[16/10] overflow-hidden">
+                    <Card className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-3xl overflow-hidden flex-grow flex flex-col bg-card hover:-translate-y-2">
+                      <div className="aspect-[16/10] overflow-hidden relative">
                         {r.cover_image && (
                           <img 
                             src={getOptimizedImageUrl(r.cover_image, { width: 600 })} 
-
                             alt={r.cover_image_alt || r.title} 
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                             loading="lazy" 
                           />
                         )}
+                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-3">{formatDate(r.published_at)}</span>
-                        <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-snug line-clamp-2">{r.title}</h3>
-                        <div className="mt-auto pt-6 flex items-center text-primary text-xs font-bold gap-2">
-                          LEER MÁS <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      <div className="p-8 flex flex-col flex-grow">
+                        <span className="text-[10px] font-black text-muted-foreground/40 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                          <Calendar className="h-3 w-3 text-accent" /> {formatDate(r.published_at)}
+                        </span>
+                        <h3 className="text-xl font-display font-bold group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-6">{r.title}</h3>
+                        <div className="mt-auto pt-6 flex items-center text-primary text-[10px] font-black uppercase tracking-[0.2em] gap-3 group-hover:gap-5 transition-all duration-300">
+                          Leer artículo <ArrowRight className="h-4 w-4" />
                         </div>
                       </div>
                     </Card>
