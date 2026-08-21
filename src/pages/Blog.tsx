@@ -168,51 +168,51 @@ export default function Blog() {
           ) : (
             <>
               {featuredPost && (
-                <div className="mb-16 animate-fade-in-up">
+                <div className="mb-20 animate-fade-in-up">
                   <Link to={`/blog/${featuredPost.slug}`} className="group block">
-                    <Card className="overflow-hidden border-none shadow-2xl hover:shadow-primary/10 transition-all duration-500 rounded-3xl">
+                    <Card className="overflow-hidden border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] hover:shadow-[0_48px_80px_-16px_rgba(0,0,0,0.15)] transition-all duration-700 rounded-[2.5rem] bg-card">
                       <div className="grid lg:grid-cols-2">
-                        <div className="aspect-[16/10] lg:aspect-square overflow-hidden relative">
+                        <div className="aspect-[16/10] lg:aspect-auto overflow-hidden relative">
                           {featuredPost.cover_image ? (
                             <img
                               src={getOptimizedImageUrl(featuredPost.cover_image, { width: 1200 })}
                               alt={featuredPost.cover_image_alt || featuredPost.title}
                               loading="eager"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                             />
                           ) : (
-                            <div className="w-full h-full bg-primary/10 flex items-center justify-center">
-                              <span className="text-primary/20 font-display text-4xl">Electrinova</span>
+                            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
+                              <span className="text-primary/10 font-display text-4xl">Electrinova</span>
                             </div>
                           )}
-                          <div className="absolute top-6 left-6">
-                            <Badge className="bg-accent text-accent-foreground px-4 py-1.5 text-sm font-bold shadow-lg">
+                          <div className="absolute top-8 left-8">
+                            <Badge className="bg-accent text-accent-foreground px-5 py-2 text-xs font-black shadow-2xl tracking-[0.2em]">
                               DESTACADO
                             </Badge>
                           </div>
                         </div>
-                        <div className="p-8 lg:p-12 flex flex-col justify-center bg-card">
-                          <div className="space-y-6">
+                        <div className="p-10 lg:p-16 flex flex-col justify-center">
+                          <div className="space-y-8">
                             {featuredPost.category && (
-                              <Badge variant="secondary" className="px-3 py-1 bg-primary/5 text-primary border-primary/10">
+                              <Badge variant="secondary" className="px-4 py-1.5 bg-primary/5 text-primary border-none text-[10px] tracking-[0.2em] font-black uppercase">
                                 {featuredPost.category}
                               </Badge>
                             )}
-                            <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight group-hover:text-primary transition-colors">
+                            <h2 className="text-3xl md:text-5xl font-display font-bold leading-[1.15] group-hover:text-primary transition-colors duration-300">
                               {featuredPost.title}
                             </h2>
                             {featuredPost.excerpt && (
-                              <p className="text-lg text-muted-foreground line-clamp-4 leading-relaxed">
+                              <p className="text-lg text-muted-foreground line-clamp-3 leading-relaxed font-light">
                                 {featuredPost.excerpt}
                               </p>
                             )}
-                            <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
-                              <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-primary/60" />{formatDate(featuredPost.published_at)}</span>
-                              {featuredPost.reading_time && <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary/60" />{featuredPost.reading_time} min</span>}
+                            <div className="flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+                              <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-accent" />{formatDate(featuredPost.published_at)}</span>
+                              {featuredPost.reading_time && <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-accent" />{featuredPost.reading_time} min</span>}
                             </div>
-                            <div className="pt-4">
-                              <span className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all underline underline-offset-8">
-                                Leer artículo completo <ArrowRight className="h-5 w-5" />
+                            <div className="pt-6">
+                              <span className="inline-flex items-center gap-3 text-primary font-black uppercase tracking-widest text-sm group-hover:gap-5 transition-all duration-300">
+                                Leer artículo <ArrowRight className="h-5 w-5" />
                               </span>
                             </div>
                           </div>
