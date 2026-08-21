@@ -18,16 +18,20 @@ export const CookieBanner: React.FC = () => {
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted');
     setShowBanner(false);
-    // Aquí se podría disparar un evento de GTM: 'consent_updated'
+    
+    // Disparar evento de GTM para actualizar el consentimiento
     if (window.dataLayer) {
-      window.dataLayer.push({ event: 'consent_granted' });
+      window.dataLayer.push({
+        event: 'consent_granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 
-  const handleDecline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    setShowBanner(false);
-  };
 
   return (
     <AnimatePresence>
