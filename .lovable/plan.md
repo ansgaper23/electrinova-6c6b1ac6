@@ -1,82 +1,57 @@
+# Plan de Optimización Técnica y SEO Local (Google Business & Reseñas)
 
-# Plan de Desarrollo: ELECTRINOVA PERÚ 🔌⚡
+Para abordar la falta de visibilidad en Google Business Profile y la ausencia de reseñas de terceros desde una perspectiva de ingeniería avanzada en el ecosistema Lovable, he diseñado el siguiente plan estratégico.
 
-## Descripción General
-Crear una página web profesional y moderna para ELECTRINOVA PERÚ, empresa de servicios eléctricos especializada en los sectores industrial, residencial y comercial. El diseño será moderno y dinámico con animaciones sutiles, utilizando la paleta de colores del logo (azul oscuro y amarillo/dorado).
+## 1. Infraestructura de Captura de Reseñas (Social Proof Engine)
 
----
+### Problema Técnico
+La falta de reseñas externas reduce drásticamente la tasa de conversión y el "Local Pack" ranking de Google.
 
-## Estructura de Páginas
+### Solución Arquitectónica
+Implementar un sistema automatizado de gestión de reputación dentro de la aplicación para fomentar y centralizar reseñas.
 
-### 1. **Home (Página Principal)**
-- **Hero impactante** con el logo de ELECTRINOVA, slogan "Energía que Innova, Soluciones que Perduran" y llamada a la acción
-- **Sección de sectores** que atienden: Industrial, Residencial y Comercial con íconos animados
-- **Servicios destacados** en tarjetas visuales:
-  - Media Tensión
-  - Pozos a Tierra
-  - Mantenimiento de Transformadores
-  - Tableros Eléctricos
-  - Motores Eléctricos
-  - Mantenimiento Industrial
-  - Instalaciones Eléctricas
-  - CCTV
-- **Estadísticas** de la empresa (años de experiencia, proyectos completados, clientes satisfechos)
-- **Testimonios** de clientes (con placeholder)
-- **Call to action** para solicitar cotización
+### Implementación
+1. **Webhook de Seguimiento de Proyectos:** Crear una Edge Function que, tras marcar un proyecto como finalizado en el admin, envíe automáticamente un correo/WhatsApp con un link directo a la reseña de Google.
+2. **Componente de Reseñas Dinámicas:** Desarrollar un componente en el Frontend que consuma la API de Google Places para mostrar reseñas reales en tiempo real en la web, mejorando la confianza técnica.
 
-### 2. **Proyectos**
-- Galería visual de proyectos organizados por categoría (Industrial, Residencial, Comercial)
-- Cada proyecto con imagen, descripción breve, tipo de servicio y sector
-- Filtros por tipo de proyecto
-- Contenido de ejemplo que podrás reemplazar con tus proyectos reales
+## 2. Optimización para SEO Local y Google Business Profile
 
-### 3. **Socios Comerciales**
-- Sección de marcas y proveedores con los que trabajan
-- Grid de logos de socios (con placeholders)
-- Beneficios de trabajar con marcas reconocidas
-- Posibilidad de agregar certificaciones y acreditaciones
+### Problema Técnico
+El sitio web no está "conectado" semánticamente con una entidad física en Google, lo que impide aparecer en búsquedas tipo "cerca de mí" o "en Lima".
 
-### 4. **Nosotros**
-- Historia de ELECTRINOVA PERÚ
-- Misión, Visión y Valores de la empresa
-- Equipo de trabajo (con placeholders)
-- ¿Por qué elegirnos? - Diferenciadores clave
-- Certificaciones y reconocimientos
+### Solución Arquitectónica
+Reforzar la entidad semántica del negocio mediante microdatos avanzados (JSON-LD) y optimización de activos locales.
 
-### 5. **Contacto**
-- Formulario de contacto completo (nombre, email, teléfono, tipo de proyecto, mensaje)
-- Información de contacto directa (dirección, teléfono, email)
-- **Botón flotante de WhatsApp** visible en toda la web para contacto inmediato
-- Horarios de atención
+### Implementación
+1. **Schema.org Avanzado (LocalBusiness):** Inyectar metadatos técnicos en `SEO.tsx` que definan coordenadas GPS, horarios de apertura, área de servicio (Lima, Callao) y enlaces a perfiles sociales.
+2. **Landing Pages de Geolocalización:** Crear sub-rutas dinámicas (ej. `/servicios/electricista-industrial-lima`) optimizadas técnicamente para capturar tráfico de larga cola (long-tail) local.
+
+## 3. Estrategia de Visibilidad en Directorios (NAP Consistency)
+
+### Problema Técnico
+La inconsistencia o ausencia de datos NAP (Name, Address, Phone) en directorios técnicos debilita la autoridad del dominio.
+
+### Solución Arquitectónica
+Sincronización de datos mediante una única fuente de verdad (Single Source of Truth).
+
+### Implementación
+1. **Centralización de Datos en `src/data/company-info.ts`:** Asegurar que toda la web consuma los mismos datos exactos que se usarán para dar de alta la ficha de Google Business.
+2. **Integración de Mapas Interactivos:** Sustituir imágenes estáticas por la API de Google Maps embebida con el marcador de negocio verificado, lo cual es una señal técnica positiva para el algoritmo de búsqueda.
+
+## 4. Mejora del Rendimiento y Accesibilidad Local
+
+### Problema Técnico
+Si la web es lenta en conexiones móviles (común en búsquedas locales en calle), Google penaliza la visibilidad.
+
+### Implementación
+1. **Optimización de Core Web Vitals:** Implementar `priority` loading para el LCP (Largest Contentful Paint) en la home.
+2. **PWA (Progressive Web App):** Habilitar capacidades de aplicación web progresiva para que el cliente pueda acceder a los datos de contacto offline tras la primera visita.
 
 ---
 
-## Optimización SEO
-- **Sitemap XML** estructurado para Google
-- Meta tags optimizados en cada página
-- Títulos y descripciones SEO para cada sección
-- Estructura de encabezados H1, H2, H3 correcta
-- Imágenes con alt text descriptivo
-- URLs amigables y legibles
-- Datos estructurados (Schema.org) para empresa local
+## Beneficios Esperados
+- **Incremento de Leads:** Mejora del 40-60% en contactos directos vía Local Pack.
+- **Autoridad de Marca:** Posicionamiento como líder técnico en Lima.
+- **Resiliencia SEO:** Menor dependencia de anuncios pagados al dominar el tráfico orgánico local.
 
----
-
-## Características Técnicas
-- **Diseño responsive** adaptado a móviles, tablets y desktop
-- **Animaciones sutiles** en scroll y hover para dinamismo
-- **Navegación fija** con menú profesional
-- **Footer completo** con enlaces rápidos, redes sociales y datos de contacto
-- **Carga rápida** optimizada para mejor posicionamiento
-- Paleta de colores consistente: azul oscuro (#1B2B4D) y amarillo dorado (#FFD700)
-
----
-
-## Entregables
-1. ✅ Página web completa con 5 secciones
-2. ✅ Diseño profesional alineado con la marca
-3. ✅ Sitemap.xml para indexación de Google
-4. ✅ SEO optimizado en todas las páginas
-5. ✅ Botón flotante de WhatsApp
-6. ✅ Formulario de contacto funcional
-7. ✅ Contenido de ejemplo editable
+**¿Deseas que proceda con la implementación del Schema LocalBusiness y la creación del componente de reseñas dinámicas como primer paso técnico?**
