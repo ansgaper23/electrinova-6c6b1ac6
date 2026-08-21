@@ -139,10 +139,19 @@ const Contacto = () => {
       }
       
       setIsSuccess(true);
+      
+      // Track conversion event
+      trackEvent('generate_lead', {
+        method: 'contact_form',
+        project_type: validatedData.projectType,
+        ...utmData
+      });
+
       toast({
         title: "¡Mensaje enviado!",
         description: "Nos pondremos en contacto contigo pronto.",
       });
+
 
       // Reset form
       setFormData({
