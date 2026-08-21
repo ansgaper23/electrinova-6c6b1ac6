@@ -93,27 +93,48 @@ export default function Auth() {
       <section className="section-padding pt-32">
         <div className="container-custom max-w-md">
           <h1 className="text-3xl font-display font-bold mb-2">
-            {mode === "login" ? "Iniciar sesión" : "Crear cuenta"}
+            {mode === "login" ? "Iniciar sesión" : mode === "signup" ? "Crear cuenta" : "Recuperar contraseña"}
           </h1>
           <p className="text-muted-foreground mb-6">
-            Acceso restringido al equipo de Electrinova Perú.
+            {mode === "reset" 
+              ? "Ingresa tu correo para recibir un enlace de recuperación."
+              : "Acceso restringido al equipo de Electrinova Perú."}
           </p>
           <form onSubmit={submit} className="space-y-4">
             <div>
               <Label htmlFor="email">Correo</Label>
               <Input id="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div>
-              <Label htmlFor="password">Contraseña</Label>
-              <Input id="password" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} required value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
+            {mode !== "reset" && (
+              <div>
+                <Label htmlFor="password">Contraseña</Label>
+                <Input id="password" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} required value={password} onChange={(e) => setPassword(e.target.value)} />
+              </div>
+            )}
             <Button type="submit" className="w-full" disabled={busy}>
-              {busy ? "Procesando..." : mode === "login" ? "Entrar" : "Crear cuenta"}
+              {busy ? "Procesando..." : mode === "login" ? "Entrar" : mode === "signup" ? "Crear cuenta" : "Enviar enlace"}
             </Button>
           </form>
-          <button type="button" onClick={() => setMode(mode === "login" ? "signup" : "login")} className="mt-4 text-sm text-primary hover:underline">
-            {mode === "login" ? "¿No tienes cuenta? Regístrate" : "Ya tengo cuenta"}
-          </button>
+          
+          <div className="mt-6 flex flex-col gap-2">
+            {mode === "login" && (
+              <button 
+                type="button" 
+                onClick={() => setMode("reset")} 
+                className="text-sm text-primary hover:underline w-fit"
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
+            )}
+            
+            <button 
+              type="button" 
+              onClick={() => setMode(mode === "login" ? "signup" : "login")} 
+              className="text-sm text-primary hover:underline w-fit"
+            >
+              {mode === "login" ? "¿No tienes cuenta? Regístrate" : "Regresar al inicio de sesión"}
+            </button>
+          </div>
         </div>
       </section>
     </Layout>
