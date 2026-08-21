@@ -29,6 +29,28 @@ export default function Auth() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (mode === "reset") {
+      if (!email || !email.includes("@")) {
+        toast.error("Ingresa un correo válido");
+        return;
+      }
+      setBusy(true);
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/auth?type=recovery`,
+        });
+        if (error) throw error;
+        toast.success("Enlace de recuperación enviado a tu correo");
+        setMode("login");
+      } catch (err: any) {
+        toast.error(err.message || "Error al enviar correo de recuperación");
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+
     const parsed = schema.safeParse({ email, password });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0].message);
