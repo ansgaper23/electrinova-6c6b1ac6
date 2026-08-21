@@ -133,6 +133,20 @@ const handler = async (req: Request): Promise<Response> => {
     // Safe phone digits only for tel/WhatsApp links (strip all non-digits)
     const phoneDigits = phone.replace(/\D/g, "");
 
+    // Prepare UTM info for email
+    let utmHtml = "";
+    if (utm_data && Object.keys(utm_data).length > 0) {
+      utmHtml = `
+        <h3 style="color: #1e3a5f; margin-top: 25px;">Origen del Contacto (Atribución):</h3>
+        <div style="background: #f0f4f8; padding: 15px; border-radius: 8px; font-size: 13px;">
+          <ul style="margin: 0; padding-left: 20px;">
+            ${Object.entries(utm_data).map(([key, value]) => `<li><strong>${escapeHtml(key)}:</strong> ${escapeHtml(value)}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+
     console.log("Processing quote request from:", safeName);
 
     // Send email to ventas@electrinovaperu.com
