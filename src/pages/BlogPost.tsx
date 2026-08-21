@@ -116,7 +116,18 @@ export default function BlogPostPage() {
         .limit(3);
       setRelated(rel || []);
       setLoading(false);
+      
+      // Track view_item event for the blog post
+      trackEvent('view_item', {
+        items: [{
+          item_id: data.id,
+          item_name: data.title,
+          item_category: data.category,
+          item_list_name: 'Blog'
+        }]
+      });
     })();
+
   }, [slug]);
 
   if (loading) return (
