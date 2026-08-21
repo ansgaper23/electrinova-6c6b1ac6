@@ -47,7 +47,9 @@ interface QuoteRequest {
   phone: string;
   projectType: string;
   message: string;
+  utm_data?: Record<string, string>;
 }
+
 
 const handler = async (req: Request): Promise<Response> => {
   console.log("Received request to send-quote-request function");
@@ -94,7 +96,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const resend = new Resend(RESEND_API_KEY);
-    const { name, email, phone, projectType, message }: QuoteRequest = await req.json();
+    const { name, email, phone, projectType, message, utm_data }: QuoteRequest = await req.json();
 
     // Validate required fields
     if (!name || !email || !phone || !projectType || !message) {
@@ -130,6 +132,20 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Safe phone digits only for tel/WhatsApp links (strip all non-digits)
     const phoneDigits = phone.replace(/\D/g, "");
+
+    // Prepare UTM info for email
+    let utmHtml = "";
+    if (utm_data && Object.keys(utm_data).length > 0) {
+      utmHtml = `
+        <h3 style="color: #1e3a5f; margin-top: 25px;">Origen del Contacto (Atribución):</h3>
+        <div style="background: #f0f4f8; padding: 15px; border-radius: 8px; font-size: 13px;">
+          <ul style="margin: 0; padding-left: 20px;">
+            ${Object.entries(utm_data).map(([key, value]) => `<li><strong>${escapeHtml(key)}:</strong> ${escapeHtml(value)}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
 
     console.log("Processing quote request from:", safeName);
 
@@ -182,6 +198,8 @@ const handler = async (req: Request): Promise<Response> => {
               <p style="margin: 0; white-space: pre-wrap;">${safeMessage}</p>
             </div>
             
+            ${utmHtml}
+            
             <div style="margin-top: 30px; padding: 15px; background: #1e3a5f; border-radius: 8px; text-align: center;">
               <p style="color: white; margin: 0;">
                 <a href="https://wa.me/51${phoneDigits}" style="color: #25D366; text-decoration: none; font-weight: bold;">
@@ -189,6 +207,7 @@ const handler = async (req: Request): Promise<Response> => {
                 </a>
               </p>
             </div>
+
           </div>
           
           <p style="text-align: center; color: #888; font-size: 12px; margin-top: 20px;">

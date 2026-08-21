@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Zap, Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,8 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 import { z } from "zod";
 
 // Esquema de validación
@@ -79,6 +81,23 @@ const Contacto = () => {
     message: "",
   });
 
+  const [utmData, setUtmData] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    // Capturar parámetros UTM de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const utms: Record<string, string> = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(param => {
+      const value = urlParams.get(param);
+      if (value) utms[param] = value;
+    });
+    setUtmData(utms);
+  }, []);
+
+  useEffect(() => {
+    trackEvent('page_view', { page_title: 'Contacto', page_location: window.location.href });
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -87,6 +106,7 @@ const Contacto = () => {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
+
 
   const handleSelectChange = (value: string) => {
     setFormData(prev => ({ ...prev, projectType: value }));
@@ -104,10 +124,14 @@ const Contacto = () => {
       // Validar datos
       const validatedData = contactSchema.parse(formData);
       
-      // Enviar a edge function
+      // Enviar a edge function con UTMs
       const { data, error } = await supabase.functions.invoke('send-quote-request', {
-        body: validatedData,
+        body: {
+          ...validatedData,
+          utm_data: utmData
+        },
       });
+
 
       if (error) {
         console.error('Error from edge function:', error);
@@ -119,10 +143,19 @@ const Contacto = () => {
       }
       
       setIsSuccess(true);
+      
+      // Track conversion event
+      trackEvent('generate_lead', {
+        method: 'contact_form',
+        project_type: validatedData.projectType,
+        ...utmData
+      });
+
       toast({
         title: "¡Mensaje enviado!",
         description: "Nos pondremos en contacto contigo pronto.",
       });
+
 
       // Reset form
       setFormData({
@@ -262,10 +295,12 @@ const Contacto = () => {
                     href={`https://wa.me/51938852610?text=${encodeURIComponent("Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('whatsapp_click', { location: 'contact_page', ...utmData })}
                     className="inline-flex items-center justify-center gap-2 bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-white/90 transition-colors"
                   >
                     Escribir por WhatsApp
                   </a>
+
                 </CardContent>
               </Card>
             </div>

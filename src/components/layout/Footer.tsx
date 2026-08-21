@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Zap } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 const LOGO_URL = "/logo-electrinova.png";
 
@@ -77,8 +79,10 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="p-2 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-300"
                 aria-label="WhatsApp"
+                onClick={() => trackEvent('whatsapp_click', { location: 'footer_icon' })}
               >
                 <WhatsAppIcon className="h-5 w-5 text-white" />
+
               </a>
             </div>
           </div>
@@ -134,6 +138,8 @@ export function Footer() {
                 <a
                   href="tel:+51938852610"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+                  onClick={() => trackEvent('phone_call_click', { location: 'footer' })}
+
                 >
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
                   <span>938 852 610</span>
@@ -154,6 +160,8 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-green-400 transition-colors duration-300"
+                  onClick={() => trackEvent('whatsapp_click', { location: 'footer_text' })}
+
                 >
                   <WhatsAppIcon className="h-5 w-5 mt-0.5 flex-shrink-0" />
                   <span>WhatsApp: 938 852 610</span>

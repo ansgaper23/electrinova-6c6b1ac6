@@ -8,8 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, ArrowRight, User, Tag } from "lucide-react";
+import { trackEvent } from "@/components/analytics/Analytics";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
 import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
+
 
 function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boolean }) {
   switch (b.type) {
@@ -114,7 +116,18 @@ export default function BlogPostPage() {
         .limit(3);
       setRelated(rel || []);
       setLoading(false);
+      
+      // Track view_item event for the blog post
+      trackEvent('view_item', {
+        items: [{
+          item_id: data.id,
+          item_name: data.title,
+          item_category: data.category,
+          item_list_name: 'Blog'
+        }]
+      });
     })();
+
   }, [slug]);
 
   if (loading) return (
@@ -264,11 +277,17 @@ export default function BlogPostPage() {
                     Solicitar cotización gratis
                   </Button>
                 </Link>
-                <a href="https://wa.me/519XXXXXXXX" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://wa.me/51938852610" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('whatsapp_click', { location: 'blog_post_cta', post_slug: post.slug })}
+                >
                   <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-lg rounded-full">
                     Consultar por WhatsApp
                   </Button>
                 </a>
+
               </div>
             </div>
           </div>

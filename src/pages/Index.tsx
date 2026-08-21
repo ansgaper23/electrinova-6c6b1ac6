@@ -1,8 +1,10 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { HeroSection } from "@/components/home/HeroSection";
 import { AlliancesBar } from "@/components/home/AlliancesBar";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 // Lazy-load below-fold sections to reduce initial JS
 const ServiceCategories = lazy(() => import("@/components/home/ServiceCategories").then(m => ({ default: m.ServiceCategories })));
@@ -35,7 +37,12 @@ const Index = () => {
     faqJsonLd,
   ];
 
+  useEffect(() => {
+    trackEvent('page_view', { page_title: 'Home', page_location: window.location.href });
+  }, []);
+
   return (
+
     <Layout>
       <SEO
         title="Electricista industrial en Lima | Electrinova Perú"

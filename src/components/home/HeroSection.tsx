@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/media/ResponsiveImage";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 // Responsive hero images
 import hero1Url from "@/assets/hero/hero-slide-1.jpg";
@@ -113,7 +115,7 @@ export const HeroSection = () => {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-6 glow-accent btn-electric"
             >
-              <Link to="/contacto">
+              <Link to="/contacto" onClick={() => trackEvent('cta_click', { location: 'hero', button_text: 'Solicitar Cotización' })}>
                 <Zap className="h-5 w-5 mr-2" />
                 Solicitar Cotización
               </Link>
@@ -123,7 +125,7 @@ export const HeroSection = () => {
               size="lg"
               className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 font-semibold text-lg px-8 py-6"
             >
-              <Link to="/proyectos">
+              <Link to="/proyectos" onClick={() => trackEvent('cta_click', { location: 'hero', button_text: 'Ver Proyectos' })}>
                 Ver Proyectos
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>

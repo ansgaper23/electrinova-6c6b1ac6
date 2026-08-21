@@ -10,6 +10,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
 import { Calendar, Clock, ArrowRight, Search, Tag } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 export default function Blog() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -29,6 +31,14 @@ export default function Blog() {
     };
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    // Track blog view
+    trackEvent('page_view', { page_title: 'Blog', page_location: window.location.href });
+    trackEvent('view_item_list', { item_list_name: 'Blog' });
+  }, []);
+
+
 
   const categories = useMemo(() => {
     const cats = posts.map(p => p.category).filter(Boolean);
@@ -274,7 +284,14 @@ export default function Blog() {
           </p>
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
             <Input placeholder="Tu correo electrónico" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12" />
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8">Suscribirse</Button>
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8"
+              onClick={() => trackEvent('newsletter_signup_click', { location: 'blog_footer' })}
+            >
+              Suscribirse
+            </Button>
+
           </div>
         </div>
       </section>
