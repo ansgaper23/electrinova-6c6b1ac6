@@ -87,26 +87,26 @@ export default function Blog() {
         jsonLd={jsonLd}
       />
       
-      <section className="pt-32 pb-20 gradient-hero overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-        </div>
+      <section className="pt-32 pb-20 relative overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-accent/50 via-transparent to-transparent" />
+        
         <div className="container-custom relative z-10 text-center">
-          <Badge variant="outline" className="mb-4 text-primary-foreground border-primary-foreground/30 px-4 py-1">
-            Conocimiento Especializado
+          <Badge variant="outline" className="mb-6 text-accent border-accent/30 bg-accent/5 px-4 py-1 uppercase tracking-widest font-bold">
+            Blog Técnico Industrial
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-primary-foreground mb-6 tracking-tight animate-fade-in-up">
-            Blog Técnico <span className="text-accent italic">Industrial</span>
+          <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight animate-fade-in-up">
+            Soluciones y <span className="text-accent italic">Normativas</span>
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed animate-fade-in-up [animation-delay:200ms]">
-            Explora las últimas tendencias en ingeniería eléctrica, automatización y normativas vigentes en el sector industrial peruano.
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed animate-fade-in-up [animation-delay:200ms]">
+            Artículos especializados en ingeniería eléctrica, seguridad y eficiencia energética para el sector industrial.
           </p>
           
-          <div className="mt-10 max-w-lg mx-auto relative group animate-fade-in-up [animation-delay:400ms]">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-primary transition-colors" />
+          <div className="mt-12 max-w-lg mx-auto relative group animate-fade-in-up [animation-delay:400ms]">
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-primary/50 h-5 w-5 group-focus-within:text-accent transition-colors" />
             <Input 
-              placeholder="Buscar guías o artículos técnicos..." 
-              className="pl-12 py-6 bg-white/95 border-none shadow-xl focus-visible:ring-accent text-foreground text-lg rounded-full"
+              placeholder="Buscar por título o tema..." 
+              className="pl-14 py-7 bg-white/10 border-white/10 shadow-2xl focus-visible:ring-accent text-white placeholder:text-white/40 text-lg rounded-2xl backdrop-blur-md"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
