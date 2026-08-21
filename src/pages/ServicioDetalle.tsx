@@ -178,23 +178,32 @@ const ServicioDetalle = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
-                      <Link to="/contacto">
+                      <Link to="/contacto" onClick={() => trackEvent('cta_click', { location: 'service_detail', service_title: service.title, button_text: 'Solicitar Cotización' })}>
                         <Zap className="h-4 w-4 mr-2" />
                         Solicitar Cotización
                       </Link>
                     </Button>
                     <Button asChild variant="outline">
-                      <a href="https://wa.me/51938852610" target="_blank" rel="noopener noreferrer">
+                      <a 
+                        href="https://wa.me/51938852610" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={() => trackEvent('whatsapp_click', { location: 'service_detail', service_title: service.title })}
+                      >
                         <WhatsAppIcon className="h-4 w-4 mr-2" />
                         WhatsApp
                       </a>
                     </Button>
                     <Button asChild variant="outline">
-                      <a href="tel:+51938852610">
+                      <a 
+                        href="tel:+51938852610"
+                        onClick={() => trackEvent('phone_call_click', { location: 'service_detail', service_title: service.title })}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
                         Llamar
                       </a>
                     </Button>
+
                   </div>
                 </div>
               </div>
