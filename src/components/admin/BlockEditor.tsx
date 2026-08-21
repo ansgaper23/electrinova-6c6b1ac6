@@ -250,27 +250,38 @@ export function ImageBlockEditor({
   return (
     <div className="space-y-3">
       {block.url ? (
-        <img src={block.url} alt={block.alt || ""} className="w-full rounded-lg border aspect-video object-cover" />
+        <div className="group relative">
+          <img src={block.url} alt={block.alt || ""} className="w-full rounded-lg border aspect-video object-cover transition-transform group-hover:scale-[1.01]" />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+             <Button variant="secondary" size="sm" onClick={() => generate("context")} disabled={busy}>
+               {busy ? <Loader2 className="h-3 w-3 mr-2 animate-spin" /> : <Sparkles className="h-3 w-3 mr-2" />}
+               Regenerar con IA
+             </Button>
+          </div>
+        </div>
       ) : (
-        <div className="aspect-video rounded-lg border-2 border-dashed flex flex-col items-center justify-center text-muted-foreground gap-2">
-          <ImageIcon className="h-8 w-8" />
-          <span className="text-xs">Genera con IA o pega una URL</span>
+        <div className="aspect-video rounded-lg border-2 border-dashed flex flex-col items-center justify-center text-muted-foreground gap-3 bg-muted/50 transition-colors hover:bg-muted/80">
+          <div className="h-12 w-12 rounded-full bg-background flex items-center justify-center shadow-sm">
+            <ImageIcon className="h-6 w-6 text-muted-foreground" />
+          </div>
+          <div className="text-center">
+            <p className="text-xs font-semibold text-foreground">Sin imagen de portada</p>
+            <p className="text-[10px]">Usa la IA para crear una imagen técnica profesional</p>
+          </div>
         </div>
       )}
 
-      <div className="space-y-2">
-        <Input
-          placeholder="(Opcional) Enfoque visual: ej. tablero MT, vista aérea de planta, electricista en obra…"
-          value={hint}
-          onChange={(e) => setHint(e.target.value)}
-        />
-        <div className="flex flex-wrap gap-2">
-          <Button type="button" size="sm" onClick={() => generate("context")} disabled={busy} className="flex-1 min-w-[180px]">
-            {busy ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Sparkles className="h-4 w-4 mr-2" />}
-            Generar desde el post
-          </Button>
-          <Button type="button" size="sm" variant="outline" onClick={() => generate("manual")} disabled={busy || !hint.trim()}>
-            Solo desde mi descripción
+      <div className="space-y-3 p-1">
+        <div className="flex gap-2">
+          <Input
+            placeholder="Enfoque visual (ej. tablero MT, electricista en obra…)"
+            value={hint}
+            onChange={(e) => setHint(e.target.value)}
+            className="text-sm bg-background/50 h-9"
+          />
+          <Button type="button" size="sm" onClick={() => generate("context")} disabled={busy} className="shrink-0 h-9 shadow-sm">
+            {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4 mr-2" />}
+            Generar IA
           </Button>
         </div>
       </div>

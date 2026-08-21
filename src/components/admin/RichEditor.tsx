@@ -179,10 +179,18 @@ function Toolbar({ editor, context }: { editor: Editor; context?: RichEditorCont
         <Separator orientation="vertical" className="h-6 mx-1" />
 
         <Btn onClick={openLink} active={editor.isActive("link")} title="Enlace"><LinkIcon className="h-4 w-4" /></Btn>
-        <Btn onClick={() => setImgOpen(true)} title="Imagen IA"><ImageIcon className="h-4 w-4" /></Btn>
-
+        
         <Separator orientation="vertical" className="h-6 mx-1" />
-
+        
+        <Btn onClick={() => setImgOpen(true)} title="Imagen IA">
+          <div className="relative">
+            <ImageIcon className="h-4 w-4" />
+            <Sparkles className="h-2 w-2 absolute -top-1 -right-1 text-primary animate-pulse" />
+          </div>
+        </Btn>
+        
+        <Separator orientation="vertical" className="h-6 mx-1" />
+        
         <Btn onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()} title="Deshacer"><Undo2 className="h-4 w-4" /></Btn>
         <Btn onClick={() => editor.chain().focus().redo().run()} disabled={!editor.can().redo()} title="Rehacer"><Redo2 className="h-4 w-4" /></Btn>
       </div>
