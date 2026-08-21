@@ -94,8 +94,11 @@ const Contacto = () => {
     setUtmData(utms);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    trackEvent('page_view', { page_title: 'Contacto', page_location: window.location.href });
+  }, []);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -103,6 +106,7 @@ const Contacto = () => {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
+
 
   const handleSelectChange = (value: string) => {
     setFormData(prev => ({ ...prev, projectType: value }));
