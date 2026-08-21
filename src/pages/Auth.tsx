@@ -60,7 +60,7 @@ export default function Auth() {
       setBusy(true);
       try {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth?type=recovery`,
+          redirectTo: `https://electrinovaperu.com/auth?type=recovery`,
         });
         if (error) throw error;
         toast.success("Enlace de recuperación enviado a tu correo");
