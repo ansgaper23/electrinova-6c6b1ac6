@@ -177,41 +177,53 @@ export default function BlogPostPage() {
         jsonLd={jsonLd}
       />
       <article>
-        <header className="pt-40 pb-20 gradient-hero relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-          </div>
+        <header className="pt-40 pb-32 relative overflow-hidden bg-primary">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
+          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-accent/40 via-transparent to-transparent" />
+          
           <div className="container-custom max-w-4xl relative z-10">
-            <Link to="/blog" className="text-primary-foreground/80 hover:text-accent inline-flex items-center gap-2 mb-8 text-sm font-medium transition-colors group">
-              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />Volver al listado de artículos
+            <Link to="/blog" className="text-white/60 hover:text-accent inline-flex items-center gap-2 mb-12 text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 group">
+              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-2 transition-transform" /> Volver al Blog
             </Link>
-            <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">
-              {post.category && <Badge className="bg-accent text-accent-foreground hover:bg-accent/90 px-3 py-1 border-none font-bold uppercase tracking-wider text-[10px]">{post.category}</Badge>}
-              <span className="text-primary-foreground/60 text-xs font-medium uppercase tracking-widest flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" /> {post.reading_time || 5} min de lectura
+            
+            <div className="flex flex-wrap items-center gap-4 mb-8 animate-fade-in-up">
+              {post.category && (
+                <Badge className="bg-accent text-accent-foreground px-4 py-1.5 border-none font-black uppercase tracking-[0.2em] text-[10px] shadow-xl">
+                  {post.category}
+                </Badge>
+              )}
+              <span className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
+                <Clock className="h-4 w-4 text-accent/60" /> {post.reading_time || 5} min de lectura
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight animate-fade-in-up [animation-delay:100ms] mb-8">
+            
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-white leading-[1.05] tracking-tight animate-fade-in-up [animation-delay:100ms] mb-10">
               {post.title}
             </h1>
-            {post.subtitle && <p className="text-xl md:text-2xl text-primary-foreground/80 font-light leading-relaxed animate-fade-in-up [animation-delay:200ms] mb-10 max-w-3xl border-l-2 border-accent/30 pl-6">{post.subtitle}</p>}
-            <div className="flex flex-wrap items-center gap-8 text-sm text-primary-foreground/70 animate-fade-in-up [animation-delay:300ms] py-6 border-t border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
-                  <User className="h-5 w-5 text-accent" />
+            
+            {post.subtitle && (
+              <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed animate-fade-in-up [animation-delay:200ms] mb-12 max-w-3xl border-l-4 border-accent pl-8 italic">
+                {post.subtitle}
+              </p>
+            )}
+            
+            <div className="flex flex-wrap items-center gap-10 animate-fade-in-up [animation-delay:300ms] pt-10 border-t border-white/10">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 backdrop-blur-md">
+                  <User className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <p className="text-xs text-primary-foreground/50 uppercase tracking-widest font-bold">Escrito por</p>
-                  <p className="text-primary-foreground font-semibold">{post.author || "Electrinova Perú"}</p>
+                  <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-black mb-1">Autor</p>
+                  <p className="text-white font-bold tracking-wide">{post.author || "Electrinova Perú"}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                  <Calendar className="h-5 w-5 text-primary-foreground/60" />
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 backdrop-blur-md">
+                  <Calendar className="h-6 w-6 text-white/40" />
                 </div>
                 <div>
-                  <p className="text-xs text-primary-foreground/50 uppercase tracking-widest font-bold">Publicado el</p>
-                  <p className="text-primary-foreground font-semibold">{formatDate(post.published_at)}</p>
+                  <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-black mb-1">Publicado</p>
+                  <p className="text-white font-bold tracking-wide">{formatDate(post.published_at)}</p>
                 </div>
               </div>
             </div>
@@ -219,22 +231,22 @@ export default function BlogPostPage() {
         </header>
 
         {post.cover_image && (
-          <div className="container-custom max-w-5xl -mt-16 relative z-20 px-4 sm:px-6 lg:px-8 animate-fade-in-up [animation-delay:400ms]">
-            <div className="rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden border-8 border-background bg-background">
+          <div className="container-custom max-w-5xl -mt-20 relative z-20 px-4 animate-fade-in-up [animation-delay:400ms]">
+            <div className="rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] overflow-hidden border-[12px] border-background bg-background">
               <img 
                 src={getOptimizedImageUrl(post.cover_image, { width: 1400 })} 
                 alt={post.cover_image_alt || post.title} 
-                className="w-full aspect-[21/9] object-cover hover:scale-[1.02] transition-transform duration-1000" 
+                className="w-full aspect-[21/9] object-cover hover:scale-105 transition-transform duration-1000" 
               />
             </div>
           </div>
         )}
 
-        <div className="container-custom max-w-3xl py-16 md:py-24">
+        <div className="container-custom max-w-3xl py-20 md:py-32">
           {post.excerpt && (
-            <div className="mb-16">
-              <p className="text-2xl md:text-3xl leading-relaxed text-foreground/70 font-display italic">
-                "{post.excerpt}"
+            <div className="mb-20">
+              <p className="text-2xl md:text-4xl leading-relaxed text-primary/80 font-display font-light italic border-l-4 border-accent pl-10">
+                {post.excerpt}
               </p>
             </div>
           )}
@@ -310,23 +322,25 @@ export default function BlogPostPage() {
               <div className="grid md:grid-cols-3 gap-8">
                 {related.map((r) => (
                   <Link key={r.id} to={`/blog/${r.slug}`} className="group flex flex-col h-full">
-                    <Card className="border-none shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden flex-grow flex flex-col bg-card">
-                      <div className="aspect-[16/10] overflow-hidden">
+                    <Card className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 rounded-3xl overflow-hidden flex-grow flex flex-col bg-card hover:-translate-y-2">
+                      <div className="aspect-[16/10] overflow-hidden relative">
                         {r.cover_image && (
                           <img 
                             src={getOptimizedImageUrl(r.cover_image, { width: 600 })} 
-
                             alt={r.cover_image_alt || r.title} 
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                             loading="lazy" 
                           />
                         )}
+                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-3">{formatDate(r.published_at)}</span>
-                        <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-snug line-clamp-2">{r.title}</h3>
-                        <div className="mt-auto pt-6 flex items-center text-primary text-xs font-bold gap-2">
-                          LEER MÁS <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      <div className="p-8 flex flex-col flex-grow">
+                        <span className="text-[10px] font-black text-muted-foreground/40 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                          <Calendar className="h-3 w-3 text-accent" /> {formatDate(r.published_at)}
+                        </span>
+                        <h3 className="text-xl font-display font-bold group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-6">{r.title}</h3>
+                        <div className="mt-auto pt-6 flex items-center text-primary text-[10px] font-black uppercase tracking-[0.2em] gap-3 group-hover:gap-5 transition-all duration-300">
+                          Leer artículo <ArrowRight className="h-4 w-4" />
                         </div>
                       </div>
                     </Card>

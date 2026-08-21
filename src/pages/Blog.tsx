@@ -87,26 +87,26 @@ export default function Blog() {
         jsonLd={jsonLd}
       />
       
-      <section className="pt-32 pb-20 gradient-hero overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-        </div>
+      <section className="pt-32 pb-20 relative overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-accent/50 via-transparent to-transparent" />
+        
         <div className="container-custom relative z-10 text-center">
-          <Badge variant="outline" className="mb-4 text-primary-foreground border-primary-foreground/30 px-4 py-1">
-            Conocimiento Especializado
+          <Badge variant="outline" className="mb-6 text-accent border-accent/30 bg-accent/5 px-4 py-1 uppercase tracking-widest font-bold">
+            Blog Técnico Industrial
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-primary-foreground mb-6 tracking-tight animate-fade-in-up">
-            Blog Técnico <span className="text-accent italic">Industrial</span>
+          <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight animate-fade-in-up">
+            Soluciones y <span className="text-accent italic">Normativas</span>
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed animate-fade-in-up [animation-delay:200ms]">
-            Explora las últimas tendencias en ingeniería eléctrica, automatización y normativas vigentes en el sector industrial peruano.
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed animate-fade-in-up [animation-delay:200ms]">
+            Artículos especializados en ingeniería eléctrica, seguridad y eficiencia energética para el sector industrial.
           </p>
           
-          <div className="mt-10 max-w-lg mx-auto relative group animate-fade-in-up [animation-delay:400ms]">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-primary transition-colors" />
+          <div className="mt-12 max-w-lg mx-auto relative group animate-fade-in-up [animation-delay:400ms]">
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-primary/50 h-5 w-5 group-focus-within:text-accent transition-colors" />
             <Input 
-              placeholder="Buscar guías o artículos técnicos..." 
-              className="pl-12 py-6 bg-white/95 border-none shadow-xl focus-visible:ring-accent text-foreground text-lg rounded-full"
+              placeholder="Buscar por título o tema..." 
+              className="pl-14 py-7 bg-white/10 border-white/10 shadow-2xl focus-visible:ring-accent text-white placeholder:text-white/40 text-lg rounded-2xl backdrop-blur-md"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -114,13 +114,12 @@ export default function Blog() {
         </div>
       </section>
 
-      <div className="bg-background/80 backdrop-blur-md border-b">
-        <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar">
-          <Tag className="h-4 w-4 text-muted-foreground mr-2 shrink-0" />
+      <div className="bg-white/80 dark:bg-primary/80 backdrop-blur-xl border-b sticky top-20 z-40 transition-all duration-300">
+        <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar justify-center">
           <Button 
-            variant={selectedCategory === null ? "default" : "outline"} 
+            variant={selectedCategory === null ? "default" : "ghost"} 
             size="sm" 
-            className="rounded-full shrink-0"
+            className={`rounded-full px-6 transition-all duration-300 ${selectedCategory === null ? 'shadow-lg shadow-primary/20' : 'text-muted-foreground hover:text-primary'}`}
             onClick={() => setSelectedCategory(null)}
           >
             Todos
@@ -128,9 +127,9 @@ export default function Blog() {
           {categories.map(cat => (
             <Button 
               key={cat}
-              variant={selectedCategory === cat ? "default" : "outline"} 
+              variant={selectedCategory === cat ? "default" : "ghost"} 
               size="sm" 
-              className="rounded-full shrink-0"
+              className={`rounded-full px-6 transition-all duration-300 ${selectedCategory === cat ? 'shadow-lg shadow-primary/20' : 'text-muted-foreground hover:text-primary'}`}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
@@ -169,51 +168,51 @@ export default function Blog() {
           ) : (
             <>
               {featuredPost && (
-                <div className="mb-16 animate-fade-in-up">
+                <div className="mb-20 animate-fade-in-up">
                   <Link to={`/blog/${featuredPost.slug}`} className="group block">
-                    <Card className="overflow-hidden border-none shadow-2xl hover:shadow-primary/10 transition-all duration-500 rounded-3xl">
+                    <Card className="overflow-hidden border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] hover:shadow-[0_48px_80px_-16px_rgba(0,0,0,0.15)] transition-all duration-700 rounded-[2.5rem] bg-card">
                       <div className="grid lg:grid-cols-2">
-                        <div className="aspect-[16/10] lg:aspect-square overflow-hidden relative">
+                        <div className="aspect-[16/10] lg:aspect-auto overflow-hidden relative">
                           {featuredPost.cover_image ? (
                             <img
                               src={getOptimizedImageUrl(featuredPost.cover_image, { width: 1200 })}
                               alt={featuredPost.cover_image_alt || featuredPost.title}
                               loading="eager"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                             />
                           ) : (
-                            <div className="w-full h-full bg-primary/10 flex items-center justify-center">
-                              <span className="text-primary/20 font-display text-4xl">Electrinova</span>
+                            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
+                              <span className="text-primary/10 font-display text-4xl">Electrinova</span>
                             </div>
                           )}
-                          <div className="absolute top-6 left-6">
-                            <Badge className="bg-accent text-accent-foreground px-4 py-1.5 text-sm font-bold shadow-lg">
+                          <div className="absolute top-8 left-8">
+                            <Badge className="bg-accent text-accent-foreground px-5 py-2 text-xs font-black shadow-2xl tracking-[0.2em]">
                               DESTACADO
                             </Badge>
                           </div>
                         </div>
-                        <div className="p-8 lg:p-12 flex flex-col justify-center bg-card">
-                          <div className="space-y-6">
+                        <div className="p-10 lg:p-16 flex flex-col justify-center">
+                          <div className="space-y-8">
                             {featuredPost.category && (
-                              <Badge variant="secondary" className="px-3 py-1 bg-primary/5 text-primary border-primary/10">
+                              <Badge variant="secondary" className="px-4 py-1.5 bg-primary/5 text-primary border-none text-[10px] tracking-[0.2em] font-black uppercase">
                                 {featuredPost.category}
                               </Badge>
                             )}
-                            <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight group-hover:text-primary transition-colors">
+                            <h2 className="text-3xl md:text-5xl font-display font-bold leading-[1.15] group-hover:text-primary transition-colors duration-300">
                               {featuredPost.title}
                             </h2>
                             {featuredPost.excerpt && (
-                              <p className="text-lg text-muted-foreground line-clamp-4 leading-relaxed">
+                              <p className="text-lg text-muted-foreground line-clamp-3 leading-relaxed font-light">
                                 {featuredPost.excerpt}
                               </p>
                             )}
-                            <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
-                              <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-primary/60" />{formatDate(featuredPost.published_at)}</span>
-                              {featuredPost.reading_time && <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary/60" />{featuredPost.reading_time} min</span>}
+                            <div className="flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+                              <span className="flex items-center gap-2"><Calendar className="h-4 w-4 text-accent" />{formatDate(featuredPost.published_at)}</span>
+                              {featuredPost.reading_time && <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-accent" />{featuredPost.reading_time} min</span>}
                             </div>
-                            <div className="pt-4">
-                              <span className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all underline underline-offset-8">
-                                Leer artículo completo <ArrowRight className="h-5 w-5" />
+                            <div className="pt-6">
+                              <span className="inline-flex items-center gap-3 text-primary font-black uppercase tracking-widest text-sm group-hover:gap-5 transition-all duration-300">
+                                Leer artículo <ArrowRight className="h-5 w-5" />
                               </span>
                             </div>
                           </div>
@@ -224,42 +223,42 @@ export default function Blog() {
                 </div>
               )}
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children animate">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 stagger-children animate">
                 {regularPosts.map((p) => (
                   <Link key={p.id} to={`/blog/${p.slug}`} className="group">
-                    <Card className="overflow-hidden h-full border-none bg-card shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 rounded-2xl flex flex-col">
-                      <div className="aspect-video overflow-hidden relative">
+                    <Card className="overflow-hidden h-full border-none bg-card shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 rounded-3xl flex flex-col">
+                      <div className="aspect-[4/3] overflow-hidden relative">
                         {p.cover_image ? (
                           <img
                             src={getOptimizedImageUrl(p.cover_image, { width: 600 })}
                             alt={p.cover_image_alt || p.title}
                             loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                           />
                         ) : (
                           <div className="w-full h-full bg-primary/5 flex items-center justify-center" />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <div className="flex items-center justify-between mb-4">
-                          {p.category && <Badge variant="secondary" className="bg-primary/5 text-primary border-none text-[10px] uppercase tracking-widest">{p.category}</Badge>}
-                          <span className="text-[10px] font-medium text-muted-foreground flex items-center gap-1 uppercase tracking-wider">
-                            <Clock className="h-3 w-3" /> {p.reading_time || 5} min
+                      <div className="p-8 flex flex-col flex-grow">
+                        <div className="flex items-center justify-between mb-6">
+                          {p.category && <Badge className="bg-primary/5 text-primary border-none text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1">{p.category}</Badge>}
+                          <span className="text-[10px] font-bold text-muted-foreground/60 flex items-center gap-1.5 uppercase tracking-widest">
+                            <Clock className="h-3 w-3 text-accent" /> {p.reading_time || 5} min
                           </span>
                         </div>
-                        <h3 className="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="text-xl font-display font-bold leading-snug mb-4 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                           {p.title}
                         </h3>
                         {p.excerpt && (
-                          <p className="text-sm text-muted-foreground line-clamp-3 mb-6 flex-grow leading-relaxed">
+                          <p className="text-sm text-muted-foreground/80 line-clamp-3 mb-8 flex-grow leading-relaxed font-light">
                             {p.excerpt}
                           </p>
                         )}
-                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-muted">
-                          <span className="text-xs text-muted-foreground">{formatDate(p.published_at)}</span>
-                          <span className="text-primary font-bold text-xs inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Leer más <ArrowRight className="h-3 w-3" />
+                        <div className="flex items-center justify-between mt-auto pt-6 border-t border-muted/50">
+                          <span className="text-[10px] font-bold text-muted-foreground/50 uppercase tracking-widest">{formatDate(p.published_at)}</span>
+                          <span className="text-primary font-black uppercase tracking-widest text-[10px] inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            Leer más <ArrowRight className="h-4 w-4" />
                           </span>
                         </div>
                       </div>
