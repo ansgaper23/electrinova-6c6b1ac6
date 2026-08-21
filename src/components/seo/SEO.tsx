@@ -23,8 +23,16 @@ function useAbsoluteUrl() {
   return (pathOrUrl: string) => {
     if (!pathOrUrl) return origin;
     if (/^https?:\/\//i.test(pathOrUrl)) {
-      // Si ya es una URL absoluta, nos aseguramos que use el dominio correcto si es del preview
-      return pathOrUrl.replace(/^https:\/\/.*\.lovable\.app/, origin);
+      // Si es una URL de Lovable app, la forzamos al dominio principal
+      if (pathOrUrl.includes(".lovable.app")) {
+        try {
+          const url = new URL(pathOrUrl);
+          return `${origin}${url.pathname}${url.search}${url.hash}`;
+        } catch (e) {
+          return pathOrUrl.replace(/^https:\/\/.*\.lovable\.app/, origin);
+        }
+      }
+      return pathOrUrl;
     }
     const cleanPath = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
     return `${origin}${cleanPath}`;
