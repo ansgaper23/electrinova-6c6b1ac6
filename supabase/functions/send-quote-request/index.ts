@@ -47,7 +47,9 @@ interface QuoteRequest {
   phone: string;
   projectType: string;
   message: string;
+  utm_data?: Record<string, string>;
 }
+
 
 const handler = async (req: Request): Promise<Response> => {
   console.log("Received request to send-quote-request function");
