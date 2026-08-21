@@ -291,10 +291,12 @@ const Contacto = () => {
                     href={`https://wa.me/51938852610?text=${encodeURIComponent("Hola, me gustaría solicitar información sobre los servicios eléctricos de ELECTRINOVA PERÚ.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('whatsapp_click', { location: 'contact_page', ...utmData })}
                     className="inline-flex items-center justify-center gap-2 bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-white/90 transition-colors"
                   >
                     Escribir por WhatsApp
                   </a>
+
                 </CardContent>
               </Card>
             </div>
