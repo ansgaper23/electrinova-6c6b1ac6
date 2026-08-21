@@ -11,7 +11,7 @@ const stats = [
 
 
 function StatItem({ stat, isActive }: { stat: typeof stats[0]; isActive: boolean }) {
-  const count = useCountUp(stat.number, isActive, stat.number % 1 !== 0);
+  const count = useCountUp(stat.number, isActive, 1500, stat.number % 1 !== 0 ? 1 : 0);
   return (
     <div className="text-center">
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent/15 text-accent mb-4">
