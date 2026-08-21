@@ -67,7 +67,7 @@ export default function Blog() {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Blog técnico Electrinova Perú",
-    url: "/blog",
+    url: "https://electrinovaperu.com/blog",
     description: "Artículos técnicos sobre instalaciones eléctricas industriales, normativa CNE, automatización y mantenimiento en Perú.",
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",

@@ -46,7 +46,7 @@ const ServicioDetalle = () => {
     "description": service.description,
     "provider": {
       "@type": "ElectricalContractor",
-      "name": "ELECTRINOVA PERÚ S.A.C.",
+      "name": "ELECTRINOVA PERÚ E.I.R.L.",
       "telephone": "+51938852610",
       "url": "https://electrinovaperu.com",
       "logo": "https://electrinovaperu.com/logo-electrinova.png",

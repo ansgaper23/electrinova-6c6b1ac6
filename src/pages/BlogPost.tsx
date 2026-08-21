@@ -147,7 +147,7 @@ export default function BlogPostPage() {
     </Layout>
   );
 
-  const url = `/blog/${post.slug}`;
+  const url = `https://electrinovaperu.com/blog/${post.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -156,11 +156,11 @@ export default function BlogPostPage() {
     image: post.cover_image ? [post.cover_image] : undefined,
     datePublished: post.published_at,
     dateModified: post.updated_at,
-    author: { "@type": "Organization", name: post.author },
+    author: { "@type": "Organization", name: post.author || "Electrinova Perú" },
     publisher: {
       "@type": "Organization",
-      name: "Electrinova Perú",
-      logo: { "@type": "ImageObject", url: "/logo-electrinova.png" },
+      name: "ELECTRINOVA PERÚ E.I.R.L.",
+      logo: { "@type": "ImageObject", url: "https://electrinovaperu.com/logo-electrinova.png" },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: post.keywords?.join(", "),

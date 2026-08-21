@@ -18,11 +18,22 @@ export type SEOProps = {
 };
 
 function useAbsoluteUrl() {
-  const origin = typeof window !== "undefined" ? window.location.origin : "https://electrinovaperu.com";
+  const origin = "https://electrinovaperu.com";
   
   return (pathOrUrl: string) => {
     if (!pathOrUrl) return origin;
-    if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+    if (/^https?:\/\//i.test(pathOrUrl)) {
+      // Si es una URL de Lovable app, la forzamos al dominio principal
+      if (pathOrUrl.includes(".lovable.app")) {
+        try {
+          const url = new URL(pathOrUrl);
+          return `${origin}${url.pathname}${url.search}${url.hash}`;
+        } catch (e) {
+          return pathOrUrl.replace(/^https:\/\/.*\.lovable\.app/, origin);
+        }
+      }
+      return pathOrUrl;
+    }
     const cleanPath = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
     return `${origin}${cleanPath}`;
   };
