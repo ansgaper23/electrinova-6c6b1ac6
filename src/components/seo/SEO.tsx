@@ -18,11 +18,14 @@ export type SEOProps = {
 };
 
 function useAbsoluteUrl() {
-  const origin = typeof window !== "undefined" ? window.location.origin : "https://electrinovaperu.com";
+  const origin = "https://electrinovaperu.com";
   
   return (pathOrUrl: string) => {
     if (!pathOrUrl) return origin;
-    if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+    if (/^https?:\/\//i.test(pathOrUrl)) {
+      // Si ya es una URL absoluta, nos aseguramos que use el dominio correcto si es del preview
+      return pathOrUrl.replace(/^https:\/\/.*\.lovable\.app/, origin);
+    }
     const cleanPath = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
     return `${origin}${cleanPath}`;
   };
