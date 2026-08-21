@@ -33,6 +33,25 @@ export default function Auth() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (isRecovery) {
+      if (newPassword.length < 8) {
+        toast.error("La contraseña debe tener al menos 8 caracteres");
+        return;
+      }
+      setBusy(true);
+      try {
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        if (error) throw error;
+        toast.success("Contraseña actualizada correctamente");
+        navigate("/admin", { replace: true });
+      } catch (err: any) {
+        toast.error(err.message || "Error al actualizar contraseña");
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+
     if (mode === "reset") {
       if (!email || !email.includes("@")) {
         toast.error("Ingresa un correo válido");
