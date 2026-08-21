@@ -32,6 +32,12 @@ export default function Blog() {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    // Track blog view
+    trackEvent('view_item_list', { item_list_name: 'Blog' });
+  }, []);
+
+
   const categories = useMemo(() => {
     const cats = posts.map(p => p.category).filter(Boolean);
     return Array.from(new Set(cats));
