@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/media/ResponsiveImage";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 // Responsive hero images
 import hero1Url from "@/assets/hero/hero-slide-1.jpg";
