@@ -23,8 +23,21 @@ function slugify(text: string) {
 const ServicioDetalle = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = services.find((s) => slugify(s.title) === slug);
+  
+  useEffect(() => {
+    if (service) {
+      trackEvent('view_item', {
+        items: [{
+          item_id: slug,
+          item_name: service.title,
+          item_category: 'Servicio'
+        }]
+      });
+    }
+  }, [service, slug]);
 
   if (!service) return <Navigate to="/" replace />;
+
 
   const jsonLd = {
     "@context": "https://schema.org",
