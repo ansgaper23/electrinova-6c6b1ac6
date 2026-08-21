@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
-export function useCountUp(target: number, isActive: boolean, duration = 1500) {
-  const [count, setCount] = useState(0);
+export function useCountUp(target: number, isActive: boolean, duration = 1500, decimals = 0) {
+  const [count, setCount] = useState<number | string>(0);
 
   useEffect(() => {
     if (!isActive) return;
 
-    let start = 0;
     const startTime = performance.now();
 
     function step(currentTime: number) {
@@ -14,16 +13,18 @@ export function useCountUp(target: number, isActive: boolean, duration = 1500) {
       const progress = Math.min(elapsed / duration, 1);
       // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
+      const current = eased * target;
       
-      setCount(current);
+      setCount(decimals > 0 ? current.toFixed(decimals) : Math.round(current));
+      
       if (progress < 1) {
         requestAnimationFrame(step);
       }
     }
 
     requestAnimationFrame(step);
-  }, [isActive, target, duration]);
+  }, [isActive, target, duration, decimals]);
 
   return count;
 }
+
