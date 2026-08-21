@@ -125,7 +125,7 @@ export const HeroSection = () => {
               size="lg"
               className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 font-semibold text-lg px-8 py-6"
             >
-              <Link to="/proyectos">
+              <Link to="/proyectos" onClick={() => trackEvent('cta_click', { location: 'hero', button_text: 'Ver Proyectos' })}>
                 Ver Proyectos
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
