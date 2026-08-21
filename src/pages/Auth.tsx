@@ -24,8 +24,8 @@ export default function Auth() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (!loading && user) navigate("/admin", { replace: true });
-  }, [user, loading, navigate]);
+    if (!loading && user && mode !== "reset") navigate("/admin", { replace: true });
+  }, [user, loading, navigate, mode]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
