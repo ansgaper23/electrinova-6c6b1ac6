@@ -49,14 +49,14 @@ export function RichEditor({ value, onChange, context, placeholder }: Props) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-lg max-w-none focus:outline-none min-h-[400px] px-5 py-6 " +
+          "prose prose-lg max-w-none focus:outline-none min-h-[500px] px-8 py-10 " +
           "prose-headings:font-display prose-headings:text-foreground " +
-          "prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3 " +
-          "prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-2 " +
-          "prose-p:text-foreground/90 prose-p:leading-relaxed " +
-          "prose-a:text-primary prose-strong:text-foreground " +
-          "prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-1 prose-blockquote:not-italic " +
-          "prose-img:rounded-lg",
+          "prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:font-bold prose-h2:border-b prose-h2:pb-2 " +
+          "prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:font-semibold " +
+          "prose-p:text-foreground/90 prose-p:leading-relaxed prose-p:text-lg " +
+          "prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground " +
+          "prose-blockquote:border-l-4 prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:not-italic prose-blockquote:rounded-r-lg " +
+          "prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto",
       },
     },
     onUpdate({ editor }) {
@@ -75,9 +75,11 @@ export function RichEditor({ value, onChange, context, placeholder }: Props) {
   if (!editor) return null;
 
   return (
-    <div className="border rounded-lg bg-background overflow-hidden">
+    <div className="rounded-xl bg-background shadow-sm ring-1 ring-border overflow-hidden transition-all focus-within:ring-primary/30 focus-within:shadow-md">
       <Toolbar editor={editor} context={context} />
-      <EditorContent editor={editor} />
+      <div className="max-w-4xl mx-auto">
+        <EditorContent editor={editor} />
+      </div>
     </div>
   );
 }
@@ -155,7 +157,7 @@ function Toolbar({ editor, context }: { editor: Editor; context?: RichEditorCont
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-1 px-2 py-1.5 border-b bg-muted/30 sticky top-[57px] z-[5]">
+      <div className="flex flex-wrap items-center gap-1 px-4 py-2 border-b bg-muted/20 sticky top-[57px] z-[5] backdrop-blur-md">
         <Btn onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive("heading", { level: 2 })} title="Título H2"><Heading2 className="h-4 w-4" /></Btn>
         <Btn onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive("heading", { level: 3 })} title="Subtítulo H3"><Heading3 className="h-4 w-4" /></Btn>
         <Btn onClick={() => editor.chain().focus().setParagraph().run()} active={editor.isActive("paragraph")} title="Párrafo"><Pilcrow className="h-4 w-4" /></Btn>
@@ -177,10 +179,18 @@ function Toolbar({ editor, context }: { editor: Editor; context?: RichEditorCont
         <Separator orientation="vertical" className="h-6 mx-1" />
 
         <Btn onClick={openLink} active={editor.isActive("link")} title="Enlace"><LinkIcon className="h-4 w-4" /></Btn>
-        <Btn onClick={() => setImgOpen(true)} title="Imagen IA"><ImageIcon className="h-4 w-4" /></Btn>
-
+        
         <Separator orientation="vertical" className="h-6 mx-1" />
-
+        
+        <Btn onClick={() => setImgOpen(true)} title="Imagen IA">
+          <div className="relative">
+            <ImageIcon className="h-4 w-4" />
+            <Sparkles className="h-2 w-2 absolute -top-1 -right-1 text-primary animate-pulse" />
+          </div>
+        </Btn>
+        
+        <Separator orientation="vertical" className="h-6 mx-1" />
+        
         <Btn onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()} title="Deshacer"><Undo2 className="h-4 w-4" /></Btn>
         <Btn onClick={() => editor.chain().focus().redo().run()} disabled={!editor.can().redo()} title="Rehacer"><Redo2 className="h-4 w-4" /></Btn>
       </div>
