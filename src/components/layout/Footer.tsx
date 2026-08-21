@@ -138,6 +138,8 @@ export function Footer() {
                 <a
                   href="tel:+51938852610"
                   className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+                  onClick={() => trackEvent('phone_call_click', { location: 'footer' })}
+
                 >
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
                   <span>938 852 610</span>
