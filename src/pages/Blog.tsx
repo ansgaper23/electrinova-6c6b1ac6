@@ -285,7 +285,7 @@ export default function Blog() {
             <Input placeholder="Tu correo electrónico" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12" />
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground hover:text-accent-foreground font-bold px-8"
               onClick={() => trackEvent('newsletter_signup_click', { location: 'blog_footer' })}
             >
               Suscribirse

@@ -80,7 +80,7 @@ export function Header() {
               <Phone className="h-4 w-4" />
               <span className="font-medium">938 852 610</span>
             </a>
-            <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold">
+            <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 hover:text-accent-foreground font-semibold">
               <Link to="/contacto">
                 <Zap className="h-4 w-4 mr-1" />
                 Cotizar
@@ -123,7 +123,7 @@ export function Header() {
                 <Phone className="h-4 w-4" />
                 <span className="font-medium">+51 938 852 610</span>
               </a>
-              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold w-full">
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 hover:text-accent-foreground font-semibold w-full">
                 <Link to="/contacto">
                   <Zap className="h-4 w-4 mr-2" />
                   Cotizar Ahora
