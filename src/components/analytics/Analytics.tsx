@@ -15,10 +15,10 @@ interface AnalyticsProps {
 }
 
 export const Analytics: React.FC<AnalyticsProps> = ({ 
-  gtmId = "GTM-MOCK123", // Reemplazar con IDs reales del cliente
-  gaId = "G-MOCK123",
-  adsId = "AW-MOCK123",
-  linkedinId = "MOCK123"
+  gtmId = "GTM-KCRSQNCP",
+  gaId = "G-P2N2Z4V23Y",
+  adsId = "AW-16671043431",
+  linkedinId = "6822452"
 }) => {
   useEffect(() => {
     // Inicializar DataLayer
