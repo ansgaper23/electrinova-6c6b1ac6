@@ -114,13 +114,12 @@ export default function Blog() {
         </div>
       </section>
 
-      <div className="bg-background/80 backdrop-blur-md border-b">
-        <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar">
-          <Tag className="h-4 w-4 text-muted-foreground mr-2 shrink-0" />
+      <div className="bg-white/80 dark:bg-primary/80 backdrop-blur-xl border-b sticky top-20 z-40 transition-all duration-300">
+        <div className="container-custom py-4 flex flex-wrap items-center gap-3 overflow-x-auto no-scrollbar justify-center">
           <Button 
-            variant={selectedCategory === null ? "default" : "outline"} 
+            variant={selectedCategory === null ? "default" : "ghost"} 
             size="sm" 
-            className="rounded-full shrink-0"
+            className={`rounded-full px-6 transition-all duration-300 ${selectedCategory === null ? 'shadow-lg shadow-primary/20' : 'text-muted-foreground hover:text-primary'}`}
             onClick={() => setSelectedCategory(null)}
           >
             Todos
@@ -128,9 +127,9 @@ export default function Blog() {
           {categories.map(cat => (
             <Button 
               key={cat}
-              variant={selectedCategory === cat ? "default" : "outline"} 
+              variant={selectedCategory === cat ? "default" : "ghost"} 
               size="sm" 
-              className="rounded-full shrink-0"
+              className={`rounded-full px-6 transition-all duration-300 ${selectedCategory === cat ? 'shadow-lg shadow-primary/20' : 'text-muted-foreground hover:text-primary'}`}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
