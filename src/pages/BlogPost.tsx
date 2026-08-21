@@ -8,8 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, ArrowRight, User, Tag } from "lucide-react";
+import { trackEvent } from "@/components/analytics/Analytics";
 import type { BlogPost, BlogBlock } from "@/lib/blog";
 import { formatDate, getOptimizedImageUrl } from "@/lib/blog";
+
 
 function Block({ b, isFirstParagraph }: { b: BlogBlock; isFirstParagraph?: boolean }) {
   switch (b.type) {
