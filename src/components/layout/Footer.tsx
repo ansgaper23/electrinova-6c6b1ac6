@@ -79,8 +79,10 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="p-2 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-300"
                 aria-label="WhatsApp"
+                onClick={() => trackEvent('whatsapp_click', { location: 'footer_icon' })}
               >
                 <WhatsAppIcon className="h-5 w-5 text-white" />
+
               </a>
             </div>
           </div>
