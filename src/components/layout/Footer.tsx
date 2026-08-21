@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Zap } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { trackEvent } from "@/components/analytics/Analytics";
+
 
 const LOGO_URL = "/logo-electrinova.png";
 
