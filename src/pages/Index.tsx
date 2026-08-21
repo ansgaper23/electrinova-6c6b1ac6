@@ -37,7 +37,12 @@ const Index = () => {
     faqJsonLd,
   ];
 
+  useEffect(() => {
+    trackEvent('page_view', { page_title: 'Home', page_location: window.location.href });
+  }, []);
+
   return (
+
     <Layout>
       <SEO
         title="Electricista industrial en Lima | Electrinova Perú"
