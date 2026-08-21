@@ -81,7 +81,21 @@ const Contacto = () => {
     message: "",
   });
 
+  const [utmData, setUtmData] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    // Capturar parámetros UTM de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const utms: Record<string, string> = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(param => {
+      const value = urlParams.get(param);
+      if (value) utms[param] = value;
+    });
+    setUtmData(utms);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
