@@ -120,10 +120,14 @@ const Contacto = () => {
       // Validar datos
       const validatedData = contactSchema.parse(formData);
       
-      // Enviar a edge function
+      // Enviar a edge function con UTMs
       const { data, error } = await supabase.functions.invoke('send-quote-request', {
-        body: validatedData,
+        body: {
+          ...validatedData,
+          utm_data: utmData
+        },
       });
+
 
       if (error) {
         console.error('Error from edge function:', error);
