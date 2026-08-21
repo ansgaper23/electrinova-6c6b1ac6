@@ -33,14 +33,16 @@ const ServicioDetalle = () => {
       "name": "ELECTRINOVA PERÚ S.A.C.",
       "telephone": "+51938852610",
       "url": "https://electrinovaperu.com",
-      "logo": "https://electrinovaperu.com/logo.png",
+      "logo": "https://electrinovaperu.com/logo-electrinova.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Pje Laburre 158",
         "addressLocality": "Cercado de Lima",
         "addressRegion": "Lima",
+        "postalCode": "15001",
         "addressCountry": "PE"
       }
+
     },
     "areaServed": {
       "@type": "City",

@@ -166,23 +166,25 @@ const Contacto = () => {
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
-          name: "Contacto Electrinova Perú",
-          url: "https://electrinovaperu.com/contacto",
-          inLanguage: "es-PE",
-          about: {
+          "name": "Contacto Electrinova Perú",
+          "url": "https://electrinovaperu.com/contacto",
+          "inLanguage": "es-PE",
+          "mainEntity": {
             "@type": "ElectricalContractor",
-            name: "ELECTRINOVA PERÚ S.A.C.",
-            telephone: "+51938852610",
-            email: "ventas@electrinovaperu.com",
-            address: {
+            "name": "ELECTRINOVA PERÚ S.A.C.",
+            "telephone": "+51938852610",
+            "email": "ventas@electrinovaperu.com",
+            "address": {
               "@type": "PostalAddress",
-              streetAddress: "Pje Laburre 158",
-              addressLocality: "Cercado de Lima",
-              addressRegion: "Lima",
-              addressCountry: "PE",
+              "streetAddress": "Pje Laburre 158",
+              "addressLocality": "Cercado de Lima",
+              "addressRegion": "Lima",
+              "postalCode": "15001",
+              "addressCountry": "PE",
             },
           },
         }}
+
       />
       {/* Hero Section */}
       <section className="pt-32 pb-16 gradient-hero">

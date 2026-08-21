@@ -11,6 +11,7 @@ const FeaturedProjects = lazy(() => import("@/components/home/FeaturedProjects")
 const WorkProcess = lazy(() => import("@/components/home/WorkProcess").then(m => ({ default: m.WorkProcess })));
 const Certifications = lazy(() => import("@/components/home/Certifications").then(m => ({ default: m.Certifications })));
 const StatsSection = lazy(() => import("@/components/home/StatsSection").then(m => ({ default: m.StatsSection })));
+const GoogleReviews = lazy(() => import("@/components/home/GoogleReviews").then(m => ({ default: m.GoogleReviews })));
 const TestimonialsSection = lazy(() => import("@/components/home/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })));
 const FAQSection = lazy(() => import("@/components/home/FAQSection").then(m => ({ default: m.FAQSection })));
 const CTASection = lazy(() => import("@/components/home/CTASection").then(m => ({ default: m.CTASection })));
@@ -51,6 +52,7 @@ const Index = () => {
         <WorkProcess />
         <Certifications />
         <StatsSection />
+        <GoogleReviews />
         <TestimonialsSection />
         <FAQSection />
         <CTASection />
@@ -60,3 +62,4 @@ const Index = () => {
 };
 
 export default Index;
+

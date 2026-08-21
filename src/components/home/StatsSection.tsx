@@ -1,16 +1,17 @@
-import { Clock, CheckCircle2, Users, Award } from "lucide-react";
+import { Clock, CheckCircle2, Users, Star } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
   { number: 5, suffix: "+", label: "Años de Experiencia", icon: Clock },
   { number: 50, suffix: "+", label: "Proyectos Ejecutados", icon: CheckCircle2 },
+  { number: 4.9, suffix: "/5", label: "Calificación Google", icon: Star },
   { number: 30, suffix: "+", label: "Clientes Corporativos", icon: Users },
-  { number: 15, suffix: "+", label: "Profesionales Certificados", icon: Award },
 ];
 
+
 function StatItem({ stat, isActive }: { stat: typeof stats[0]; isActive: boolean }) {
-  const count = useCountUp(stat.number, isActive);
+  const count = useCountUp(stat.number, isActive, 1500, stat.number % 1 !== 0 ? 1 : 0);
   return (
     <div className="text-center">
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent/15 text-accent mb-4">

@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { companyInfo } from "@/data/company-info";
 
 const SITE_NAME = "ELECTRINOVA PERÚ";
 const DEFAULT_OG_IMAGE = "/og-electrinova.png";
@@ -32,6 +33,35 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
   const canonical = toAbsoluteUrl(path);
   const image = toAbsoluteUrl(ogImage || DEFAULT_OG_IMAGE);
 
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": companyInfo.url,
+    "name": companyInfo.name,
+    "legalName": companyInfo.legalName,
+    "url": companyInfo.url,
+    "logo": companyInfo.logo,
+    "image": companyInfo.image,
+    "description": companyInfo.description,
+    "address": {
+      "@type": "PostalAddress",
+      ...companyInfo.address
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": companyInfo.geo.latitude,
+      "longitude": companyInfo.geo.longitude
+    },
+    "telephone": companyInfo.contact.phone,
+    "priceRange": companyInfo.priceRange,
+    "openingHours": companyInfo.openingHours,
+    "sameAs": companyInfo.socialLinks
+  };
+
+  const combinedJsonLd = jsonLd 
+    ? (Array.isArray(jsonLd) ? [localBusinessJsonLd, ...jsonLd] : [localBusinessJsonLd, jsonLd])
+    : localBusinessJsonLd;
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -57,9 +87,8 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
+      <script type="application/ld+json">{JSON.stringify(combinedJsonLd)}</script>
     </Helmet>
   );
 }
+
