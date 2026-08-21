@@ -66,7 +66,13 @@ export const trackEvent = (eventName: string, params?: Record<string, any>) => {
     window.dataLayer.push({
       event: eventName,
       ...params,
+      timestamp: new Date().toISOString(),
     });
-    console.log(`[Analytics] Event tracked: ${eventName}`, params);
+    
+    // Log for debugging (only in development if needed)
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[Analytics] Event tracked: ${eventName}`, params);
+    }
   }
 };
+
