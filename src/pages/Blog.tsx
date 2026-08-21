@@ -223,42 +223,42 @@ export default function Blog() {
                 </div>
               )}
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children animate">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 stagger-children animate">
                 {regularPosts.map((p) => (
                   <Link key={p.id} to={`/blog/${p.slug}`} className="group">
-                    <Card className="overflow-hidden h-full border-none bg-card shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 rounded-2xl flex flex-col">
-                      <div className="aspect-video overflow-hidden relative">
+                    <Card className="overflow-hidden h-full border-none bg-card shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 rounded-3xl flex flex-col">
+                      <div className="aspect-[4/3] overflow-hidden relative">
                         {p.cover_image ? (
                           <img
                             src={getOptimizedImageUrl(p.cover_image, { width: 600 })}
                             alt={p.cover_image_alt || p.title}
                             loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                           />
                         ) : (
                           <div className="w-full h-full bg-primary/5 flex items-center justify-center" />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <div className="flex items-center justify-between mb-4">
-                          {p.category && <Badge variant="secondary" className="bg-primary/5 text-primary border-none text-[10px] uppercase tracking-widest">{p.category}</Badge>}
-                          <span className="text-[10px] font-medium text-muted-foreground flex items-center gap-1 uppercase tracking-wider">
-                            <Clock className="h-3 w-3" /> {p.reading_time || 5} min
+                      <div className="p-8 flex flex-col flex-grow">
+                        <div className="flex items-center justify-between mb-6">
+                          {p.category && <Badge className="bg-primary/5 text-primary border-none text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1">{p.category}</Badge>}
+                          <span className="text-[10px] font-bold text-muted-foreground/60 flex items-center gap-1.5 uppercase tracking-widest">
+                            <Clock className="h-3 w-3 text-accent" /> {p.reading_time || 5} min
                           </span>
                         </div>
-                        <h3 className="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="text-xl font-display font-bold leading-snug mb-4 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                           {p.title}
                         </h3>
                         {p.excerpt && (
-                          <p className="text-sm text-muted-foreground line-clamp-3 mb-6 flex-grow leading-relaxed">
+                          <p className="text-sm text-muted-foreground/80 line-clamp-3 mb-8 flex-grow leading-relaxed font-light">
                             {p.excerpt}
                           </p>
                         )}
-                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-muted">
-                          <span className="text-xs text-muted-foreground">{formatDate(p.published_at)}</span>
-                          <span className="text-primary font-bold text-xs inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Leer más <ArrowRight className="h-3 w-3" />
+                        <div className="flex items-center justify-between mt-auto pt-6 border-t border-muted/50">
+                          <span className="text-[10px] font-bold text-muted-foreground/50 uppercase tracking-widest">{formatDate(p.published_at)}</span>
+                          <span className="text-primary font-black uppercase tracking-widest text-[10px] inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            Leer más <ArrowRight className="h-4 w-4" />
                           </span>
                         </div>
                       </div>
