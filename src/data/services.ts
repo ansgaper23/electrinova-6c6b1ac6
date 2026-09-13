@@ -36,7 +36,8 @@ export const services: Service[] = [
     features: [
       "Mantenimiento preventivo y correctivo",
       "Lubricación y verificación de componentes",
-      "Pruebas mecánicas, eléctricas y dieléctricas"
+      "Pruebas mecánicas, eléctricas y dieléctricas",
+      "Mantenimiento de transformadores de media tensión"
     ]
   },
   {
@@ -46,7 +47,8 @@ export const services: Service[] = [
     features: [
       "Mantenimiento preventivo y correctivo",
       "Inspección del equipamiento eléctrico",
-      "Detección y corrección de problemas"
+      "Detección y corrección de problemas",
+      "Reparación de tableros eléctricos industriales urgencias"
     ]
   },
   {
@@ -56,7 +58,8 @@ export const services: Service[] = [
     features: [
       "Mantenimiento y reactivación de pozos",
       "Medición con telurómetro digital certificado",
-      "Protocolos firmados por Ing. Electricista habilitado"
+      "Protocolos firmados por Ing. Electricista habilitado",
+      "Certificado de operatividad de pozo a tierra"
     ]
   },
   {
@@ -129,7 +132,8 @@ export const services: Service[] = [
       "Mantenimiento de sistemas de protección y pozos a tierra",
       "Implementación de luces de emergencia y señalización",
       "Expediente técnico para riesgo alto y muy alto",
-      "Certificación por ingeniero electricista habilitado"
+      "Certificación por ingeniero electricista habilitado",
+      "Solución a observaciones de Defensa Civil"
     ]
   },
 ];

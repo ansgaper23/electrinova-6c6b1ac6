@@ -45,8 +45,8 @@ const Index = () => {
 
     <Layout>
       <SEO
-        title="Electricista industrial en Lima | Electrinova Perú"
-        description="Instalaciones eléctricas industriales, pozos a tierra certificados, subestaciones, tableros MT/BT y automatización en Lima. Cotiza gratis: 938 852 610."
+        title="Empresa de Instalaciones y Mantenimiento Eléctrico Industrial en Lima | Electrinova"
+        description="Contratistas eléctricos en Lima especializados en montaje industrial, pozos a tierra certificados, subestaciones y levantamiento de observaciones ITSE/INDECI. Atención a empresas."
         path="/"
         jsonLd={jsonLd}
       />

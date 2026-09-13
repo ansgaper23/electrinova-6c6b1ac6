@@ -81,8 +81,8 @@ export default function Blog() {
   return (
     <Layout>
       <SEO
-        title="Blog técnico eléctrico industrial | Electrinova Perú"
-        description="Guías técnicas y normativas sobre pozos a tierra, tableros eléctricos, subestaciones, automatización industrial y mantenimiento eléctrico en Lima, Perú."
+        title="Blog de Ingeniería Eléctrica Industrial y Eficiencia Energética | Electrinova"
+        description="Artículos y guías sobre cómo reducir el consumo eléctrico industrial, auditorías eléctricas, mantenimiento preventivo y normativa CNE en Perú."
         path="/blog"
         jsonLd={jsonLd}
       />
