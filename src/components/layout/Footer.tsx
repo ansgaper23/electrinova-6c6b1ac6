@@ -23,6 +23,12 @@ const quickLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+const coverageZones = [
+  { href: "/servicios-zona/canete-san-vicente", label: "Cañete y San Vicente" },
+  { href: "/servicios-zona/chincha", label: "Chincha" },
+  { href: "/servicios-zona/pisco", label: "Pisco y Paracas" },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const phoneNumber = "51938852610";
