@@ -66,7 +66,11 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
     "telephone": companyInfo.contact.phone,
     "priceRange": companyInfo.priceRange,
     "openingHours": companyInfo.openingHours,
-    "sameAs": companyInfo.socialLinks
+    "sameAs": companyInfo.socialLinks,
+    "areaServed": companyInfo.areaServed.map((city) => ({
+      "@type": "City",
+      "name": city
+    }))
   };
 
   const combinedJsonLd = jsonLd 

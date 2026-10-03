@@ -23,6 +23,12 @@ const quickLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+const coverageZones = [
+  { href: "/servicios-zona/canete-san-vicente", label: "Cañete y San Vicente" },
+  { href: "/servicios-zona/chincha", label: "Chincha" },
+  { href: "/servicios-zona/pisco", label: "Pisco y Paracas" },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const phoneNumber = "51938852610";
@@ -101,6 +107,22 @@ export function Footer() {
                     className="text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                   >
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-lg font-semibold mt-8 mb-4 flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-accent" />
+              Zonas de Cobertura
+            </h3>
+            <ul className="space-y-3">
+              {coverageZones.map((zone) => (
+                <li key={zone.href}>
+                  <Link
+                    to={zone.href}
+                    className="text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+                  >
+                    {zone.label}
                   </Link>
                 </li>
               ))}

@@ -32,7 +32,7 @@ const Index = () => {
       url: "https://electrinovaperu.com/",
       inLanguage: "es-PE",
       description:
-        "Servicios eléctricos industriales en Lima: pozos a tierra, subestaciones, tableros MT/BT, automatización y mantenimiento.",
+        "Servicios eléctricos industriales en Lima y el Sur Chico (Cañete, San Vicente, Chincha, Pisco): pozos a tierra, subestaciones, tableros MT/BT, automatización y mantenimiento.",
     },
     faqJsonLd,
   ];
@@ -45,8 +45,8 @@ const Index = () => {
 
     <Layout>
       <SEO
-        title="Empresa de Instalaciones y Mantenimiento Eléctrico Industrial en Lima | Electrinova"
-        description="Contratistas eléctricos en Lima especializados en montaje industrial, pozos a tierra certificados, subestaciones y levantamiento de observaciones ITSE/INDECI. Atención a empresas."
+        title="Servicios Eléctricos Industriales en Lima, Cañete, Chincha y Pisco | Electrinova"
+        description="Contratistas eléctricos en Lima y el Sur Chico (Cañete, San Vicente, Chincha, Pisco): montaje industrial, pozos a tierra certificados, subestaciones y levantamiento de observaciones ITSE/INDECI. Atención a empresas."
         path="/"
         jsonLd={jsonLd}
       />

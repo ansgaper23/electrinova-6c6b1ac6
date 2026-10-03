@@ -27,6 +27,7 @@ const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
 const AdminPosts = lazy(() => import("./pages/admin/AdminPosts"));
 const AdminPostEditor = lazy(() => import("./pages/admin/AdminPostEditor"));
 const GuiaITSE = lazy(() => import("./pages/blog/GuiaITSE"));
+const ServiciosZona = lazy(() => import("./pages/ServiciosZona"));
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
                 <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
                 <Route path="/terminos-servicio" element={<TerminosServicio />} />
                 <Route path="/servicios/:slug" element={<ServicioDetalle />} />
+                <Route path="/servicios-zona/:zona" element={<ServiciosZona />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/admin/posts" element={<AdminPosts />} />
