@@ -8,6 +8,9 @@ import { MapPin, Phone, CheckCircle2, Factory, ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { trackEvent } from "@/components/analytics/Analytics";
 
+const slugify = (text: string) =>
+  text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 const ServiciosZona = () => {
   const { zona } = useParams<{ zona: string }>();
   const zone = localZones.find((z) => z.slug === zona);
@@ -103,14 +106,14 @@ const ServiciosZona = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.slice(0, 9).map((service) => (
               <Link
-                key={service.slug}
-                to={`/servicios/${service.slug}`}
+                key={service.title}
+                to={`/servicios/${slugify(service.title)}`}
                 className="group border border-border rounded-xl p-6 hover:border-accent hover:shadow-lg transition-all duration-300"
               >
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">{service.shortDescription}</p>
+                <p className="text-sm text-muted-foreground line-clamp-2">{service.description}</p>
                 <span className="inline-flex items-center gap-1 text-sm text-accent mt-4 font-medium">
                   Ver detalle <ArrowRight className="h-4 w-4" />
                 </span>
