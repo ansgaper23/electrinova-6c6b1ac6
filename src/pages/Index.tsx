@@ -32,7 +32,7 @@ const Index = () => {
       url: "https://electrinovaperu.com/",
       inLanguage: "es-PE",
       description:
-        "Servicios eléctricos industriales en Lima: pozos a tierra, subestaciones, tableros MT/BT, automatización y mantenimiento.",
+        "Servicios eléctricos industriales en Lima y el Sur Chico (Cañete, San Vicente, Chincha, Pisco): pozos a tierra, subestaciones, tableros MT/BT, automatización y mantenimiento.",
     },
     faqJsonLd,
   ];
