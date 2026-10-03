@@ -111,6 +111,22 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <h3 className="text-lg font-semibold mt-8 mb-4 flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-accent" />
+              Zonas de Cobertura
+            </h3>
+            <ul className="space-y-3">
+              {coverageZones.map((zone) => (
+                <li key={zone.href}>
+                  <Link
+                    to={zone.href}
+                    className="text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+                  >
+                    {zone.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Services */}
