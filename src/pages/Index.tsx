@@ -45,8 +45,8 @@ const Index = () => {
 
     <Layout>
       <SEO
-        title="Servicios Eléctricos Industriales en Lima, Cañete, Chincha y Pisco | Electrinova"
-        description="Contratistas eléctricos en Lima y el Sur Chico (Cañete, San Vicente, Chincha, Pisco): montaje industrial, pozos a tierra certificados, subestaciones y levantamiento de observaciones ITSE/INDECI. Atención a empresas."
+        title="Electricista Industrial en Lima, Cañete, Chincha y Pisco | Electrinova"
+        description="Pozos a tierra certificados, subestaciones, tableros MT-BT y levantamiento de observaciones ITSE en Lima y Sur Chico. Atención a empresas. Cotiza hoy."
         path="/"
         jsonLd={jsonLd}
       />
