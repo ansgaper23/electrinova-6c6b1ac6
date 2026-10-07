@@ -46,7 +46,7 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
 
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "ElectricalContractor",
     "@id": companyInfo.url,
     "name": companyInfo.name,
     "legalName": companyInfo.legalName,
