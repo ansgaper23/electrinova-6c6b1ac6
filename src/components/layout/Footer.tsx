@@ -116,6 +116,9 @@ export function Footer() {
               <MapPin className="h-5 w-5 text-accent" />
               Zonas de Cobertura
             </h3>
+            <p className="text-sm text-primary-foreground/70 mb-4">
+              Atendemos todo Lima y el Sur Chico
+            </p>
             <ul className="space-y-3">
               {coverageZones.map((zone) => (
                 <li key={zone.href}>
