@@ -264,3 +264,9 @@
   .stagger-children.animate > *:nth-child(7) { animation: fade-in-up 0.5s ease-out 0.7s forwards; }
   .stagger-children.animate > *:nth-child(8) { animation: fade-in-up 0.5s ease-out 0.8s forwards; }
 }
+
+
+#lovable-badge {
+  display: none !important;
+  visibility: hidden !important;
+}
