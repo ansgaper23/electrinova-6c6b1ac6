@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /politica-privacidad
-Disallow: /terminos-servicio
 Disallow: /admin
 Disallow: /auth
 
