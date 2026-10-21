@@ -1,5 +1,5 @@
-# SEO keyword improvements
-- [x] Align homepage and company content with industrial electrician searches.
-- [x] Add Lurín coverage, internal links and sitemap entry.
-- [x] Keep structured data consistent with visible content and verify the public flow.
-- [x] Leave unconfirmed generator/network consulting services out of published content.
+# SEO visibility improvements
+- [ ] Check available search evidence and current Google guidance.
+- [ ] Strengthen homepage links to existing services and coverage pages.
+- [ ] Correct metadata consistency and optimize first-screen images.
+- [ ] Verify service discovery, local coverage and contact flows.

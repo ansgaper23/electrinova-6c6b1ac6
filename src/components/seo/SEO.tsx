@@ -72,8 +72,9 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
       "longitude": companyInfo.geo.longitude
     },
     "telephone": companyInfo.contact.phone,
+    "email": companyInfo.contact.email,
     "priceRange": companyInfo.priceRange,
-    "openingHours": companyInfo.openingHours,
+    "openingHours": companyInfo.openingHours.split(", "),
     "sameAs": companyInfo.socialLinks,
     "areaServed": companyInfo.areaServed.map((city) => ({
       "@type": "City",
@@ -81,17 +82,13 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
     }))
   };
 
-  const combinedJsonLd = jsonLd 
-    ? (Array.isArray(jsonLd) ? [localBusinessJsonLd, ...jsonLd] : [localBusinessJsonLd, jsonLd])
-    : localBusinessJsonLd;
-
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
 
-      {noindex && <meta name="robots" content="noindex, follow" />}
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
 
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />
@@ -110,7 +107,8 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      <script type="application/ld+json">{JSON.stringify(combinedJsonLd)}</script>
+      <script id="business-schema" type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
+      {jsonLd && <script id="page-schema" type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   );
 }

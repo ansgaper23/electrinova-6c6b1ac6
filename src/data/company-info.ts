@@ -1,6 +1,6 @@
 export const companyInfo = {
   name: "ELECTRINOVA PERÚ",
-  legalName: "ELECTRINOVA PERÚ E.I.R.L.",
+  legalName: "ELECTRINOVA PERÚ S.A.C.",
   url: "https://electrinovaperu.com",
   logo: "https://electrinovaperu.com/logo-electrinova.png",
   image: "https://electrinovaperu.com/og-electrinova.png",
