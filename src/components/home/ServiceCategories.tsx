@@ -3,6 +3,9 @@ import { Cpu, Wrench, Gauge, Shield, ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { serviceCategories, getServicesForCategory } from "@/data/service-categories";
 import { AnimatedSection } from "./AnimatedSection";
+import { localZones } from "@/data/local-zones";
+
+const servicePath = (title: string) => `/servicios/${title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
 
 const iconMap: Record<string, React.ElementType> = {
   Cpu,
@@ -12,7 +15,7 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export const ServiceCategories = () => (
-  <section className="section-padding bg-background">
+  <section id="servicios" className="section-padding bg-background scroll-mt-24">
     <div className="container-custom">
       <AnimatedSection>
         <div className="text-center mb-16">
@@ -49,12 +52,13 @@ export const ServiceCategories = () => (
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {catServices.map((s) => (
-                        <span
+                        <Link
                           key={s.title}
-                          className="inline-block text-xs bg-secondary text-secondary-foreground px-3 py-1 rounded-full font-medium"
+                          to={servicePath(s.title)}
+                          className="inline-block text-xs bg-secondary text-secondary-foreground px-3 py-1 rounded-full font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                         >
                           {s.title}
-                        </span>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -63,6 +67,18 @@ export const ServiceCategories = () => (
             </AnimatedSection>
           );
         })}
+      </div>
+
+      <div className="mt-12 border-t border-border pt-8">
+        <h2 className="text-2xl font-display font-bold text-foreground mb-3">Electricistas en Lima y el Sur Chico</h2>
+        <p className="text-muted-foreground mb-5">Servicios de electricidad para industrias, comercios e instituciones en toda Lima Metropolitana, Callao y el Sur Chico.</p>
+        <nav aria-label="Servicios eléctricos por zona" className="flex flex-wrap gap-x-6 gap-y-3">
+          {localZones.map((zone) => (
+            <Link key={zone.slug} to={`/servicios-zona/${zone.slug}`} className="inline-flex items-center gap-2 text-foreground underline underline-offset-4 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              {zone.city}{zone.slug === "pisco" ? " y Paracas" : ""}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          ))}
+        </nav>
       </div>
 
       <AnimatedSection delay={600}>

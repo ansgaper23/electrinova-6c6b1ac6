@@ -10,13 +10,16 @@ import { trackEvent } from "@/components/analytics/Analytics";
 import hero1Url from "@/assets/hero/hero-slide-1.jpg";
 import hero2Url from "@/assets/hero/hero-slide-2.jpg";
 import hero3Url from "@/assets/hero/hero-slide-3.jpg";
+import hero1Webp from "@/assets/hero/hero-slide-1.jpg?w=640;960;1280;1920&format=webp&quality=78&as=srcset";
+import hero2Webp from "@/assets/hero/hero-slide-2.jpg?w=640;960;1280;1920&format=webp&quality=78&as=srcset";
+import hero3Webp from "@/assets/hero/hero-slide-3.jpg?w=640;960;1280;1920&format=webp&quality=78&as=srcset";
 
 const slides = [
   {
     image: hero1Url,
     imageWidth: 1920,
     imageHeight: 1080,
-    imageSrcSetWebp: undefined,
+    imageSrcSetWebp: hero1Webp,
     imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
     title: "Electricistas en Lima",
@@ -28,7 +31,7 @@ const slides = [
     image: hero2Url,
     imageWidth: 1920,
     imageHeight: 1080,
-    imageSrcSetWebp: undefined,
+    imageSrcSetWebp: hero2Webp,
     imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Subestaciones eléctricas y automatización industrial",
     title: "Ingeniería de Alta Potencia",
@@ -40,7 +43,7 @@ const slides = [
     image: hero3Url,
     imageWidth: 1920,
     imageHeight: 1080,
-    imageSrcSetWebp: undefined,
+    imageSrcSetWebp: hero3Webp,
     imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Mantenimiento eléctrico industrial y proyectos llave en mano",
     title: "Socios Estratégicos",
@@ -59,8 +62,6 @@ export const HeroSection = () => {
     }, 6000);
     return () => clearInterval(timer);
   }, []);
-
-  const slide = slides[current];
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
@@ -106,7 +107,7 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
-            {slide.description}
+            {slides[0].description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
