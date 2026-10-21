@@ -29,6 +29,7 @@ export const companyInfo = {
   priceRange: "$$",
   areaServed: [
     "Lima",
+    "Lurín",
     "Callao",
     "Cañete",
     "San Vicente de Cañete",

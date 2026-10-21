@@ -16,8 +16,12 @@ const faqs = [
     answer: "Sí, ofrecemos mantenimiento, reactivación, diseño y construcción de pozos a tierra. Realizamos mediciones con telurómetro digital certificado y emitimos protocolos firmados por Ingeniero Electricista habilitado.",
   },
   {
+    question: "¿Buscas un electricista en Lima para tu empresa?",
+    answer: "Nuestros ingenieros electricistas y técnicos atienden instalaciones y mantenimiento eléctrico para industrias, comercios e instituciones. Indícanos la ubicación del local y si necesitas pozos a tierra, tableros MT-BT, subestaciones o subsanar observaciones eléctricas ITSE/INDECI para solicitar una cotización.",
+  },
+  {
     question: "¿En qué zonas de Lima ofrecen sus servicios?",
-    answer: "Atendemos toda Lima Metropolitana y también ejecutamos proyectos a nivel nacional. Hemos trabajado en Arequipa, Callao y otras ciudades del Perú para clientes como Aceros Arequipa, Nestlé, SUNEDU y Cruz del Sur.",
+    answer: "Atendemos toda Lima Metropolitana, incluyendo Lurín y Villa El Salvador, además de Callao y el corredor sur: Chilca, Cañete, San Vicente de Cañete, Chincha, Pisco y Paracas. Consulta el alcance de tu proyecto y la ubicación para coordinar la atención.",
   },
   {
     question: "¿Cómo puedo solicitar una cotización?",

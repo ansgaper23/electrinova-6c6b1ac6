@@ -54,6 +54,14 @@ export function SEO({ title, description, path, ogImage, ogType = "website", noi
     "logo": companyInfo.logo,
     "image": companyInfo.image,
     "description": companyInfo.description,
+    "knowsAbout": [
+      "Instalaciones eléctricas industriales",
+      "Mantenimiento de subestaciones eléctricas",
+      "Pozos a tierra",
+      "Tableros eléctricos MT-BT",
+      "Automatización industrial",
+      "Levantamiento de observaciones eléctricas ITSE/INDECI"
+    ],
     "address": {
       "@type": "PostalAddress",
       ...companyInfo.address

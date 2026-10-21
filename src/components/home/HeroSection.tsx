@@ -19,10 +19,10 @@ const slides = [
     imageSrcSetWebp: undefined,
     imageSrcSetAvif: undefined,
     alt: "ELECTRINOVA PERÚ – Instalaciones eléctricas industriales en Lima",
-    title: "Soluciones Eléctricas Integrales",
-    subtitle: "para la Industria y el Comercio",
+    title: "Electricistas en Lima",
+    subtitle: "para Industrias y Comercios",
     description:
-      "Diseñamos, ejecutamos y mantenemos proyectos eléctricos de alta envergadura para empresas líderes en el Perú.",
+      "Empresa de servicios de electricidad industrial en Lima, Lurín y el Sur Chico. Instalaciones, pozos a tierra, tableros MT-BT, subestaciones y levantamiento de observaciones ITSE/INDECI.",
   },
   {
     image: hero2Url,
@@ -100,9 +100,9 @@ export const HeroSection = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground leading-[1.1]">
-            {slide.title}
+            {slides[0].title}
             <br />
-            <span className="text-accent">{slide.subtitle}</span>
+            <span className="text-accent">{slides[0].subtitle}</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">

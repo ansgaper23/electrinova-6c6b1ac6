@@ -24,7 +24,8 @@ const quickLinks = [
 ];
 
 const coverageZones = [
-  { href: "/servicios", label: "Lima Metropolitana y Callao" },
+  { href: "/#servicios", label: "Lima Metropolitana y Callao" },
+  { href: "/servicios-zona/lurin", label: "Lurín y Lima Sur" },
   { href: "/servicios-zona/canete-san-vicente", label: "Cañete y San Vicente" },
   { href: "/servicios-zona/chincha", label: "Chincha" },
   { href: "/servicios-zona/pisco", label: "Pisco y Paracas" },
