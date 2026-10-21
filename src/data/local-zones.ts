@@ -12,6 +12,19 @@ export type LocalZone = {
 
 export const localZones: LocalZone[] = [
   {
+    slug: "lurin",
+    city: "Lurín",
+    region: "Lima Sur",
+    title: "Electricistas industriales en Lurín | ELECTRINOVA PERÚ",
+    metaDescription:
+      "Servicios de electricidad para industrias y comercios en Lurín: pozos a tierra, tableros MT-BT, subestaciones e ITSE. Solicita una cotización.",
+    heroHeading: "Electricistas industriales en Lurín",
+    intro:
+      "ELECTRINOVA PERÚ ofrece servicios de electricidad para industrias y comercios en Lurín, como parte de su cobertura en toda Lima y el Sur Chico. Atendemos proyectos de instalaciones eléctricas, mantenimiento de subestaciones, tableros MT-BT, pozos a tierra y levantamiento de observaciones eléctricas ITSE/INDECI. Para cotizar, indícanos la ubicación del local y el alcance del trabajo.",
+    districts: ["Lurín", "Villa El Salvador", "Chilca"],
+    industries: ["Plantas industriales", "Almacenes y centros logísticos", "Comercios", "Sector institucional"],
+  },
+  {
     slug: "canete-san-vicente",
     city: "Cañete y San Vicente",
     region: "Lima Sur",

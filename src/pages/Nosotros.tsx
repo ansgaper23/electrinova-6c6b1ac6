@@ -70,8 +70,8 @@ const Nosotros = () => {
   return (
     <Layout>
       <SEO
-        title="Empresa de servicios eléctricos en Lima | Electrinova Perú"
-        description="Empresa peruana de ingeniería eléctrica, mantenimiento y automatización para industria y comercio en Lima. Equipo de ingenieros colegiados y proyectos llave en mano."
+        title="Empresa de electricidad industrial en Lima | Electrinova Perú"
+        description="Empresa peruana de servicios de electricidad para industrias y comercios en Lima, Lurín y Sur Chico. Ingeniería, mantenimiento y automatización eléctrica."
         path="/nosotros"
         jsonLd={{
           "@context": "https://schema.org",
@@ -109,8 +109,9 @@ const Nosotros = () => {
               Sobre <span className="text-gradient-accent">ELECTRINOVA</span> PERÚ
             </h1>
             <p className="text-lg text-primary-foreground/80">
-              Somos una empresa peruana especializada en servicios eléctricos,
-              comprometidos con la excelencia y la satisfacción de nuestros clientes.
+              Somos una empresa de electricidad en Perú, con ingenieros electricistas
+              y técnicos especializados en instalaciones, mantenimiento y automatización
+              para industrias y comercios en Lima, Lurín y el Sur Chico.
             </p>
           </div>
         </div>

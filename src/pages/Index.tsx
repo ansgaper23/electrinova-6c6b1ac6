@@ -28,11 +28,11 @@ const Index = () => {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Electricista industrial en Lima",
+       name: "Electricistas en Lima para industrias y comercios",
       url: "https://electrinovaperu.com/",
       inLanguage: "es-PE",
       description:
-        "Servicios eléctricos industriales en Lima y el Sur Chico (Cañete, San Vicente, Chincha, Pisco): pozos a tierra, subestaciones, tableros MT/BT, automatización y mantenimiento.",
+         "Servicios de electricidad industrial en Lima, Lurín y el Sur Chico: pozos a tierra, subestaciones, tableros MT-BT, automatización y mantenimiento.",
     },
     faqJsonLd,
   ];
@@ -45,8 +45,8 @@ const Index = () => {
 
     <Layout>
       <SEO
-        title="Electricista Industrial en Lima, Cañete, Chincha y Pisco | Electrinova"
-        description="Pozos a tierra certificados, subestaciones, tableros MT-BT y levantamiento de observaciones ITSE en Lima y Sur Chico. Atención a empresas. Cotiza hoy."
+        title="Electricistas en Lima y Sur Chico | ELECTRINOVA PERÚ"
+        description="Electricista en Lima y Lurín para industrias y comercios. Pozos a tierra, tableros MT-BT, subestaciones e ITSE en Cañete, Chincha y Pisco. Cotiza."
         path="/"
         jsonLd={jsonLd}
       />
