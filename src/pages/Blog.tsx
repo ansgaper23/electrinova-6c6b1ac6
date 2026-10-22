@@ -69,10 +69,10 @@ export default function Blog() {
     name: "Blog técnico Electrinova Perú",
     url: "https://electrinovaperu.com/blog",
     description: "Artículos técnicos sobre instalaciones eléctricas industriales, normativa CNE, automatización y mantenimiento en Perú.",
-    blogPost: posts.map((p) => ({
+    blogPost: filteredPosts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
-      url: `/blog/${p.slug}`,
+      url: `https://electrinovaperu.com/blog/${p.slug}`,
       datePublished: p.published_at,
       image: p.cover_image,
     })),
@@ -81,7 +81,7 @@ export default function Blog() {
   return (
     <Layout>
       <SEO
-        title="Blog de Ingeniería Eléctrica Industrial y Eficiencia Energética | Electrinova"
+        title="Blog de electricidad industrial | ELECTRINOVA PERÚ"
         description="Artículos y guías sobre cómo reducir el consumo eléctrico industrial, auditorías eléctricas, mantenimiento preventivo y normativa CNE en Perú."
         path="/blog"
         jsonLd={jsonLd}

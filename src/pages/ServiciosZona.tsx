@@ -1,4 +1,4 @@
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { localZones } from "@/data/local-zones";
@@ -7,6 +7,7 @@ import { services } from "@/data/services";
 import { MapPin, Phone, CheckCircle2, Factory, ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { trackEvent } from "@/components/analytics/Analytics";
+import NotFound from "@/pages/NotFound";
 
 const slugify = (text: string) =>
   text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -15,7 +16,7 @@ const ServiciosZona = () => {
   const { zona } = useParams<{ zona: string }>();
   const zone = localZones.find((z) => z.slug === zona);
 
-  if (!zone) return <Navigate to="/" replace />;
+  if (!zone) return <NotFound />;
 
   const whatsappUrl = `https://wa.me/${companyInfo.contact.whatsapp}?text=${encodeURIComponent(
     `Hola, necesito servicios eléctricos en ${zone.city}. ¿Me pueden ayudar con una cotización?`

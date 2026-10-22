@@ -14,7 +14,7 @@ const NotFound = () => {
       <SEO
         title="Página no encontrada | Electrinova Perú"
         description="La página solicitada no existe. Vuelve al inicio para conocer nuestros servicios eléctricos en Lima."
-        path="/404"
+        path={location.pathname}
         noindex
       />
       <div className="flex min-h-screen items-center justify-center bg-muted">

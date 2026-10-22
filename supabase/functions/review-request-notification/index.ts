@@ -22,7 +22,7 @@ serve(async (req) => {
     // Solo actuar si un post se publica (simulando finalización de proyecto o hito)
     // O si se dispara manualmente desde el admin para un cliente
     if (type === 'INSERT' || (type === 'UPDATE' && record.published)) {
-      console.log(\`Post publicado: \${record.title}. Preparando notificación de reseña...\`)
+      console.log(`Post publicado: ${record.title}. Preparando notificación de reseña...`)
       
       // Aquí se integraría Resend o WhatsApp API para enviar el link de Google Business
       // Por ahora, registramos la intención en logs.
@@ -33,7 +33,7 @@ serve(async (req) => {
       status: 200,
     })
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Request failed' }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       status: 400,
     })
