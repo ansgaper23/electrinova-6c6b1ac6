@@ -9,6 +9,8 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { services } from "@/data/services";
 import { AnimatedSection } from "@/components/home/AnimatedSection";
 import { trackEvent } from "@/components/analytics/Analytics";
+import { companyInfo } from "@/data/company-info";
+import NotFound from "@/pages/NotFound";
 
 
 function slugify(text: string) {
@@ -36,7 +38,10 @@ const ServicioDetalle = () => {
     }
   }, [service, slug]);
 
-  if (!service) return <Navigate to="/" replace />;
+  if (slug === "levantamiento-de-observaciones-itse-indeci") {
+    return <Navigate to="/servicios/levantamiento-de-observaciones-itse-indeci-en-lima" replace />;
+  }
+  if (!service) return <NotFound />;
 
 
   const jsonLd = {
@@ -46,7 +51,8 @@ const ServicioDetalle = () => {
     "description": service.description,
     "provider": {
       "@type": "ElectricalContractor",
-      "name": "ELECTRINOVA PERÚ E.I.R.L.",
+      "@id": companyInfo.url,
+      "name": companyInfo.name,
       "telephone": "+51938852610",
       "url": "https://electrinovaperu.com",
       "logo": "https://electrinovaperu.com/logo-electrinova.png",
@@ -60,10 +66,8 @@ const ServicioDetalle = () => {
       }
 
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Lima"
-    },
+    "areaServed": companyInfo.areaServed.map((name) => ({ "@type": "City", name })),
+    "url": `${companyInfo.url}/servicios/${slug}`,
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Servicios Eléctricos Industriales",
@@ -165,7 +169,7 @@ const ServicioDetalle = () => {
                   </p>
                   <Button asChild variant="link" className="p-0 h-auto text-accent font-bold hover:no-underline hover:text-accent/80 group">
                     <Link to="/blog/guia-levantamiento-observaciones-itse-indeci" className="flex items-center gap-2">
-                      Guía ITSE 2024
+                        Guía de observaciones ITSE / INDECI
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
